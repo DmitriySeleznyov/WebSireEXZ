@@ -1,0 +1,114 @@
+﻿<%@ Page Title="Система дистанционного мониторинга и управления ЭХЗ - Отчеты" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+    CodeFile="Reports.aspx.cs" Inherits="About" %>   
+
+<%@ Register assembly="DevExpress.Web.v17.2" namespace="DevExpress.Web" tagprefix="dx" %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <script type="text/javascript">
+     
+    function ChangeVisibleGroup(s, e) {
+
+            switch (s.GetSelectedIndex()) {
+                case 0:
+                    {
+                        from.SetVisible(false);
+                        tb_from.SetVisible(false);
+                        to.SetVisible(false);
+                        tb_to.SetVisible(false);
+
+                        break;
+                    }
+                case 1:
+                    {
+                        from.SetVisible(true);
+                        tb_from.SetVisible(true);
+                        to.SetVisible(true);
+                        tb_to.SetVisible(true);
+                        tb_from.SetText("");
+                        tb_to.SetText("");
+                        break;
+                    }
+                case 2: 
+                    {
+                        from.SetVisible(false);
+                        tb_from.SetVisible(false);
+                        to.SetVisible(true);
+                        tb_to.SetVisible(true);
+                        tb_to.SetText("");
+
+                        break;
+                    }
+                default: 
+                    {
+                        from.SetVisible(false);
+                        tb_from.SetVisible(false);
+                        to.SetVisible(false);
+                        tb_to.SetVisible(false);
+
+                        break;
+                    }
+            }
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <h2>
+       Формирование и просмотр отчетов
+    </h2>
+    <asp:UpdatePanel ID="UpdatePanelDod9" runat="server" UpdateMode="Conditional">
+    <ContentTemplate> 
+    <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
+            EnableTabScrolling="True" Width="100%">
+        <TabPages>
+            <dx:TabPage Text="Защитные параметры" ToolTip="Защитные параметры">   
+                <TabImage Height="32px" Url="~/Images/Icons2/07.png" Width="32px"></TabImage>             
+                <ContentCollection>
+                    <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                        <ContentTemplate>
+                            <dx:ASPxNavBar ID="ASPxNavBarReports" runat="server" Width="100%" Theme="Youthful" ClientInstanceName="NavBar">
+                                <Groups>
+                                    <dx:NavBarGroup Expanded="False" Text="Данные с БКМУ">
+                                    </dx:NavBarGroup>
+                                    <dx:NavBarGroup Expanded="False" Text="Данные с БСЗ">
+                                    </dx:NavBarGroup>
+                                    <dx:NavBarGroup Expanded="False" Text="Данные с МТДУ">
+                                    </dx:NavBarGroup>
+                                </Groups> 
+                            </dx:ASPxNavBar>  
+                        </ContentTemplate>
+                    </dx:ContentControl>
+                </ContentCollection>
+            </dx:TabPage>
+            <dx:TabPage Text="Квартальные отчеты" ToolTip="Квартальные отчеты">
+                <TabImage Height="32px" Url="~/Images/Icons2/07.png" Width="32px"></TabImage>  
+                <ContentCollection>
+                    <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                    </dx:ContentControl>
+                </ContentCollection>
+            </dx:TabPage>
+        </TabPages>
+        <ActiveTabStyle BackColor="#BEDF39"></ActiveTabStyle>
+        <TabStyle HorizontalAlign="Left" BackColor="White">
+            <Paddings PaddingLeft="5px"></Paddings>
+        </TabStyle>
+        <ScrollButtonStyle BackColor="#BEDF39"></ScrollButtonStyle>
+    </dx:ASPxPageControl>
+   
+</ContentTemplate>
+</asp:UpdatePanel>      
+</asp:Content>

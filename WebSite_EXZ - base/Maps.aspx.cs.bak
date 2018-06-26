@@ -1,0 +1,1555 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Xml;
+using System.Data;
+using System.Web.UI.WebControls;
+using Npgsql;
+using System.Web.Configuration;
+using Geocoding;
+using System.Globalization;
+using WebSocket4Net;
+using System.Threading;
+using System.Threading.Tasks;
+using TinyJson;
+using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxSplitter;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
+using System.Net;
+using System.Text;
+using DevExpress.Web.ASPxTreeList;
+
+    
+    public partial class Maps : System.Web.UI.Page
+    {
+
+    static string connString = WebConfigurationManager.ConnectionStrings["PostgresConnectionString"].ToString();
+
+    protected AutoResetEvent m_MessageReceiveEvent = new AutoResetEvent(false);
+    protected AutoResetEvent m_OpenedEvent = new AutoResetEvent(false);
+    protected AutoResetEvent m_CloseEvent = new AutoResetEvent(false);
+
+    protected string m_CurrentMessage = string.Empty;
+    static string short_name;
+
+
+    public void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+    {
+        // обработчик полученного сообщения 
+        m_CurrentMessage = Encoding.UTF8.GetString(e.Message);
+        m_MessageReceiveEvent.Set();
+        MessageRec(m_CurrentMessage);
+
+    }
+    
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //// временно
+        ASPxGaugeControl7.Value = "48";
+        ASPxGaugeControl6.Value = "7";
+        ASPxGaugeControl10.Value = "-1200";
+        ASPxGaugeControl11.Value = "-900";
+        ASPxGaugeControl3.Value = "3";
+        ASPxGaugeControl29.Value = "7";
+        ////
+
+        // MQTT
+        // create client instance IPAddress.Parse(
+        MqttClient client = new MqttClient("broker.mqtt-dashboard.com");
+
+        // register to message received 
+        client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
+
+        string clientId = Guid.NewGuid().ToString();
+
+        try
+        {
+            client.Connect(clientId);
+            client.Subscribe(new string[] { "exz/lora" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+        }
+        catch (Exception ee)
+        {
+            this.ClientScript.RegisterStartupScript(this.GetType(), "Mqtt", string.Format("alertify.error('{0}');", "Error mqtt server"), true);
+        }
+
+        if (User.IsInRole("Region_Managers"))
+        {
+        }
+            if (!IsPostBack)
+            {
+              Markers_build();
+            }     
+    }
+
+
+   void Markers_build()
+      {
+
+        NpgsqlConnection myConn1 = new NpgsqlConnection(connString);
+
+        myConn1.Open();
+
+        string selectcmd = "";
+        string selectcmd_mon = "";
+
+        selectcmd = String.Format("select *  from \"Subject\"");
+
+        NpgsqlCommand cmd_get_companydata = new NpgsqlCommand(selectcmd, myConn1);
+
+        NpgsqlDataReader dataReaderGetSubject = cmd_get_companydata.ExecuteReader();
+
+        XmlWriterSettings settings = new XmlWriterSettings();
+
+        settings.Indent = true;
+        settings.IndentChars = "    "; 
+
+        settings.NewLineChars = "\n";
+
+        settings.OmitXmlDeclaration = false;
+        using (XmlWriter output = XmlWriter.Create(Server.MapPath("markers_bkmu.xml"), settings))
+        using (XmlWriter output_bsz = XmlWriter.Create(Server.MapPath("markers_bsz.xml"), settings))
+        using (XmlWriter output_sdz = XmlWriter.Create(Server.MapPath("markers_sdz.xml"), settings))
+        using (XmlWriter output_skz = XmlWriter.Create(Server.MapPath("markers_skz.xml"), settings))
+        using (XmlWriter output_bkmu_bsz = XmlWriter.Create(Server.MapPath("markers_bkmu_bsz.xml"), settings))
+        {
+            Char separator = '.';
+            output.WriteStartElement("markers");
+            output_bsz.WriteStartElement("markers");
+            output_sdz.WriteStartElement("markers");
+            output_skz.WriteStartElement("markers");
+            output_bkmu_bsz.WriteStartElement("markers");
+
+            List<string> DeviceName = new List<string>();
+            List<string> DeviceID = new List<string>();
+            List<string> Type = new List<string>();
+            List<string> Latd = new List<string>();
+            List<string> Longt = new List<string>();
+
+            try
+            {
+                while (dataReaderGetSubject.Read())
+                {
+                    DeviceName.Add(dataReaderGetSubject.GetString(dataReaderGetSubject.GetOrdinal("subject_name")));
+                    DeviceID.Add(Convert.ToString(dataReaderGetSubject.GetInt32(dataReaderGetSubject.GetOrdinal("subject_id"))));
+                    Type.Add(dataReaderGetSubject.GetString(dataReaderGetSubject.GetOrdinal("subject_type")));
+                    try
+                    {
+                        Latd.Add(Convert.ToString(dataReaderGetSubject.GetDouble(dataReaderGetSubject.GetOrdinal("latitude")).ToString(CultureInfo.InvariantCulture.NumberFormat)));
+                        Longt.Add(Convert.ToString(dataReaderGetSubject.GetDouble(dataReaderGetSubject.GetOrdinal("longitude")).ToString(CultureInfo.InvariantCulture.NumberFormat)));
+                    }
+                    catch (InvalidCastException ex)
+                    {
+                        Latd.Add("");
+                        Longt.Add("");
+                    }
+
+                }
+            }
+            catch (Exception ee)
+            {
+
+
+            }
+
+
+            dataReaderGetSubject.Close();
+
+            //////////////////
+            for (int i = 0; i < DeviceName.Count; i += 1)
+            {
+                string short_name = DeviceName[i].ToString();
+                string c_id = DeviceID[i].ToString();
+                string c_lat = Latd[i].ToString();
+                string c_lon = Longt[i].ToString();
+                string c_type = Type[i].ToString();
+
+                string Address = "";
+                string Sum_pot = "";
+                string Pol_pot = "";
+                string Curr = "";
+                string Volt = "";
+                string Temper = "";
+                string State = "";
+                string Date = "";
+                string Curr_BSZ = "";
+                string Volt_BSZ = "";
+                string Curr_ust = "";
+                string Volt_ust = "";
+
+
+                if (c_type == "БКМУ")
+                {
+                    selectcmd_mon = String.Format("select sum_pot, pol_pot, curr, volt, temper, state, reg_time from \"Monitoring_BKMU\" where subject_id='{0}' and reg_time = (SELECT max(reg_time) from \"Monitoring_BKMU\" where subject_id='{0}')", c_id);
+                    NpgsqlCommand cmd_get_data = new NpgsqlCommand(selectcmd_mon, myConn1);
+
+                    NpgsqlDataReader dataReaderGetMon = cmd_get_data.ExecuteReader();
+                    while (dataReaderGetMon.Read())
+                    {
+
+                        try
+                        {
+                            Sum_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("sum_pot")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Sum_pot = "";
+                        }
+                        try
+                        {
+                            Pol_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("pol_pot")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Pol_pot = "";
+                        }
+                        try
+                        {
+                            Curr = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr = "";
+                        }
+                        try
+                        {
+                            Volt = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt = "";
+                        }
+                        try
+                        {
+                            Temper = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("temper")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Temper = "";
+                        }
+                        try
+                        {
+                            State = dataReaderGetMon.GetString(dataReaderGetMon.GetOrdinal("state"));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            State = "";
+                        }
+
+                        try
+                        {
+                            Date = Convert.ToString(dataReaderGetMon.GetTimeStamp(dataReaderGetMon.GetOrdinal("reg_time")));
+                            
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Date = "";
+                        }
+                    }
+                    dataReaderGetMon.Close();
+
+                    ///////////////// bkmu
+
+                    output.WriteStartElement("marker");
+                    output.WriteElementString("Name", short_name);
+                    output.WriteElementString("Type", c_type);
+                    output.WriteElementString("Latitude", c_lat);
+                    output.WriteElementString("Longitude", c_lon);
+                    output.WriteElementString("Address", Address);
+                    output.WriteElementString("Sum_pot", Sum_pot);
+                    output.WriteElementString("Pol_pot", Pol_pot);
+                    output.WriteElementString("Curr", Curr);
+                    output.WriteElementString("Volt", Volt);
+                    output.WriteElementString("Temper", Temper);
+                    output.WriteElementString("State", State);
+                    output.WriteElementString("Date", Date);
+                    output.WriteEndElement();
+
+                }
+
+                // БСЗ
+                if (c_type == "БСЗ")
+                {
+                    selectcmd_mon = String.Format("select curr, volt, curr_ust, volt_ust, state, reg_time from \"Monitoring_BSZ\" where subject_id='{0}' and reg_time = (SELECT max(reg_time) from \"Monitoring_BSZ\" where subject_id='{0}')", c_id);
+                    NpgsqlCommand cmd_get_data = new NpgsqlCommand(selectcmd_mon, myConn1);
+
+                    NpgsqlDataReader dataReaderGetMon = cmd_get_data.ExecuteReader();
+
+                    while (dataReaderGetMon.Read())
+                    {
+
+                        try
+                        {
+                            Sum_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Sum_pot = "";
+                        }
+                        try
+                        {
+                            Pol_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Pol_pot = "";
+                        }
+                        try
+                        {
+                            Curr = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr_ust")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr = "";
+                        }
+                        try
+                        {
+                            Volt = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt_ust")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt = "";
+                        }
+
+                        try
+                        {
+                            State = dataReaderGetMon.GetString(dataReaderGetMon.GetOrdinal("state"));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            State = "";
+                        }
+
+                        try
+                        {
+                            Date = Convert.ToString(dataReaderGetMon.GetTimeStamp(dataReaderGetMon.GetOrdinal("reg_time")));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Date = "";
+                        }
+
+                    }
+                    dataReaderGetMon.Close();
+
+                    ///////////////// bsz
+                    output_bsz.WriteStartElement("marker");
+                    output_bsz.WriteElementString("Name", short_name);
+                    output_bsz.WriteElementString("Type", c_type);
+                    output_bsz.WriteElementString("Latitude", c_lat);
+                    output_bsz.WriteElementString("Longitude", c_lon);
+                    output_bsz.WriteElementString("Address", Address);
+                    output_bsz.WriteElementString("Curr", Sum_pot);
+                    output_bsz.WriteElementString("Volt", Pol_pot);
+                    output_bsz.WriteElementString("Curr_ust", Curr);
+                    output_bsz.WriteElementString("Volt_ust", Volt);
+                    output_bsz.WriteElementString("State", State);
+                    output_bsz.WriteElementString("Date", Date);
+                    output_bsz.WriteEndElement();
+                }
+
+                // БКМУ+БСЗ
+                if (c_type == "БКМУ+БСЗ")
+                {
+                    selectcmd_mon = String.Format("select sum_pot, pol_pot, curr, volt, temper, state, curr_bsz, volt_bsz, curr_ust, volt_ust, state_bsz, reg_time from \"Monitoring_BKMU_BSZ\" where subject_id='{0}' and reg_time = (SELECT max(reg_time) from \"Monitoring_BKMU_BSZ\" where subject_id='{0}')", c_id);
+                    NpgsqlCommand cmd_get_data = new NpgsqlCommand(selectcmd_mon, myConn1);
+
+                    NpgsqlDataReader dataReaderGetMon = cmd_get_data.ExecuteReader();
+
+                    while (dataReaderGetMon.Read())
+                    {
+
+                        try
+                        {
+                            Sum_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("sum_pot")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Sum_pot = "";
+                        }
+                        try
+                        {
+                            Pol_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("pol_pot")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Pol_pot = "";
+                        }
+                        try
+                        {
+                            Curr = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr = "";
+                        }
+                        try
+                        {
+                            Volt = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt = "";
+                        }
+
+                        try
+                        {
+                            Curr_BSZ = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr_bsz")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr_BSZ = "";
+                        }
+                        try
+                        {
+                            Volt_BSZ = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt_bsz")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt_BSZ = "";
+                        }
+
+                        try
+                        {
+                            Curr_ust = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr_ust")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr_ust = "";
+                        }
+                        try
+                        {
+                            Volt_ust = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt_ust")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt_ust = "";
+                        }
+
+                        try
+                        {
+                            Temper = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("temper")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Temper = "";
+                        }
+
+                        try
+                        {
+                            State = dataReaderGetMon.GetString(dataReaderGetMon.GetOrdinal("state"));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            State = "";
+                        }
+
+                        try
+                        {
+                            Date = Convert.ToString(dataReaderGetMon.GetTimeStamp(dataReaderGetMon.GetOrdinal("reg_time")));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Date = "";
+                        }
+
+                    }
+                    dataReaderGetMon.Close();
+
+                    ///////////////// bkmu+bsz
+                    output_bkmu_bsz.WriteStartElement("marker");
+                    output_bkmu_bsz.WriteElementString("Name", short_name);
+                    output_bkmu_bsz.WriteElementString("Type", c_type);
+                    output_bkmu_bsz.WriteElementString("Latitude", c_lat);
+                    output_bkmu_bsz.WriteElementString("Longitude", c_lon);
+                    output_bkmu_bsz.WriteElementString("Address", Address);
+                    output_bkmu_bsz.WriteElementString("Sum_pot", Sum_pot);
+                    output_bkmu_bsz.WriteElementString("Pol_pot", Pol_pot);
+                    output_bkmu_bsz.WriteElementString("Curr", Curr);
+                    output_bkmu_bsz.WriteElementString("Volt", Volt);
+                    output_bkmu_bsz.WriteElementString("Curr_BSZ", Curr_BSZ);
+                    output_bkmu_bsz.WriteElementString("Volt_BSZ", Volt_BSZ);
+                    output_bkmu_bsz.WriteElementString("Curr_ust", Curr_ust);
+                    output_bkmu_bsz.WriteElementString("Volt_ust", Volt_ust);
+                    output_bkmu_bsz.WriteElementString("State", State);
+                    output_bkmu_bsz.WriteElementString("Date", Date);
+                    output_bkmu_bsz.WriteEndElement();
+                }
+
+                // СДЗ
+                if (c_type == "СДЗ")
+                {
+                    selectcmd_mon = String.Format("select curr, volt_akb, pot_tz, pot_rz, state, reg_time from \"Monitoring_SDZ\" where subject_id='{0}' and reg_time = (SELECT max(reg_time) from \"Monitoring_SDZ\" where subject_id='{0}')", c_id);
+                    NpgsqlCommand cmd_get_data = new NpgsqlCommand(selectcmd_mon, myConn1);
+
+                    NpgsqlDataReader dataReaderGetMon = cmd_get_data.ExecuteReader();
+
+                    while (dataReaderGetMon.Read())
+                    {
+
+                        try
+                        {
+                            Curr = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr = "";
+                        }
+                        try
+                        {
+                            Volt = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt_akb")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt = "";
+                        }
+                        try
+                        {
+                            Sum_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("pot_tz")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Sum_pot = "";
+                        }
+                        try
+                        {
+                            Pol_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("pot_rz")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Pol_pot = "";
+                        }
+
+                        try
+                        {
+                            State = dataReaderGetMon.GetString(dataReaderGetMon.GetOrdinal("state"));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            State = "";
+                        }
+
+                        try
+                        {
+                            Date = Convert.ToString(dataReaderGetMon.GetTimeStamp(dataReaderGetMon.GetOrdinal("reg_time")));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Date = "";
+                        }
+
+                    }
+                    dataReaderGetMon.Close();
+
+                    ///////////////// sdz
+                    output_sdz.WriteStartElement("marker");
+                    output_sdz.WriteElementString("Name", short_name);
+                    output_sdz.WriteElementString("Type", c_type);
+                    output_sdz.WriteElementString("Latitude", c_lat);
+                    output_sdz.WriteElementString("Longitude", c_lon);
+                    output_sdz.WriteElementString("Address", Address);
+                    output_sdz.WriteElementString("Curr", Curr);
+                    output_sdz.WriteElementString("Volt", Volt);
+                    output_sdz.WriteElementString("Pot_tz", Sum_pot);
+                    output_sdz.WriteElementString("Pot_rz", Pol_pot);
+                    output_sdz.WriteElementString("State", State);
+                    output_sdz.WriteElementString("Date", Date);
+                    output_sdz.WriteEndElement();
+                }
+
+////SKZ
+                if (c_type == "СКЗ")
+                {
+                    selectcmd_mon = String.Format("select sum_pot, pol_pot, curr, volt, temper, state, reg_time from \"Monitoring_SKZ\" where subject_id='{0}' and reg_time = (SELECT max(reg_time) from \"Monitoring_SKZ\" where subject_id='{0}')", c_id);
+                    NpgsqlCommand cmd_get_data = new NpgsqlCommand(selectcmd_mon, myConn1);
+
+                    NpgsqlDataReader dataReaderGetMon = cmd_get_data.ExecuteReader();
+                    while (dataReaderGetMon.Read())
+                    {
+
+                        try
+                        {
+                            Sum_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("sum_pot")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Sum_pot = "";
+                        }
+                        try
+                        {
+                            Pol_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("pol_pot")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Pol_pot = "";
+                        }
+                        try
+                        {
+                            Curr = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr = "";
+                        }
+                        try
+                        {
+                            Volt = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt = "";
+                        }
+                        try
+                        {
+                            Temper = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("temper")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Temper = "";
+                        }
+                        try
+                        {
+                            State = dataReaderGetMon.GetString(dataReaderGetMon.GetOrdinal("state"));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            State = "";
+                        }
+
+                        try
+                        {
+                            Date = Convert.ToString(dataReaderGetMon.GetTimeStamp(dataReaderGetMon.GetOrdinal("reg_time")));
+
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Date = "";
+                        }
+                    }
+                    dataReaderGetMon.Close();
+
+                    ///////////////// skz
+
+                    output_skz.WriteStartElement("marker");
+                    output_skz.WriteElementString("Name", short_name);
+                    output_skz.WriteElementString("Type", c_type);
+                    output_skz.WriteElementString("Latitude", c_lat);
+                    output_skz.WriteElementString("Longitude", c_lon);
+                    output_skz.WriteElementString("Address", Address);
+                    output_skz.WriteElementString("Sum_pot", Sum_pot);
+                    output_skz.WriteElementString("Pol_pot", Pol_pot);
+                    output_skz.WriteElementString("Curr", Curr);
+                    output_skz.WriteElementString("Volt", Volt);
+                    output_skz.WriteElementString("Temper", Temper);
+                    output_skz.WriteElementString("State", State);
+                    output_skz.WriteElementString("Date", Date);
+                    output_skz.WriteEndElement();
+
+                }
+
+/////
+
+            }
+
+
+            // закрываем
+            output.WriteEndElement();
+            output_bsz.WriteEndElement();
+            output_sdz.WriteEndElement();
+            output_skz.WriteEndElement();
+            output_bkmu_bsz.WriteEndElement();
+            // сбрасываем буфферизированные данные
+            output.Flush();
+            output_bsz.Flush();
+            output_sdz.Flush();
+            output_skz.Flush();
+            output_bkmu_bsz.Flush();
+            // закрываем фаил, с которым связан output
+            output.Close();
+            output_bsz.Close();
+            output_sdz.Close();
+            output_skz.Close();
+            output_bkmu_bsz.Close();
+        }
+
+
+
+    myConn1.Close();
+        
+    }
+
+
+    public void MessageRec (string m_CurrentMessage)
+    {
+        string num_dev = string.Empty;
+        string data_dev = string.Empty;
+        string wrk_str = string.Empty;
+        string val_str = string.Empty;
+        string int_str = string.Empty;
+        string float_str = string.Empty;
+        int float_num;
+        double value;
+        Dictionary<string, string> bkmu = new Dictionary<string, string>();
+
+        try
+        {
+            Dictionary<string, object> obj = (Dictionary<string, object>)(m_CurrentMessage.FromJson<object>());
+            num_dev = (string)obj["EUI"];
+            data_dev = (string)obj["data"];
+        }
+        catch (InvalidCastException ex)
+        {
+        }
+
+        string subString = "424d";
+        if (data_dev.IndexOf(subString) != 0)
+        {
+            // ошибка в пакете
+        }
+
+        data_dev = data_dev.Remove(0, 4);
+
+        switch (data_dev[2])
+        {
+            case '0': //бкму
+
+                wrk_str = data_dev.Remove(0, 3);
+
+                //суммарный потенциал
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("суммарный потенциал", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("суммарный потенциал", "0");
+
+                //поляризационный потенциал
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("поляризационный потенциал", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("поляризационный потенциал", "0");
+
+                //ток через вспомогательный электрод
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("ток", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("ток", "0");
+
+                //напряжение элемента питания
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("напряжение", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("напряжение", "0");
+
+                //температура
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("температура", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("температура", "0");
+
+                //состояние
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_str = val_str.Substring(val_str.Length - 1);
+                    if (float_str == "") float_str = "0";
+                    value = Convert.ToSingle(float_str);
+                    bkmu.Add("состояние", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("состояние", "0");
+
+                //запись в БД
+                NpgsqlConnection myConn = new NpgsqlConnection(connString);
+
+                myConn.Open();
+
+                string mon_insert = "insert into \"Monitoring_BKMU\" (subject_id, sum_pot, pol_pot, curr, volt, temper, state, reg_time) select (select subject_id from \"Subject\" where subject_code='{0}'), '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'";
+//                string mon_update = "update \"Monitoring_BKMU\" set sum_pot='{0}', pol_pot='{1}', curr='{2}', volt='{3}', temper='{4}', state='{5}', reg_time='{6}' where subject_id='{7}' and reg_time='{6}'";
+
+                var insert_pop = new NpgsqlCommand(String.Format(mon_insert, num_dev, 
+                bkmu["суммарный потенциал"].Replace(",", "."),
+                bkmu["поляризационный потенциал"].Replace(",", "."),
+                bkmu["ток"].Replace(",", "."),
+                bkmu["напряжение"].Replace(",", "."),
+                bkmu["температура"].Replace(",", "."),
+                bkmu["состояние"], DateTime.Now.ToString()), myConn);
+                insert_pop.ExecuteNonQuery();
+
+        string new_mes = DateTime.Now.ToString() + 
+            "\r\nУстройство: " + num_dev +
+            ",\r\n Сум.пот. = " + bkmu["суммарный потенциал"].Replace(",", ".") +
+            ",\r\n Пол.пот. = " + bkmu["поляризационный потенциал"].Replace(",", ".") +
+            ",\r\n Ток = " + bkmu["ток"].Replace(",", ".") +
+            ",\r\n Напряжение = " + bkmu["напряжение"].Replace(",", ".") +
+            ",\r\n Температура = " + bkmu["температура"].Replace(",", ".") +
+            ",\r\n Состояние = " + bkmu["состояние"];
+
+
+
+// сообщение
+        ASPxSplitter sp = (ASPxSplitter)Master.FindControl("ASPxSplitter1");
+        if (sp != null)
+        {
+
+            ASPxMemo meslist = (ASPxMemo)sp.FindControl("MessagesListBox");
+            meslist.Focus();
+            if (meslist != null)
+                meslist.Text = new_mes;
+
+            Session["CurrentMessage"] = meslist;
+
+        }
+
+                
+                myConn.Close();
+
+
+                break;
+
+            case '1': //бкму+бсз10
+
+                wrk_str = data_dev.Remove(0, 3);
+
+                //суммарный потенциал
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("суммарный потенциал", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("суммарный потенциал", "0");
+
+                //поляризационный потенциал
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("поляризационный потенциал", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("поляризационный потенциал", "0");
+
+                //ток через вспомогательный электрод
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("ток", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("ток", "0");
+
+                //напряжение элемента питания
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("напряжение", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("напряжение", "0");
+
+                //температура
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("температура", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("температура", "0");
+
+                //состояние
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_str = val_str.Substring(val_str.Length - 1);
+                    if (float_str == "") float_str = "0";
+                    value = Convert.ToSingle(float_str);
+                    bkmu.Add("состояние", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("состояние", "0");
+
+                //резерв
+                if (wrk_str.Length >= 7) wrk_str = wrk_str.Remove(0, 7);
+                if (wrk_str.Length >= 7) wrk_str = wrk_str.Remove(0, 7);
+                if (wrk_str.Length >= 7) wrk_str = wrk_str.Remove(0, 7);
+
+                //напряжение на клеммах
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("напряжение на клеммах", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("напряжение на клеммах", "0");
+
+                //ток через БСЗ
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("ток через БСЗ", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("ток через БСЗ", "0");
+
+                //уставка по току
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("уставка по току", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("уставка по току", "0");
+
+                //уставка по напряжению
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("уставка по напряжению", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("уставка по напряжению", "0");
+
+                //состояние БСЗ
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_str = val_str.Substring(val_str.Length - 1);
+                    if (float_str == "") float_str = "0";
+                    value = Convert.ToSingle(float_str);
+                    bkmu.Add("состояние БСЗ", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("состояние БСЗ", "0");
+
+
+                //запись в БД
+                NpgsqlConnection myConn1 = new NpgsqlConnection(connString);
+
+                myConn1.Open();
+
+                string mon_insert_bkmu_bsz = "insert into \"Monitoring_BKMU_BSZ\" (subject_id, sum_pot, pol_pot, curr, volt, temper, state, curr_bsz, volt_bsz, curr_ust, volt_ust, state_bsz, reg_time) select (select subject_id from \"Subject\" where subject_code='{0}'), '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}'";
+
+                var insert_bkmu_bsz = new NpgsqlCommand(String.Format(mon_insert_bkmu_bsz, num_dev,
+                    bkmu["суммарный потенциал"].Replace(",", "."),
+                    bkmu["поляризационный потенциал"].Replace(",", "."),
+                    bkmu["ток"].Replace(",", "."),
+                    bkmu["напряжение"].Replace(",", "."),
+                    bkmu["температура"].Replace(",", "."), 
+                    bkmu["состояние"],
+                    bkmu["напряжение на клеммах"].Replace(",", "."),
+                    bkmu["ток через БСЗ"].Replace(",", "."),
+                    bkmu["уставка по току"].Replace(",", "."),
+                    bkmu["уставка по напряжению"].Replace(",", "."), 
+                    bkmu["состояние БСЗ"], 
+                    DateTime.Now.ToString()), myConn1);
+                insert_bkmu_bsz.ExecuteNonQuery();
+
+                string new_mes2 = DateTime.Now.ToString() +
+                    "\r\nУстройство: " + num_dev +
+                    ",\r\n Сум.пот. = " + bkmu["суммарный потенциал"].Replace(",", ".") +
+                    ",\r\n Пол.пот. = " + bkmu["поляризационный потенциал"].Replace(",", ".") +
+                    ",\r\n Ток = " + bkmu["ток"].Replace(",", ".") +
+                    ",\r\n Напряжение = " + bkmu["напряжение"].Replace(",", ".") +
+                    ",\r\n Температура = " + bkmu["температура"].Replace(",", ".") +
+                    ",\r\n Состояние = " + bkmu["состояние"] +
+                    ",\r\n Напр. на клеммах = " + bkmu["напряжение на клеммах"].Replace(",", ".") +
+                    ",\r\n Ток через БСЗ = " + bkmu["ток через БСЗ"].Replace(",", ".") +
+                    ",\r\n Уст. по току = " + bkmu["уставка по току"].Replace(",", ".") +
+                    ",\r\n Уст. по напр. = " + bkmu["уставка по напряжению"].Replace(",", ".") +
+                    ",\r\n Состояние БСЗ = " + bkmu["состояние БСЗ"];
+
+// сообщение
+        ASPxSplitter sp2 = (ASPxSplitter)Master.FindControl("ASPxSplitter1");
+        if (sp2 != null)
+        {
+            ASPxMemo meslist = (ASPxMemo)sp2.FindControl("MessagesListBox");
+            if (meslist != null)
+                meslist.Text = new_mes2;
+
+        }
+
+                 myConn1.Close();
+
+                break;
+
+            case '2': //бкму+бсз30
+
+                wrk_str = data_dev.Remove(0, 3);
+
+                //суммарный потенциал
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("суммарный потенциал", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("суммарный потенциал", "0");
+
+                //поляризационный потенциал
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("поляризационный потенциал", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("поляризационный потенциал", "0");
+
+                //ток через вспомогательный электрод
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("ток", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("ток", "0");
+
+                //напряжение элемента питания
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("напряжение", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("напряжение", "0");
+
+                //температура
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("температура", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("температура", "0");
+
+                //состояние
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_str = val_str.Substring(val_str.Length - 1);
+                    if (float_str == "") float_str = "0";
+                    value = Convert.ToSingle(float_str);
+                    bkmu.Add("состояние", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("состояние", "0");
+
+                //резерв
+                if (wrk_str.Length >= 7) wrk_str = wrk_str.Remove(0, 7);
+                if (wrk_str.Length >= 7) wrk_str = wrk_str.Remove(0, 7);
+                if (wrk_str.Length >= 7) wrk_str = wrk_str.Remove(0, 7);
+
+                //напряжение на клеммах
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("напряжение на клеммах", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("напряжение на клеммах", "0");
+
+                //ток через БСЗ
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("ток через БСЗ", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("ток через БСЗ", "0");
+
+                //уставка по току
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("уставка по току", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("уставка по току", "0");
+
+                //уставка по напряжению
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_num = int.Parse(val_str.Substring(1, 1));
+                    float_str = val_str.Substring(val_str.Length - float_num);
+                    if (float_str == "") float_str = "0";
+                    int_str = val_str.Substring(2, 5 - float_num);
+                    value = Convert.ToSingle(int_str) + Convert.ToSingle(float_str) * Math.Pow(10, -1 * float_num);
+                    if (val_str[0] == '1') value = -1 * value;
+                    bkmu.Add("уставка по напряжению", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("уставка по напряжению", "0");
+
+                //состояние БСЗ
+                if (wrk_str.Length >= 7)
+                {
+                    val_str = wrk_str.Substring(0, 7);
+                    float_str = val_str.Substring(val_str.Length - 1);
+                    if (float_str == "") float_str = "0";
+                    value = Convert.ToSingle(float_str);
+                    bkmu.Add("состояние БСЗ", value.ToString());
+                    wrk_str = wrk_str.Remove(0, 7);
+                }
+                else
+                    bkmu.Add("состояние БСЗ", "0");
+
+
+                //запись в БД
+                NpgsqlConnection myConn2 = new NpgsqlConnection(connString);
+
+                myConn2.Open();
+
+                string mon_insert_bkmu_bsz2 = "insert into \"Monitoring_BKMU_BSZ\" (subject_id, sum_pot, pol_pot, curr, volt, temper, state, curr_bsz, volt_bsz, curr_ust, volt_ust, state_bsz, reg_time) select (select subject_id from \"Subject\" where subject_code='{0}'), '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}'";
+
+                var insert_bkmu_bsz2 = new NpgsqlCommand(String.Format(mon_insert_bkmu_bsz2, num_dev,
+                    bkmu["суммарный потенциал"].Replace(",", "."),
+                    bkmu["поляризационный потенциал"].Replace(",", "."),
+                    bkmu["ток"].Replace(",", "."),
+                    bkmu["напряжение"].Replace(",", "."),
+                    bkmu["температура"].Replace(",", "."), 
+                    bkmu["состояние"],
+                    bkmu["напряжение на клеммах"].Replace(",", "."),
+                    bkmu["ток через БСЗ"].Replace(",", "."),
+                    bkmu["уставка по току"].Replace(",", "."),
+                    bkmu["уставка по напряжению"].Replace(",", "."), 
+                    bkmu["состояние БСЗ"], 
+                    DateTime.Now.ToString()), myConn2);
+                insert_bkmu_bsz2.ExecuteNonQuery();
+
+                string new_mes3 = DateTime.Now.ToString() +
+                    "\r\nУстройство: " + num_dev +
+                    ",\r\n Сум.пот. = " + bkmu["суммарный потенциал"].Replace(",", ".") +
+                    ",\r\n Пол.пот. = " + bkmu["поляризационный потенциал"].Replace(",", ".") +
+                    ",\r\n Ток = " + bkmu["ток"].Replace(",", ".") +
+                    ",\r\n Напряжение = " + bkmu["напряжение"].Replace(",", ".") +
+                    ",\r\n Температура = " + bkmu["температура"].Replace(",", ".") +
+                    ",\r\n Состояние = " + bkmu["состояние"] +
+                    ",\r\n Напр. на клеммах = " + bkmu["напряжение на клеммах"].Replace(",", ".") +
+                    ",\r\n Ток через БСЗ = " + bkmu["ток через БСЗ"].Replace(",", ".") +
+                    ",\r\n Уст. по току = " + bkmu["уставка по току"].Replace(",", ".") +
+                    ",\r\n Уст. по напр. = " + bkmu["уставка по напряжению"].Replace(",", ".") +
+                    ",\r\n Состояние БСЗ = " + bkmu["состояние БСЗ"];
+
+
+// сообщение
+        ASPxSplitter sp3 = (ASPxSplitter)Master.FindControl("ASPxSplitter1");
+        if (sp3 != null)
+        {
+            ASPxMemo meslist = (ASPxMemo)sp3.FindControl("MessagesListBox");
+            if (meslist != null)
+                meslist.Text = new_mes3;
+
+        }
+        
+        myConn2.Close();
+
+                break;
+
+            default:
+                break;
+        }
+    }
+
+
+/// Subjects build
+/// 
+    protected string GetShortName()
+    {
+        if (Page.User.IsInRole("Members"))
+        {
+        }
+        else
+        {
+            if (Session["SelectedSubject"] != null)
+            {
+                TreeListNode SNode = (TreeListNode)Session["SelectedSubject"];
+                short_name = SNode.GetValue("subject_name").ToString();
+            }
+        }
+        return short_name;
+    }
+
+    protected void SubjectsBuild()
+    {
+
+        NpgsqlConnection myConn1 = new NpgsqlConnection(connString);
+
+        //get selected subject
+
+        string c_id = "";
+        string c_code = "";
+        string c_type = "";
+
+        string selectcmd = "";
+        string selectcmd_mon = "";
+
+        string Sum_pot = "";
+        string Pol_pot = "";
+        string Curr = "";
+        string Volt = "";
+        string Curr_BSZ = "";
+        string Volt_BSZ = "";
+        string Curr_ust = "";
+        string Volt_ust = "";
+        string Temper = "";
+        string State = "";
+        string Date = "";
+
+        myConn1.Open();
+
+        short_name = GetShortName();
+        NpgsqlCommand cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"Subject\" where subject_id=(SELECT subject_id FROM \"Subject\" WHERE subject_name='{0}')", short_name), myConn1);
+
+        NpgsqlDataReader dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
+
+        try
+        {
+            while (dataReaderGetSubject.Read())
+            {
+                c_id = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_id")).ToString();
+                c_code = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_code")).ToString();
+                c_type = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString();
+            }
+        }
+        catch (Exception ee)
+        {
+        }
+
+        dataReaderGetSubject.Close();
+
+
+        // БСЗ
+                if (c_type == "БКМУ+БСЗ")
+                {
+                    selectcmd_mon = String.Format("select sum_pot, pol_pot, curr, volt, temper, state, curr_bsz, volt_bsz, curr_ust, volt_ust, state_bsz, reg_time from \"Monitoring_BKMU_BSZ\" where subject_id='{0}' and reg_time = (SELECT max(reg_time) from \"Monitoring_BKMU_BSZ\" where subject_id='{0}')", c_id);
+                    NpgsqlCommand cmd_get_data = new NpgsqlCommand(selectcmd_mon, myConn1);
+
+                    NpgsqlDataReader dataReaderGetMon = cmd_get_data.ExecuteReader();
+
+                    while (dataReaderGetMon.Read())
+                    {
+
+                        try
+                        {
+                            Sum_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("sum_pot")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Sum_pot = "";
+                        }
+                        try
+                        {
+                            Pol_pot = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("pol_pot")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Pol_pot = "";
+                        }
+                        try
+                        {
+                            Curr = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr = "";
+                        }
+                        try
+                        {
+                            Volt = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt = "";
+                        }
+
+                        try
+                        {
+                            Curr_BSZ = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr_bsz")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr_BSZ = "";
+                        }
+                        try
+                        {
+                            Volt_BSZ = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt_bsz")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt_BSZ = "";
+                        }
+
+                        try
+                        {
+                            Curr_ust = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("curr_ust")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Curr_ust = "";
+                        }
+                        try
+                        {
+                            Volt_ust = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("volt_ust")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Volt_ust = "";
+                        }
+
+                        try
+                        {
+                            Temper = Convert.ToString(dataReaderGetMon.GetFloat(dataReaderGetMon.GetOrdinal("temper")).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Temper = "";
+                        }
+
+                        try
+                        {
+                            State = dataReaderGetMon.GetString(dataReaderGetMon.GetOrdinal("state"));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            State = "";
+                        }
+
+                        try
+                        {
+                            Date = Convert.ToString(dataReaderGetMon.GetTimeStamp(dataReaderGetMon.GetOrdinal("reg_time")));
+                        }
+                        catch (InvalidCastException ex)
+                        {
+                            Date = "";
+                        }
+
+                    }
+                    dataReaderGetMon.Close();
+
+                    ///////////////// bsz
+                    ASPxGaugeControl36.Value = Curr;
+                    ASPxGaugeControl40.Value = Curr;
+
+                    ASPxGaugeControl37.Value = Volt;
+                    ASPxGaugeControl41.Value = Volt;
+    
+                    ASPxGaugeControl38.Value = Sum_pot;
+                    ASPxGaugeControl42.Value = Sum_pot;
+
+                    ASPxGaugeControl39.Value = Pol_pot;
+                    ASPxGaugeControl43.Value = Pol_pot;
+
+                    ASPxGaugeControl44.Value = Temper;
+
+                    ASPxGaugeControl49.Value = Curr_ust;
+                    ASPxGaugeControl50.Value = Volt_ust;
+
+                    ASPxGaugeControl45.Value = Curr_BSZ;
+                    ASPxGaugeControl47.Value = Curr_BSZ;
+
+                    ASPxGaugeControl46.Value = Volt_BSZ;
+                    ASPxGaugeControl48.Value = Volt_BSZ;
+
+
+                    ASPxGaugeControl51.Value = Date;
+                }
+
+
+
+        myConn1.Close();
+
+    }
+    
+   
+
+    protected void Page_PreRender(object sender, EventArgs e)
+    {
+        short_name = GetShortName();
+
+        if (short_name != null) //было Session["SelectedSubject"] вместо short_name
+        {
+            SubjectsBuild();
+
+        }
+        else
+        {
+        }
+
+
+    }
+
+}

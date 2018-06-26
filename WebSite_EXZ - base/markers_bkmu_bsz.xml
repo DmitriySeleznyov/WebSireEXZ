@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<markers>
+    <marker>
+        <Name>БКМУ+БСЗ1</Name>
+        <Type>БКМУ+БСЗ</Type>
+        <Latitude>49.990176</Latitude>
+        <Longitude>36.284493</Longitude>
+        <Address />
+        <Sum_pot />
+        <Pol_pot />
+        <Curr />
+        <Volt />
+        <Curr_BSZ />
+        <Volt_BSZ />
+        <Curr_ust />
+        <Volt_ust />
+        <State />
+        <Date />
+    </marker>
+</markers>

@@ -1,0 +1,704 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<%@ Register Assembly="DevExpress.Web.v13.2"
+    Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v13.2"
+    Namespace="DevExpress.Web.ASPxSplitter" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
+
+
+<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxTreeList.v13.2" namespace="DevExpress.Web.ASPxTreeList" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxMenu" tagprefix="dx" %>
+
+
+<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxTabControl" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxClasses" tagprefix="dx" %>
+
+
+<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxNavBar" tagprefix="dx" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<script type="text/javascript">
+
+    function getXMLDocument(url)   // Загрузка XML-документа
+    {
+        var req;
+        if (window.XMLHttpRequest)   //Opera, FireFox, Chrome
+        {
+            req = new window.XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send("");
+            return req.responseXML;
+        }
+        else
+            if (window.ActiveXObject)   //IE
+            {
+                req = new ActiveXObject("Microsoft.XMLDOM");
+                req.async = false;
+                req.load(url);
+                return xml;
+            }
+            else {
+                alert("Загрузка XML не поддерживается браузером");
+                return null;
+            }
+    }
+
+    function getXMLNodeText(node) // Содержимое тэга
+    {
+        return node.text || node.textContent;
+    }
+
+ function setMarkers(map, locations) {
+        // пытаемся загрузить XML-документ
+        var xml = null;
+        try {
+            xml = getXMLDocument("markers.xml");
+            if (!xml) alert("Нет данных");
+        }
+        catch (e) {
+            return alert("Ошибка:" + e.message);
+        }
+        // получаем информацию о маркерах
+        var markers = xml.getElementsByTagName("marker");
+        var marker = null;
+
+        for (var i = 0; i < markers.length; i++) {
+            marker = markers[i];
+            var params = marker.childNodes;
+            if (params)
+                for (var i1 = 0; i1 < params.length; i1++) {
+                    param = params[i1];
+                    switch (param.nodeName) {
+                        case "Name": var Name = getXMLNodeText(param);
+                            break;
+                        case "Latitude": var Lat = getXMLNodeText(param);
+                            break;
+                        case "Longitude": var Lon = getXMLNodeText(param);
+                            break;
+                        case "Address": var Address = getXMLNodeText(param);
+                            break;
+                        case "Photo": var Photo = getXMLNodeText(param);
+                            break;
+                    }
+                }
+            }
+		//Определяем область показа маркеров
+		var latlngbounds = new google.maps.LatLngBounds();	 
+         
+         for (var im = 0; im < places.length; im++) {
+            var myLatLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
+			//Добавляем координаты маркера в область
+			latlngbounds.extend(myLatLng);
+            var marker1 = new google.maps.Marker({
+                position: myLatLng,
+                map: map,   
+                title: locations[i][0],
+            }); 
+         }
+	//Центрируем и масштабируем карту
+//	map.setCenter( latlngbounds.getCenter(), map.fitBounds(latlngbounds));	 
+    }    
+
+    // <![CDATA[
+    function MenuItemClick(e) {
+        ;
+    }
+    function FocusedNodeChanged(s, e) {
+
+
+    }
+    // ]]> 
+    </script>
+<body>
+    <form runat="server">
+<input name="MsgInput" id="MsgInput" type="hidden" runat="server" />
+    <div class="page">
+        <div class="header">
+<a id="A1" href="~/Start.aspx" runat="server">
+
+               </a>
+                <div id="menu" class="menu">
+                <asp:Menu ID="NavigationMenu" runat="server" 
+                        IncludeStyleBlock="False" Orientation="Horizontal" CssClass="menu">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Maps.aspx" Text="Карта"/>
+                        <asp:MenuItem NavigateUrl="~/Subjects.aspx" Text="Объекты"/>
+                        <asp:MenuItem NavigateUrl="~/Analysis.aspx" Text="Анализ"/>
+                        <asp:MenuItem NavigateUrl="~/Reports.aspx" Text="Отчеты"/>
+                        <asp:MenuItem NavigateUrl="~/Classificators.aspx" Text="Справочники"/>
+                        <asp:MenuItem NavigateUrl="~/Users.aspx" Text="Пользователи"/>
+                    </Items>
+
+<StaticSelectedStyle CssClass="menuselected" ForeColor="#99CCFF"></StaticSelectedStyle>
+                </asp:Menu>
+                </div>
+
+<a id="A3" href="~/Start.aspx" runat="server">
+            <div id="logo" >
+            </div>
+               </a>
+            <div class="title">
+               
+            </div>
+            <asp:ScriptManager ID="MesScriptManager" runat="server">
+                <Scripts>
+                    <asp:ScriptReference Path="~/Scripts/jquery-2.1.1.js" />
+                    <asp:ScriptReference Path="~/Scripts/jquery-ui-1.11.1.js" />
+                </Scripts>
+            <Services>
+                <asp:ServiceReference Path="~/Autocomplete.asmx" />
+            </Services>
+																	</asp:ScriptManager>
+            <div class="messaging">
+                <a href="./Messaging.aspx">
+                    <span runat="server" enableviewstate="False" id="lblCursor" style="cursor: pointer;">
+                    <img id="messageButton" alt="Сообщения" src="Images/messaging.png" style="width: 48px; height: 82px;"/>
+                    </span>
+                </a>
+              
+            </div>
+            <div class="rightmenu">
+               <h1> </h1>
+                        <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Вход</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Вых." LogoutPageUrl="~/Default.aspx"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+<a id="A2" href="~/Settings.aspx" runat="server">
+            <div class="settings">
+              <h1> </h1>
+            </div>
+            </a>
+            </div>
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" 
+                ShowStartingNode="False" />
+            <asp:Label ID="RegionLabel" runat="server" Text="" Visible="False"></asp:Label>
+            </div>
+
+
+
+    
+
+
+<dx:ASPxSplitter runat="server" ShowCollapseForwardButton="True" SeparatorSize="5px" BackColor="#EBEBEB" ID="ASPxSplitter1">
+ <Panes>
+  <dx:SplitterPane Size="310px" AutoHeight="True" AutoWidth="True">
+   <ContentCollection>
+     <dx:SplitterContentControl runat="server">
+      
+      <dx:ASPxSplitter ID="ASPxSplitter2" runat="server" ShowCollapseBackwardButton="true" 
+                                SeparatorSize="5px" BackColor="#EBEBEB">
+            <Styles>
+               <Pane>
+                 <Paddings Padding="0px"></Paddings>
+               </Pane>
+            </Styles>
+
+         <Panes>
+
+            <dx:SplitterPane AutoHeight="True" MinSize="310px" MaxSize="310px" Size="310px">
+                <ContentCollection>
+                    <dx:SplitterContentControl ID="SplitterContentControl3" runat="server">
+            <div id="leftbox">
+                    <div id="filters">
+                    <h5 class="title">
+                        <dx:ASPxLabel runat="server" Text="Объекты" CssClass="title" 
+                            ID="FilterLabel" ClientInstanceName="FilterLabel"></dx:ASPxLabel>
+                    </h5>  
+                    
+                      <dx:ASPxPageControl runat="server" ActiveTabIndex="0" TabAlign="Justify" 
+                            Width="100%" Theme="Youthful" Height="100%" ID="FiltersTabControl" 
+                            AutoPostBack="False" ClientInstanceName="FiltersTabControl">
+                                      <tabpages>
+                              <dx:TabPage Text="" ToolTip="Объекты" Name="TabPage1">
+                                  <activetabimage iconid="miscellaneous_country_16x16">
+                                  </activetabimage>
+                                  <tabimage iconid="miscellaneous_country_16x16">
+                                  </tabimage>
+                                  <contentcollection>
+                                      <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+<dx:ASPxMenu runat="server" ShowAsToolbar="True" Orientation="Vertical" 
+                            AllowSelectItem="True" AutoSeparators="All" ItemLinkMode="TextAndImage" 
+                            ShowPopOutImages="True" ImageFolder="~\Images\Icons1/" Theme="Youthful" 
+                            EnableTheming="True" ID="ASPxMenu1" OnItemClick="ASPxMenu1_ItemClick" 
+                            Width="300px" Height="100%" ItemAutoWidth="False">
+<ClientSideEvents ItemClick="function(s, e) { MenuItemClick(e); }"></ClientSideEvents>
+<Items>
+<dx:MenuItem Name="Item9" Text="Все объекты" 
+        ToolTip="Все объекты">
+<Image Height="37px" Width="32px" Url="~/Images/Markers/all.png"></Image>
+</dx:MenuItem>
+<dx:MenuItem Name="Item1" Text="Станции катодной защиты" 
+        ToolTip="Модули телеметрии и дистанционного управления">
+<Image Height="37px" Width="32px" Url="~/Images/Markers/mtdu.png"></Image>
+</dx:MenuItem>
+<dx:MenuItem Name="Item2" Text="Блоки совместной защиты" 
+        ToolTip="Блоки совместной защиты">
+<Image Height="37px" Width="32px" Url="~/Images/Markers/bsz.png"></Image>
+</dx:MenuItem>
+<dx:MenuItem Name="Item3" Text="Блоки коррозионного мониторинга и управления" ToolTip="Блоки коррозионного мониторинга и управления ">
+<Image Height="37px" Width="32px" Url="~/Images/Markers/bkmu.png"></Image>
+</dx:MenuItem>
+    <dx:MenuItem Name="Item4" Text="Станции дренажной защиты" 
+        ToolTip="Станции дренажной защиты">
+        <image height="37px" url="~/Images/Markers/sdz.png" width="32px">
+        </image>
+    </dx:MenuItem>
+</Items>
+
+<ItemStyle Height="23px" Width="23px" BackColor="Transparent">
+<Paddings PaddingLeft="1px" PaddingTop="3px" PaddingRight="1px"></Paddings>
+</ItemStyle>
+</dx:ASPxMenu>
+                                      </dx:ContentControl>
+                                  </contentcollection>
+                              </dx:TabPage>
+                              <dx:TabPage Text="" ToolTip="Фильтры" Name="TabPage2">
+                                  <activetabimage iconid="filter_masterfilter_16x16">
+                                  </activetabimage>
+                                  <tabimage iconid="filter_masterfilter_16x16">
+                                  </tabimage>
+                                  <contentcollection>
+                                      <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                                          <dx:ASPxCheckBox ID="BranchCheckBox" runat="server" CheckState="Unchecked">
+                                          </dx:ASPxCheckBox>
+                                          Выбрать тип
+                                    <dx:ASPxComboBox runat="server" ValueType="System.String" ID="BranchList1" 
+                                        DataSourceID="BranchSqlDataSource1" Width="100%" ValueField="branch_descr" 
+                                        TextField="branch_descr">
+                                        <Columns>
+                                            <dx:ListBoxColumn FieldName="branch_id" Name="branch_id" Visible="False" />
+                                            <dx:ListBoxColumn Caption="Отрасль" FieldName="branch_descr" 
+                                                Name="branch_descr" />
+                                        </Columns>
+                                    </dx:ASPxComboBox>
+                                    <asp:SqlDataSource ID="BranchSqlDataSource1" runat="server" 
+                                        ConnectionString="<%$ ConnectionStrings:PostgresConnectionString %>" 
+                                        ProviderName="<%$ ConnectionStrings:PostgresConnectionString.ProviderName %>" 
+                                        SelectCommand="">
+                                    </asp:SqlDataSource>
+                                    <br />
+                                    
+                                          <dx:ASPxCheckBox ID="LocalityCheckBox" runat="server" CheckState="Unchecked">
+                                          </dx:ASPxCheckBox>
+                                    
+                                          Выбрать месторасположение
+                                    <dx:ASPxComboBox runat="server" ValueType="System.String" ID="LocalityList1" 
+                                        DataSourceID="LocalitySqlDataSource1" Width="100%" 
+                                        ValueField="locality_name" TextField="locality_name">
+                                        <Columns>
+                                            <dx:ListBoxColumn FieldName="locality_id" Name="locality_id" Visible="False" />
+                                            <dx:ListBoxColumn Caption="Месторасположение" FieldName="locality_name" 
+                                                Name="locality_name" />
+                                        </Columns>
+                                    </dx:ASPxComboBox>
+                                    <asp:SqlDataSource ID="LocalitySqlDataSource1" runat="server" 
+                                        ConnectionString="<%$ ConnectionStrings:PostgresConnectionString %>" 
+                                        ProviderName="<%$ ConnectionStrings:PostgresConnectionString.ProviderName %>" 
+                                        
+                                        SelectCommand="">
+                                    </asp:SqlDataSource>
+                <br />
+                <br />
+                                    <dx:ASPxButton ID="FilterEnableASPxButton1" runat="server" 
+                                        OnClick="FilterEnableASPxButton1_Click" Text="Применить фильтр">
+                                    </dx:ASPxButton>
+                <br />
+                <br />
+                                    <dx:ASPxButton ID="FilterDisableASPxButton1" runat="server" 
+                                        OnClick="FilterDisableASPxButton1_Click" Text="Отменить фильтр">
+                                    </dx:ASPxButton>
+                                    <br />
+
+                                      </dx:ContentControl>
+                                  </contentcollection>
+                              </dx:TabPage>
+                              <dx:TabPage Text="" ToolTip="Поиск" Name="TabPage3">
+                                  <activetabimage iconid="find_find_16x16">
+                                  </activetabimage>
+                                  <tabimage iconid="find_find_16x16">
+                                  </tabimage>
+                                  <tabstyle wrap="True">
+                                  </tabstyle>
+                                  <contentcollection>
+                                      <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+
+<dx:ASPxPageControl runat="server" ActiveTabIndex="0" EnableTheming="True" Theme="Youthful" ID="SearchTarget">
+    <tabpages>
+        <dx:TabPage Text="Название">
+            <tabimage iconid="miscellaneous_windows_16x16">
+            </tabimage>
+            <contentcollection>
+                <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                    <dx:ASPxLabel ID="ASPxLabel19" runat="server" Text="Название">
+                    </dx:ASPxLabel>
+                    <asp:TextBox ID="SearchNameTextBox_First" ClientIDMode="Static" runat="server" 
+                        ToolTip="Укажите первые буквы названия объекта" Width="250px">
+                    </asp:TextBox>
+                    <div id="CompaniesCompletionListDiv"></div>
+                    <cc1:AutoCompleteExtender runat="server" MinimumPrefixLength="1"  CompletionInterval="1"
+                    CompletionSetCount="5" ServiceMethod="GetCompany" BehaviorID="CompanyAutoComplete"
+                    ServicePath="~/Autocomplete.asmx" DelimiterCharacters="" FirstRowSelected="True" 
+                    Enabled="True" TargetControlID="SearchNameTextBox_First" 
+                    ID="AutoCompleteExtender1" CompletionListElementID="CompaniesCompletionListDiv" 
+                    CompletionListCssClass="AutocompleteList">
+                    <Animations>
+                            <OnShow>
+                                <Sequence>
+                                    <OpacityAction Opacity="0" />
+                                    <HideAction Visible="true" />
+                                    <ScriptAction Script="
+                                        var behavior = $find('CompanyAutoComplete');
+                                        if (!behavior._height) {
+                                            var target = behavior.get_completionList();
+                                            behavior._height = target.offsetHeight - 2;
+                                            target.style.height = '0px';
+                                        }" />
+                                    <Parallel Duration=".4">
+                                        <FadeIn />
+                                        <Length PropertyKey="height" StartValue="0" EndValueScript="$find('CompanyAutoComplete')._height" />
+                                    </Parallel>
+                                </Sequence>
+                            </OnShow>
+                            <OnHide>
+                                <Parallel Duration=".4">
+                                    <FadeOut />
+                                    <Length PropertyKey="height" StartValueScript="$find('CompanyAutoComplete')._height" EndValue="0" />
+                                </Parallel>
+                            </OnHide>
+                        </Animations>
+        </cc1:AutoCompleteExtender>
+
+                </dx:ContentControl>
+            </contentcollection>
+        </dx:TabPage>
+        <dx:TabPage Text="Слово в названии">
+            <tabimage iconid="miscellaneous_windows_16x16">
+            </tabimage>
+            <contentcollection>
+                <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                    <dx:ASPxLabel ID="ASPxLabel17" runat="server" Text="Название">
+                    </dx:ASPxLabel>
+                    <br />
+                    <dx:ASPxTextBox ID="SearchNameTextBox" runat="server" 
+                        NullText="Укажите часть названия" Width="250px">
+                    </dx:ASPxTextBox>
+                </dx:ContentControl>
+            </contentcollection>
+        </dx:TabPage>
+        <dx:TabPage Text="Адрес">
+            <tabimage iconid="miscellaneous_viewonweb_16x16">
+            </tabimage>
+            <contentcollection>
+                <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                <dx:ASPxLabel ID="ASPxLabel18" runat="server" Text="Улица">
+                </dx:ASPxLabel>
+                <br />
+                <dx:ASPxTextBox ID="SearchStreetTextBox" runat="server" 
+                    NullText="Укажите часть названия улицы" 
+                    Width="170px">
+                </dx:ASPxTextBox>
+                </dx:ContentControl>
+            </contentcollection>
+        </dx:TabPage>
+    </tabpages>
+                                          </dx:ASPxPageControl>
+<dx:ASPxButton runat="server" Text="Поиск" ID="SearchButton" OnClick="SearchButton_Click"></dx:ASPxButton>
+                <br />
+                <br />
+<dx:ASPxButton runat="server" Text="Очистить поиск" ID="ClearSearchButton" OnClick="ClearSearchButton_Click"></dx:ASPxButton>
+                                      </dx:ContentControl>
+                                  </contentcollection>
+                              </dx:TabPage>
+                          </tabpages>
+
+<ClientSideEvents ActiveTabChanged="function(s, e) {
+            var tab = GetTabByValue();
+            if (e.tab.name == &quot;TabPage1&quot;)
+                FilterLabel.Text = &quot;Об'єкти&quot;;
+            if (e.tab.name == &quot;TabPage2&quot;)
+                FilterLabel.Text = &quot;Фільтри&quot;;
+            if (e.tab.name == &quot;TabPage3&quot;)
+                FilterLabel.Text = &quot;Пошук&quot;;
+}"></ClientSideEvents>
+                        </dx:ASPxPageControl>
+                        
+                       <dx:ASPxLabel runat="server" Text="" ForeColor="#AED70C"
+                            ID="MembersInfo" ClientInstanceName="MembersInfo" Visible="False"></dx:ASPxLabel>
+</div>
+
+<div id="tree">
+                    <h5 class="title">
+                        <dx:ASPxLabel runat="server" Text="Объекты" CssClass="title" ID="TreeLabel"></dx:ASPxLabel>
+
+
+                    </h5>  
+
+
+
+
+                        <dx:ASPxTreeList runat="server" EnableCallbacks="False" 
+                        KeyFieldName="subject_id" AutoGenerateColumns="False" 
+                        DataSourceID="SqlDataSource2" BackColor="Transparent" ID="ASPxTreeList1" 
+                        OnFocusedNodeChanged="ASPxTreeList1_FocusedNodeChanged" 
+                        Height="350px" 
+                        Width="600px"><Columns>
+<dx:TreeListTextColumn FieldName="subject_name" ShowInCustomizationForm="True" Visible="true" VisibleIndex="0" 
+                                    Width="300px"></dx:TreeListTextColumn>
+
+                                <dx:TreeListTextColumn FieldName="latitude" ShowInCustomizationForm="True" 
+                                    Visible="False" VisibleIndex="1">
+                                </dx:TreeListTextColumn>
+                                <dx:TreeListTextColumn FieldName="longitude" ShowInCustomizationForm="True" 
+                                    Visible="False" VisibleIndex="2">
+                                </dx:TreeListTextColumn>
+
+</Columns>
+
+<Settings ShowColumnHeaders="False" scrollableheight="340" verticalscrollbarmode="Auto" 
+                                horizontalscrollbarmode="Visible"></Settings>
+
+<SettingsBehavior AllowFocusedNode="True" ProcessFocusedNodeChangedOnServer="True" FocusNodeOnLoad="False" 
+                                processselectionchangedonserver="True"></SettingsBehavior>
+
+<SettingsDataSecurity AllowDelete="False" AllowInsert="False" AllowEdit="False"></SettingsDataSecurity>
+
+<ClientSideEvents FocusedNodeChanged="function(s, e) { FocusedNodeChanged(s,e); }"></ClientSideEvents>
+
+<BackgroundImage HorizontalPosition="left" ImageUrl="~/Images/map.JPG"></BackgroundImage>
+</dx:ASPxTreeList>
+
+
+
+                        <asp:SqlDataSource runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:PostgresConnectionString %>" 
+                        ProviderName="<%$ ConnectionStrings:PostgresConnectionString.ProviderName %>" 
+                        SelectCommand="SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM &quot;Subject&quot;order by subject_name" 
+                        ID="SqlDataSource2"></asp:SqlDataSource>
+
+
+
+                        
+
+                    
+                   
+            </div>
+
+            <div id="detail">
+                    <h5 class="title">Детальная информация</h5>
+                    <dx:ASPxPageControl runat="server" ActivateTabPageAction="MouseOver" 
+                        ActiveTabIndex="0" EnableTabScrolling="True" TabPosition="Left" 
+                        ID="ASPxPageControl1" Width="300px"><TabPages>
+<dx:TabPage Text="" ToolTip="Общая информация">
+<TabImage Height="32px" Width="32px" Url="~/Images/Icons2/01.jpg"></TabImage>
+<ContentCollection>
+<dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                                        <dx:ASPxLabel runat="server" Text="Название" CssFilePath="~/Styles/Site.css" 
+                                            CssClass="dxcaRefreshButton" Font-Bold="True" ID="ASPxLabel1"></dx:ASPxLabel>
+
+
+                                        <br />
+                                        <br />
+                                        <dx:ASPxLabel runat="server" Wrap="True" Width="115px" ID="Label_full_name"></dx:ASPxLabel>
+
+
+                                        <br />
+                                        <br />
+                                        <dx:ASPxLabel runat="server" Text="Тип" CssFilePath="~/Styles/Site.css" 
+                                            Width="115px" CssClass="dxcaRefreshButton" Font-Bold="True" ID="ASPxLabel2"></dx:ASPxLabel>
+
+
+                                        <br />
+                                        <br />
+                                        <dx:ASPxLabel runat="server" Wrap="True" Width="115px" ID="Label_type"></dx:ASPxLabel>
+
+
+                                        <br />
+                                        <br />
+                                        <dx:ASPxLabel runat="server" Text="Код" CssFilePath="~/Styles/Site.css" 
+                                            Width="115px" CssClass="dxcaRefreshButton" Font-Bold="True" ID="ASPxLabel3"></dx:ASPxLabel>
+
+
+                                        <br />
+                                        <br />
+                                        <dx:ASPxLabel runat="server" Wrap="True" Width="115px" ID="Label_code"></dx:ASPxLabel>
+
+
+                                        <br />
+                                        <br />
+                                        <dx:ASPxLabel runat="server" Text="Объект" CssFilePath="~/Styles/Site.css" 
+                                            Width="115px" CssClass="dxcaRefreshButton" Font-Bold="True" ID="ASPxLabel4"></dx:ASPxLabel>
+
+
+                                        <br />
+                                        <br />
+                                        <dx:ASPxLabel runat="server" Wrap="True" Width="115px" ID="Label_object"></dx:ASPxLabel>
+
+
+                                        <br />
+                                        <br />
+                                        <dx:ASPxLabel runat="server" Text="Описание" CssFilePath="~/Styles/Site.css" 
+                                            Width="115px" CssClass="dxcaRefreshButton" Font-Bold="True" ID="ASPxLabel5"></dx:ASPxLabel>
+
+
+                                        <br />
+                                        <br />
+                                        <dx:ASPxLabel runat="server" Wrap="True" Width="115px" ID="Label_info"></dx:ASPxLabel>
+
+
+                                    </dx:ContentControl>
+</ContentCollection>
+</dx:TabPage>
+</TabPages>
+
+<TabStyle Width="40px">
+<Paddings PaddingLeft="5px"></Paddings>
+</TabStyle>
+</dx:ASPxPageControl>
+
+
+            </div>
+
+            </div>
+
+  </dx:SplitterContentControl>
+</ContentCollection>
+</dx:SplitterPane>
+<dx:SplitterPane AutoWidth="True" AutoHeight="True" MinSize="400px">
+<ContentCollection>
+<dx:SplitterContentControl runat="server" SupportsDisabledAttribute="True">
+        <div class="main">
+            <asp:ContentPlaceHolder runat="server" ID="MainContent"></asp:ContentPlaceHolder>
+
+
+        </div>
+
+                     </dx:SplitterContentControl>
+</ContentCollection>
+</dx:SplitterPane>
+</Panes>
+
+<Styles>
+<Pane>
+<Paddings Padding="0px"></Paddings>
+</Pane>
+</Styles>
+
+<Border BorderColor="#EBEBEB"></Border>
+</dx:ASPxSplitter>
+
+
+                     </dx:SplitterContentControl>
+                </ContentCollection>
+            </dx:SplitterPane>
+
+
+            <dx:SplitterPane  MinSize="210px" MaxSize="210px" Size="210px" 
+         Name="RightBox">
+               <ContentCollection>
+                    <dx:SplitterContentControl runat="server">
+
+            <div id="rightbox">
+            <div id="mesbox">
+                    <h5 class="title">Сообщения</h5>
+                      
+                    <asp:UpdatePanel ID="UpdateListBox" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                      
+                      <dx:ASPxMemo runat="server" Height="100px" Width="100%" ID="MessagesListBox"></dx:ASPxMemo>
+
+                      
+
+                    </ContentTemplate>
+                    <Triggers>
+ </Triggers> 
+                    </asp:UpdatePanel>
+
+
+<dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" 
+                        CssClass="style=&quot;text-align:center&quot;" DataSourceID="SqlDataSource3" 
+                        EnableTheming="True" Theme="Youthful" Width="100%">
+                        <Columns>
+                            <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" 
+                                Visible="False">
+                            </dx:GridViewCommandColumn>
+                            <dx:GridViewDataTextColumn Caption="Источник" FieldName="subject" 
+                                VisibleIndex="1">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Сообщение" FieldName="mes" VisibleIndex="3">
+                            </dx:GridViewDataTextColumn>
+                            <dx:GridViewDataTextColumn Caption="Время" FieldName="time" VisibleIndex="2">
+                            </dx:GridViewDataTextColumn>
+                        </Columns>
+                        <Settings ShowFilterRow="False" ShowGroupPanel="False" />
+                        <settings showfilterrow="False" showgrouppanel="False" />
+                        <settings showfilterrow="False" showgrouppanel="False" />
+
+<Settings ShowFilterRow="True" ShowGroupPanel="True" horizontalscrollbarmode="Visible"></Settings>
+                    </dx:ASPxGridView>
+                    <br />
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:PostgresConnectionString %>" 
+                        ProviderName="<%$ ConnectionStrings:PostgresConnectionString.ProviderName %>" 
+                        
+                        SelectCommand="select s.subject_name as subject, m.message as mes, m.reg_time as time from &quot;Messages&quot; as m LEFT JOIN &quot;Subject&quot; as s on m.subject_id=s.subject_id">
+                    </asp:SqlDataSource>
+            </div>
+
+            <div id="actionbox">
+                    <h5 class="title">Команды</h5>
+                    <br />
+                    <br />
+                    <dx:ASPxHyperLink runat="server" NavigateUrl="~/NewObject.aspx" Text="Добавить новый объект" CssClass="link" ID="ASPxHyperLink1"></dx:ASPxHyperLink>
+            </div>
+            </div>
+
+
+                     </dx:SplitterContentControl>
+                </ContentCollection>
+            </dx:SplitterPane>
+
+</Panes>
+
+<Styles>
+<Pane>
+<Paddings Padding="0px"></Paddings>
+</Pane>
+</Styles>
+
+<Border BorderColor="#EBEBEB"></Border>
+</dx:ASPxSplitter>
+
+    </div>
+    <div class="footer">
+              © ООО &quot;СоюзКомплект&quot;, 2017 
+              <br />
+              <br />
+    </div>
+    </form>
+
+
+</body>
+</html>

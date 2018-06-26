@@ -1,0 +1,746 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+
+body
+{
+    background: #EBEBEB;
+    font-size: .80em;
+    font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+a:link, a:visited
+{
+    color: #BEDF39;
+}
+
+a:hover
+{
+    color: #91AD1D;
+    text-decoration: none;
+}
+
+a:active
+{
+    color: #BEDF39;
+}
+
+p
+{
+    margin-bottom: 10px;
+    line-height: 1.6em;
+    height: 17px;
+}
+
+
+/* HEADINGS   
+----------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6
+{
+    color: #666666;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 200;
+    margin-bottom: 0px;
+}
+
+h1
+{
+    font-size: 1.6em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+h2
+{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h3
+{
+    font-size: 1.2em;
+}
+
+h4
+{
+    font-size: 1.1em;
+}
+
+h5
+{
+    font-size: 1.0em;
+}
+
+h6
+{
+    font-size: 0.8em;
+}
+
+/* this rule styles <h1> and <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0px;
+}
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+.page
+{
+    width: 100%;
+}
+
+.header
+{
+    height: 82px;
+    background: url('../images/head.png') repeat-x center top;
+    background-size: 110% auto;
+}
+
+.header h1
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 2em;
+}
+
+.header_text {
+    text-align: center;
+    margin-top: 12px;
+    color: #32CD32;
+    letter-spacing: 0.05em;
+    font-family: "Open Sans", Geneva, Sans, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: -9px 0px 11px;
+    font: 600 36px PFBeauSansPro;
+}
+
+.section_gray {
+    background: #F0FFF0;
+    padding: 75px 15px 140px;
+}
+
+.section_white {
+    background: rgb(255, 255, 255);
+    padding: 75px 15px;
+    text-align: center
+}
+
+.section_title {
+    font-family: "Open Sans", Geneva, Sans, sans-serif;
+    color: #006400;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    margin: -9px 0px 11px;
+    font: 600 36px PFBeauSansPro;
+}
+
+.section_content {
+    line-height: 30px;
+    display: block;
+}
+
+
+.section_content p:last-child {
+    margin-bottom: 0px;
+}
+
+.section_content p {
+    margin: 30px 0px;
+}
+
+.section_slider {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.slider_image
+{
+    background: transparent no-repeat;
+}
+
+.slider_text {
+    font-family: "Open Sans", Geneva, Sans, sans-serif;
+    background: transparent no-repeat;
+    color: rgb(0, 140, 239);
+    margin: -9px 0px 20px;
+    font-weight: 600;
+    text-align: right;
+    font: 600 36px PFBeauSansPro;
+}
+
+.section_footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #008B00;
+}
+
+.main
+{
+ 
+/*    position:relative;*/
+    padding: 0px 12px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	min-height: 420px;
+  	background-color: #fff;
+
+	
+}
+
+
+.footer
+{
+    background: url('../images/head.png') repeat-x center top; /*    background: #FFFFFF none no-repeat center top;*/
+    padding: 8px 0px 0px 0px;
+    margin: 0px auto;
+    text-align: center;
+    line-height: normal;
+    font-size: .9em;
+    color: #BEDF39;
+    position: relative;
+    display: block;
+}
+
+div#logo
+{
+    background-position: center;
+    background: transparent url('../images/logo.png') no-repeat;
+    display: table-cell;
+    width: 320px;
+    height: 53px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+div#gerb
+{
+    background-position: center;
+    background: transparent url('../images/KP_logo.png') no-repeat;
+    background-size: 55% auto;
+    display: table-cell;
+    width: 150px;
+    height: 82px;
+    float: left;
+    margin-left: 65px;
+}
+
+div#map_canvas
+{
+    display: block;
+    width: 100%;
+    height: 650px;
+}
+
+/* Блоки   */
+
+div#filters
+{
+    float: left;
+    width: 300px;
+    height: 380px;
+    margin-top: 0px;
+    background-color: #FFFFFF;
+}
+
+div#filters .title
+{
+    width: 300px;
+    height: 20px;
+    margin-top: 0px;
+    background: #BEDF39 url('../images/head_boxes.png') repeat-x; 
+    color: #0A416B;
+    font-family: Arial;
+    text-align: left;
+    text-indent: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+div#filters .content {
+    margin-top: 20px;
+    background: transparent;
+}
+
+
+div#tree
+{
+    float: left;
+    width: 300px;
+    height: 350px;
+    margin-top: 0px;
+    background-color: #FFFFFF;
+}
+
+div#tree .title
+{
+    width: 300px;
+    height: 20px;
+    margin-top: 0px;
+    background: #BEDF39 url('../images/head_boxes.png') repeat-x; 
+    color: #0A416B;
+    font-family: Arial;
+    text-align: left;
+    text-indent: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+div#tree .content {
+    margin-top: 20px;
+    background: transparent;
+}
+
+
+div#detail
+{
+    float: left;
+    width: 300px;
+    height: 650px;
+    margin-top: 20px; /*	background: #1EB5DD url('../images/map.jpg') repeat-x;*/
+    background-color: #FFFFFF;
+}
+
+div#detail .title
+{
+    width: 300px;
+    height: 20px;
+    margin-top: 0px;
+    background: #BEDF39 url('../images/head_boxes.png') repeat-x; 
+    color: #0A416B;
+    font-family: Arial;
+    text-align: left;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-indent: 5px;
+}
+
+div#detail .content {
+    margin-top: 10px;
+    background: transparent;
+}
+
+div#rightbox {
+	display:block;
+	float: right;
+	width: 200px;
+	height: 800px;
+	margin-top: 0px;
+}
+
+div#leftbox {
+	display:block;
+	float: left;
+	width: 300px;
+	height: 1300px;
+	margin-top: 0px;
+}
+
+div#mesbox
+{
+    float: right;
+    width: 200px;
+    height: 350px;
+    margin-top: 0px;
+    background-color: #FFFFFF;
+}
+
+div#mesbox .title
+{
+    width: 200px;
+    height: 20px;
+    margin-top: 0px;
+    background: #BEDF39 url('../images/head_boxes.png') repeat-x; /*    background-size: 100% auto;*/
+    color: #0A416B;
+    font-family: Arial;
+    text-align: left;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-indent: 5px;
+}
+
+div#mesbox .content {
+    margin-top: 10px;
+    background: transparent;
+}
+
+div#actionbox
+{
+    float: right;
+    width: 200px;
+    height: 350px;
+    margin-top: 20px;
+    background-color: #FFFFFF;
+}
+
+div#actionbox .title {
+    width: 200px;
+    height: 20px;
+    margin-top: 0px;
+    background: #BEDF39 url('../images/head_boxes.png') repeat-x; /*    background-size: 100% auto;*/
+    color: #0A416B;
+    font-family: Arial;
+    text-align: left;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-indent: 5px;
+}
+
+div#actionbox .content {
+    margin-top: 10px;
+    background: transparent;
+}
+
+ntent {
+    margin-top: 10px;
+    background: transparent;
+}
+
+
+div#actionbox .link, .visited
+{
+    color: #BEDF39;
+    font-size: 1.2em;
+}
+
+div#actionbox .hover
+{
+    color: #91AD1D;
+    text-decoration: none;
+}
+
+div#actionbox .active
+{
+    color: #BEDF39;
+}
+
+.AutocompleteList
+{
+    width: auto !important;
+    border-bottom: black thin solid;
+    border-left: black thin solid;
+    border-top: black thin solid;
+    border-right: black thin solid;
+    text-align: left;
+    text-indent: 0%;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    list-style-type: none;
+    margin: 3px;
+    padding-top: 3px;
+    background-color: white;
+    height: 25%;
+    overflow: auto;
+}
+
+
+div#starthead
+{
+    background-color: #FFFFFF;
+    width:760px;
+    position:relative;
+    top:0px;
+    left:-380px;
+    margin-left:50%;
+}
+
+div#startbox
+{
+    background-color: #FFFFFF;
+    width:760px;
+    position:relative;
+    top:0px;
+    left:-380px;
+    margin-left:50%;
+    height: auto;
+
+}
+
+div#startbox .title
+{
+    width: 760px;
+    height: 20px;
+    margin-top: 0px;
+    background: #BEDF39 url('../images/head_boxes.png') repeat-x; 
+    color: #0A416B;
+    font-family: Arial;
+    text-align: left;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-indent: 5px;
+}
+
+div#startbox .content {
+    margin-top: 10px;
+    background: transparent;
+}
+
+
+div#dashboard {
+    background-color: #F0FFF0;
+    float: left;
+    width:200px;
+    height: 100px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    }
+
+div#dashboard .title
+{
+    width: 200px;
+    height: 20px;
+    margin-top: 0px;
+    background: #008B45; 
+    color: #FFF68F;
+    font-family: Arial;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    text-indent: 5px;
+}
+
+div#dashboard .timer {
+    color: #CD9B1D;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: right;
+    margin-top: 50px;
+    font: 600 40px PFBeauSansPro;
+}
+
+/* TAB MENU   
+----------------------------------------------------------*/
+
+div.menu
+{
+    float: left;
+    width: auto;
+    height: 82px;
+}
+
+div.menu ul
+{
+    float: left;
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0 0px 0 0px;
+}
+
+div.menu ul li
+{
+    display:inline;
+}
+
+
+div.menu ul li a
+{
+    padding: 0 10px 0 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+    width: auto;
+    height: 82px;
+    margin: 0 0 0 2px;
+    background: #fff url('../Images/menu.PNG') no-repeat;
+	background-size: 100% 100%;
+    text-align: center;
+    float: left;
+    line-height: 80px;
+}
+
+
+
+div.menu ul li a:hover
+{
+    padding: 0 10px 0 10px;
+    background: #fff url('../Images/menu_sel.PNG') no-repeat;
+	background-size: 100% 100%;
+    color: #66CCFF;
+    text-decoration: none;
+}
+
+div.menu ul li a:active,menu ul li a:selected
+{
+    padding: 0 10px 0 10px;
+	background: #fff url('../images/menu_sel.PNG') no-repeat;
+	background-size: 100% 100%;
+    color: #66CCFF;
+    text-decoration: none;
+}
+
+.selected
+{
+    padding: 0 10px 0 10px;
+	background: #fff url('../images/menu_sel.PNG') no-repeat;
+	background-size: 100% 100%;
+    color: #66CCFF;
+    text-decoration: none;
+}
+/* FORM ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset
+{
+    margin: 1em 0px;
+    padding: 1em;
+    border: 1px solid #ccc;
+}
+
+fieldset p 
+{
+    margin: 2px 12px 10px 10px;
+}
+
+fieldset.login label, fieldset.register label, fieldset.changePassword label
+{
+    display: block;
+}
+
+fieldset label.inline 
+{
+    display: inline;
+}
+
+legend 
+{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+}
+
+input.textEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+input.passwordEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+
+div.accountInfo
+{
+    width: 100%;
+}
+
+.clear
+{
+    clear: both;
+}
+
+.title
+{
+    float: left;
+    text-align: left;
+    background-image: url('../Images/title.PNG');
+	background-size: 100% 95%;
+    width: 500px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 82px;
+}   
+
+.rightmenu
+{
+    float: right;
+    background-image: url('../Images/right_menu.PNG');
+    background-size: 100% 101%;
+    width: 48px;
+    background-repeat: no-repeat;
+    height: 82px;
+}   
+
+.loginDisplay
+{
+    text-align: center;
+    color: White;
+    vertical-align: text-top;
+    position: relative;
+    top: 2px;
+}
+
+.settings
+{
+    background-image: url('../Images/settings.PNG');
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 30px;
+    position: relative;
+    top: 28px;
+}
+
+.loginDisplay a:link
+{
+    color: white;
+}
+
+.loginDisplay a:visited
+{
+    color: white;
+}
+
+.loginDisplay a:hover
+{
+    color: white;
+}
+
+.failureNotification
+{
+    font-size: 1.2em;
+    color: Red;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.submitButton
+{
+    text-align: right;
+    padding-right: 10px;
+}
+
+.layoutButton
+{
+    text-align: center;
+    background-color: #BEDF39;
+    color: #AAAAAA;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.messaging
+{
+    float: right;
+    background-image: #fff url('../Images/messaging.png') no-repeat;
+    background-size: 100% 100%;
+    width: 48px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 82px;
+    margin: 0 0 0 2px;
+}   

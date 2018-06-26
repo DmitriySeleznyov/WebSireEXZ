@@ -1,0 +1,411 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+
+body   
+{
+    background: #0F5B96 url('../images/img01.gif') repeat-x;
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+a:link, a:visited
+{
+    color: #034af3;
+}
+
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+a:active
+{
+    color: #034af3;
+}
+
+p
+{
+    margin-bottom: 10px;
+    line-height: 1.6em;
+}
+
+
+/* HEADINGS   
+----------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #666666;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 200;
+    margin-bottom: 0px;
+}
+
+h1
+{
+    font-size: 1.6em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+h2
+{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h3
+{
+    font-size: 1.2em;
+}
+
+h4
+{
+    font-size: 1.1em;
+}
+
+h5, h6
+{
+    font-size: 1em;
+}
+
+/* this rule styles <h1> and <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0px;
+}
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+.page
+{
+    width: 100%;
+}
+
+.header
+{
+    height: 130px;
+	background: url('../images/img02.jpg') no-repeat center top;
+}
+
+.header h1
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 2em;
+}
+
+.main
+{
+ 
+    position:relative;
+    padding: 0px 12px;
+	margin-left: 205px;
+	margin-right: 205px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	min-height: 420px;
+  	background-color: #fff;
+
+	
+}
+
+
+.footer
+{
+	
+   	background: #0F5B96 url('../images/img02.jpg') no-repeat center top;
+    padding: 8px 0px 0px 0px;
+    margin: 0px auto;
+    text-align: center;
+    line-height: normal;
+	font-size: .9em;
+	color: #fff;
+}
+
+div#logo {
+	float: left;
+	background: transparent url('../images/logo.png') no-repeat;
+	background-size: 90% auto;
+	display: block;
+    width: 150px;
+    height: 110px;
+}
+
+/* Блоки   */
+
+div#tree {
+	float: left;
+	width: 200px;
+	height: 350px;
+	margin-top: 0px;
+	background: #1EB5DD url('../images/map.jpg') repeat-x;
+}
+
+div#tree .title {
+	width: 200px;
+	height: 20px;
+    margin-top: 0px;
+	background: #1EB5DD url('../images/img05.gif') no-repeat;
+	background-size: 100% auto;
+	color: #0A416B;
+	text-align: center;
+}
+
+div#tree .content {
+    margin-top: 20px;
+    background: transparent;
+}
+
+div#detail {
+	position:absolute;
+	float: left;
+	width: 200px;
+	height: 450px;
+	margin-top: 370px;
+	background: #1EB5DD url('../images/map.jpg') repeat-x;
+    top: 125px;
+    left: 1px;
+}
+
+div#detail .title {
+	width: 200px;
+	height: 20px;
+    margin-top: 0px;
+	background: #1EB5DD url('../images/img05.gif') no-repeat;
+	background-size: 100% auto;
+	color: #0A416B;
+	text-align: center;
+}
+
+div#detail .content {
+    margin-top: 10px;
+    background: transparent;
+}
+
+div#rightbox {
+	display:block;
+	float: right;
+	width: 200px;
+	height: 650px;
+	margin-top: 0px;
+}
+
+div#mesbox {
+	float: right;
+	width: 200px;
+	height: 350px;
+	margin-top: 0px;
+	background: #1EB5DD url('../images/map.jpg') repeat-x;
+}
+
+div#mesbox .title {
+	width: 200px;
+	height: 20px;
+    margin-top: 0px;
+	background: #1EB5DD url('../images/img05.gif') no-repeat;
+	background-size: 100% auto;
+	color: #0A416B;
+	text-align: center;
+}
+
+div#mesbox .content {
+    margin-top: 10px;
+    background: transparent;
+}
+
+div#actionbox {
+	float: right;
+	width: 200px;
+	height: 350px;
+	margin-top: 20px;
+	background: #1EB5DD url('../images/map.jpg') repeat-x;
+}
+
+div#actionbox .title {
+	width: 200px;
+	height: 20px;
+    margin-top: 0px;
+	background: #1EB5DD url('../images/img05.gif') no-repeat;
+	background-size: 100% auto;
+	color: #0A416B;
+	text-align: center;
+}
+
+div#actionbox .content {
+    margin-top: 10px;
+    background: transparent;
+}
+
+/* TAB MENU   
+----------------------------------------------------------*/
+
+div.menu
+{  
+   float: right;
+   width: auto;
+   margin-top: -5px;
+   height: 56px;
+}
+
+div.menu ul
+{
+    float: right;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 0;
+}
+
+div.menu ul li
+{
+    display:inline;
+}
+
+div.menu ul li a, div.menu ul li a:visited
+{
+    float: left;
+    color: #dde4ec;
+    padding: 9px 0 0 0;
+    text-decoration: none;
+	width: 120px;
+	height: 56px;
+	margin: 0 0 0 2px;
+	background: #1B97CE url('../images/img03.gif') no-repeat;
+	text-align: center;
+
+}
+
+
+
+div.menu ul li a:hover
+{
+ 	background: #26BADF url('../images/img04.gif') no-repeat;
+    color: #465c71;
+    text-decoration: none;
+}
+
+div.menu ul li a:active
+{
+	background: #26BADF url('../images/img04.gif') no-repeat;
+    color: #cfdbe6;
+    text-decoration: none;
+}
+
+/* FORM ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset
+{
+    margin: 1em 0px;
+    padding: 1em;
+    border: 1px solid #ccc;
+}
+
+fieldset p 
+{
+    margin: 2px 12px 10px 10px;
+}
+
+fieldset.login label, fieldset.register label, fieldset.changePassword label
+{
+    display: block;
+}
+
+fieldset label.inline 
+{
+    display: inline;
+}
+
+legend 
+{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+}
+
+input.textEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+input.passwordEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+div.accountInfo
+{
+    width: 42%;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+
+.clear
+{
+    clear: both;
+}
+
+.title
+{
+    float: left;
+    text-align: left;
+    width: auto;
+}   
+
+.loginDisplay
+{
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    padding: 10px;
+    color: White;
+}
+
+.loginDisplay a:link
+{
+    color: white;
+}
+
+.loginDisplay a:visited
+{
+    color: white;
+}
+
+.loginDisplay a:hover
+{
+    color: white;
+}
+
+.failureNotification
+{
+    font-size: 1.2em;
+    color: Red;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.submitButton
+{
+    text-align: right;
+    padding-right: 10px;
+}

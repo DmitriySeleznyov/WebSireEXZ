@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode url="~/Start.aspx" title="Home"  description="">
+        <siteMapNode url="~/Maps.aspx" title="Мапа"  description=""/>
+        <siteMapNode url="~/Subjects.aspx" title="Суб'єкти"  description="" />
+        <siteMapNode url="~/Analysis.aspx" title="Аналіз"  description="" />
+        <siteMapNode url="~/Reports.aspx" title="Звіти"  description="" />
+        <siteMapNode url="~/Classificators.aspx" title="Довідники"  description="" />
+        <siteMapNode url="~/Users.aspx" title="Користувачі"  description="" />
+  </siteMapNode>
+</siteMap>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<markers>
+    <marker>
+        <Name>БКМУ2</Name>
+        <Type>БКМУ</Type>
+        <Latitude>49.980176</Latitude>
+        <Longitude>36.274493</Longitude>
+        <Address />
+        <Sum_pot>0.176</Sum_pot>
+        <Pol_pot>-5.067</Pol_pot>
+        <Curr>0</Curr>
+        <Volt>3.44</Volt>
+        <Temper>999</Temper>
+        <State>0</State>
+        <Date>26.06.2018 13:18:57</Date>
+    </marker>
+    <marker>
+        <Name>БКМУ Выставка 1</Name>
+        <Type>БКМУ</Type>
+        <Latitude>55.744836</Latitude>
+        <Longitude>37.636589</Longitude>
+        <Address />
+        <Sum_pot>5.022</Sum_pot>
+        <Pol_pot>-0.005</Pol_pot>
+        <Curr>0</Curr>
+        <Volt>8.77</Volt>
+        <Temper>999</Temper>
+        <State>0</State>
+        <Date>23.04.2018 17:14:02</Date>
+    </marker>
+    <marker>
+        <Name>БКМУ Выставка 2</Name>
+        <Type>БКМУ</Type>
+        <Latitude>55.746382</Latitude>
+        <Longitude>37.597451</Longitude>
+        <Address />
+        <Sum_pot>-1.543</Sum_pot>
+        <Pol_pot>0.001</Pol_pot>
+        <Curr>-4.568</Curr>
+        <Volt>8.4</Volt>
+        <Temper>32770</Temper>
+        <State>0</State>
+        <Date>19.04.2018 10:53:13</Date>
+    </marker>
+    <marker>
+        <Name>БКМУ Выставка 3</Name>
+        <Type>БКМУ</Type>
+        <Latitude>55.698041</Latitude>
+        <Longitude>37.596077</Longitude>
+        <Address />
+        <Sum_pot>5.057</Sum_pot>
+        <Pol_pot>-0.006</Pol_pot>
+        <Curr>-0.003</Curr>
+        <Volt>8.6</Volt>
+        <Temper>999</Temper>
+        <State>0</State>
+        <Date>19.04.2018 10:54:01</Date>
+    </marker>
+    <marker>
+        <Name>БКМУ1</Name>
+        <Type>БКМУ</Type>
+        <Latitude>49.961155</Latitude>
+        <Longitude>36.364937</Longitude>
+        <Address />
+        <Sum_pot />
+        <Pol_pot />
+        <Curr />
+        <Volt />
+        <Temper />
+        <State />
+        <Date />
+    </marker>
+</markers>

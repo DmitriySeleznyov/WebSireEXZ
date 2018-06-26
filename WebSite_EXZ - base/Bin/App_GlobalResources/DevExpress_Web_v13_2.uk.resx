@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxperienceStringId.CallbackGenericErrorText">
+    <value>Колбек запит закінчився неуспішно через внутрішню помилку сервера.</value>
+  </data>
+  <data name="ASPxperienceStringId.Loading">
+    <value>Завантаження&amp;hellip;</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_All">
+    <value>Усі</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_First">
+    <value>Перша</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Prev">
+    <value>Попередня</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Next">
+    <value>Наступна</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_Last">
+    <value>Остання</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryFormat">
+    <value>Сторінка {0} із {1} (Усього рядків: {2})</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryAllPagesFormat">
+    <value>Сторінки: {0} - {1} (Усього рядків: {2})</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_SummaryEmptyText">
+    <value>Немає даних для розбивки на сторінки</value>
+  </data>  
+  <data name="ASPxperienceStringId.Pager_PageSize">
+    <value>Записів на сторінці:</value>
+  </data>
+  <data name="ASPxperienceStringId.Pager_PageSizeAllItem">
+    <value>Усі</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryFormat">
+    <value>Сторінка {0} із {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerSummaryAllPages">
+    <value>Усі сторінки</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerPageSize">
+    <value>Записів на сторінці:</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_PagerRowPerPage">
+    <value>Рядків на сторінці:</value>
+  </data>
+  <data name="ASPxperienceStringId.DataView_ShowMoreItemsText">
+    <value>Показати більше записів...</value>
+  </data>
+  <data name="ASPxperienceStringId.DataViewBase_EmptyDataText">
+    <value>Немає даних для відображення</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_BackToTop">
+    <value>Нагору</value>
+  </data>
+  <data name="ASPxperienceStringId.NewsControl_Page">
+    <value>Сторінка:</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CloseButton">
+    <value>[Закрити]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_PinButton">
+    <value>[Прикрепити/Відкрепити]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_RefreshButton">
+    <value>[Оновити]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_CollapseButton">
+    <value>[Згорнути/Розгорнути]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_MaximizeButton">
+    <value>[Розгорнути/Відновити]</value>
+  </data>
+  <data name="ASPxperienceStringId.PopupControl_SizeGrip">
+    <value>[Змінити розміри]</value>
+  </data>
+  <data name="ASPxperienceStringId.RoundPanel_CollapseButton">
+    <value>[Згорнути/Розгорнути]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterCaption">
+    <value>Фільтр:&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_FilterHint">
+    <value>
+            &lt;b&gt;?&lt;/b&gt; = будь-який один знак
+            &lt;b&gt;*&lt;/b&gt; = будь-які знаки
+        </value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_BackToTop">
+    <value>[Нагору]</value>
+  </data>
+  <data name="ASPxperienceStringId.TitleIndex_NoData">
+    <value>Немає даних за умовами фільтру</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MaxSize">
+    <value>Размір файлу перевищує максимально допустимий розмір в {0} байт</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AccessDeniedError">
+    <value>Доступ до серверного шляху "{0}" заборонено. Причиною може бути відсутність дозволу на запис файлів в поточний (чи батьківський) каталог.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_GeneralError">
+    <value>Помилка завантаження файлу через зовнішню помилку</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UnspecifiedError">
+    <value>На сервері виникла внутрішня невідома помилка, яка не дозволяє виконати запит.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadWasCanceledError">
+    <value>Завантаження файлу було скасовано.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_EnctypeError">
+    <value>Помилка під час завантаження файлу - атрибут шифрування форми не встановлений у 'multipart/form-data'</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedContentTypes">
+    <value>Тип вмісту заборонений</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_NotAllowedFileExtension">
+    <value>Формат файлу заборонений</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_FileDoesNotExistError">
+    <value>Файл, що завантажується - не існує</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_ClearFileListButtonToolTip">
+    <value>Очистити список</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_RemoveButton">
+    <value>Видалити</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_AddButton">
+    <value>Додати</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_BrowseButton">
+    <value>Огляд...</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadButton">
+    <value>Завантажити</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_CancelButton">
+    <value>Скасувати</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_InvalidWindowsPath">
+    <value>Файловий шлях "{0}" не є шляхом Windows.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_OperationTimeoutError">
+    <value>Завантаження файлів не може бути завершене через перевишення часу виконання операції. Оновіть сторінку і повторіть завантаження файлів.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_DropZone">
+    <value>Перемістіть файли сюди</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltExpand">
+    <value>Розгорнути</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltCollapse">
+    <value>Згорнути</value>
+  </data>
+  <data name="ASPxperienceStringId.TreeView_AltLoading">
+    <value>Завантаження</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FolderLocked">
+    <value>Каталог закритий для завантаження</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Folder">
+    <value>Каталог</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Filter">
+    <value>Фільтрувати за:</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Path">
+    <value>Шлях:</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbCreate">
+    <value>Створити (F7)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRename">
+    <value>Перейменувати (F2)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbMove">
+    <value>Перемістити (F6)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDelete">
+    <value>Видалити (Del)</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbRefresh">
+    <value>Оновити</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbDownload">
+    <value>Скачати</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_TbCopy">
+    <value>Скопіювати</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_DeleteConfirm">
+    <value>Ви впевнені, що бажаєте видалити '{0}'?</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FolderBrowserPopupHeader">
+    <value>Оберіть каталог призначення</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Ok">
+    <value>Так</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_Cancel">
+    <value>Скасувати</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_NewFolderName">
+    <value>Новий каталог</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_InformationUnitSymbol">
+    <value>Б</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorRootFolderNotSpecified">
+    <value>Кореневий каталог не назначений або не існує</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNoAccess">
+    <value>Доступ заборонено. Операція не може бути завершена</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorIO">
+    <value>Невідома помилка вводу-виводу. Операція не може бути завершена</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFileNotFound">
+    <value>Файл не знайдено</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorFolderNotFound">
+    <value>Каталог не знайдено</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorOther">
+    <value>Невідома помилка</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorNameCannotBeEmpty">
+    <value>Файл / Каталог не може бути пустим</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorInvalidSymbols">
+    <value>Ім'я містить некоректні символи. Операція не може бути завершена</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorWrongExtension">
+    <value>Формат файлу заборонено. Операція не може бути завершена</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAlreadyExists">
+    <value>Вказаний файл / каталог існує</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorAccessProhibited">
+    <value>Доступ заборонено. Операція не може бути завершена</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorCloudAccessFailed">
+    <value>Немає доступу до віддаленого хмарного сервісу</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorThumbnail">
+    <value>Відсутній доступ до теки з мініатюрами зображень</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUsedByAnotherProcess">
+    <value>Операція не може бути завершена через те, що файл / каталог використовується іншим процесом</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_MultiSelection">
+    <value>Увага! 
+
+Не пройшли перевірку на допустимий розмір файлу ({1}) або допустимий формат файлу наступні файли у кількості {0}. Ці файли вилучені зі списку обраних файлів, й відповідно їх завантаження не буде виконано. 
+
+{2}</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_ClearFileSelectionButtonToolTip">
+    <value>Очистити список обраних файлів</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_SelectedSeveralFiles">
+    <value>Для завантаження обрано файлів: {0}</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_TooManyFilesError">
+    <value>Обрано забагато файлів. Зменшіть кількість обраних файлів та спробуйте знову.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_TooManyFilesError">
+    <value>Обрано забагато файлів. Зменшіть кількість обраних файлів та спробуйте знову.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_PlatformErrorText">
+    <value>Будь-ласка, використовуйте браузер з підтримкою HTML5; або встановіть &lt;a href="{0}"&gt;Microsoft Silverlight v3 або вище&lt;/a&gt; для перегляду цього контенту і можливості завантаження файлів.</value>
+  </data>
+  <data name="ASPxperienceStringId.UploadControl_UploadModeNotSupported">
+    <value>Ваш браузер не підтримує обраний режим завантаження файлів.</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_ErrorUploadSeveralFiles">
+    <value>Не завантажилися файли: {0} из {1}</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_SizeEmpty">
+    <value>Пусті ({0})</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_SizeTiny">
+    <value>Крихітні ({0})</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_SizeSmall">
+    <value>Маленькі ({0})</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_SizeMedium">
+    <value>Середні ({0})</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_SizeLarge">
+    <value>Великі ({0})</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_SizeHuge">
+    <value>Дуже великі ({0})</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_SizeGigantic">
+    <value>Гіганські ({0})</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_DateToday">
+    <value>Сьогодні</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_DateWeek">
+    <value>Минулого тижня</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_DateMonth">
+    <value>Минулого місяця</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_GridViewFilter_DateYear">
+    <value>Минулого року</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FileInfoTypeCaption_FileName">
+    <value>Ім'я</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FileInfoTypeCaption_LastWriteTime">
+    <value>Дата зміни</value>
+  </data>
+  <data name="ASPxperienceStringId.FileManager_FileInfoTypeCaption_Size">
+    <value>Розмір</value>
+  </data>
+  <data name="ASPxperienceStringId.Ribbon_FileTabText">
+    <value>Файл</value>
+  </data>
+  <data name="ASPxperienceStringId.ImageZoom_HintText" xml:space="preserve">
+    <value>Масштаб</value>
+  </data>
+</root>

@@ -1,0 +1,81 @@
+﻿<%@ Page Title="Система дистанционного мониторинга и управления ЭХЗ - Управление пользователями" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+    CodeFile="Users_admin.aspx.cs" Inherits="About" %>
+
+<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <h2>
+       Управление пользователями
+    </h2>
+    
+        
+        Число пользовтелей online: <asp:Label id="UsersOnlineLabel" runat="Server" /><br />
+
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="CustomGetAllUsers"
+            TypeName="GetAllUsers"></asp:ObjectDataSource>
+            <br />
+            <br />
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePageControl">
+                                                                        <ProgressTemplate>
+                                                                            <div>
+                                                                              Исполнение...
+                                                                              <img src="Images\ajax-loader.gif" alt=" " style="vertical-align:middle" />
+                                                                            </div>
+                                                                        </ProgressTemplate>
+                                                                     </asp:UpdateProgress>
+             <asp:UpdatePanel ID="UpdatePageControl" runat="server" UpdateMode="Conditional">
+             <ContentTemplate>
+            <asp:GridView ID="UserGrid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None"
+                Width="100%" AllowPaging="True" AllowSorting="True" DataSourceID="ObjectDataSource1">
+                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                <AlternatingRowStyle BackColor="White" />
+            </asp:GridView>
+                        </ContentTemplate>
+                </asp:UpdatePanel>
+
+            <h3>
+               Удалить пользователя
+            </h3>
+
+                    <p>
+                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Имя пользователя:</asp:Label>
+                    </p>
+                    <p>
+                        <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
+                            ControlToValidate="UserName" CssClass="failureNotification" 
+                            ErrorMessage="Поле 'Имя пользователя' является обязательным." 
+                            ToolTip="Поле 'Имя пользователя' является обязательным." 
+                            ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
+                    </p>
+
+                <p class="submitButton">
+                    <asp:Button ID="DeleteUserButton" runat="server" Text="Удалить пользователя" OnClick="btnDeleteUser_Click"
+                         ValidationGroup="LoginUserValidationGroup"/>
+                </p>
+
+            <h3>
+               Создание нового пользователя
+            </h3>
+
+        <br/>
+        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false">Регистрация</asp:HyperLink>
+        <br/>
+        
+        <br/>
+            <h3>
+               Смена пароля пользователя
+            </h3>
+
+        <br/>
+        <asp:HyperLink ID="ChangePasswordHyperLink" runat="server" EnableViewState="false">Изменить пароль</asp:HyperLink>
+        <br/>
+</asp:Content>

@@ -1,0 +1,289 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+using System.IO;
+using System.Linq;
+using DevExpress.Web;
+using DevExpress.Web.ASPxTreeList;
+using Npgsql;
+using System.Web.Security;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Text;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using Geocoding;
+using System.Reflection;
+
+
+public partial class About : System.Web.UI.Page
+{
+    static string connString = WebConfigurationManager.ConnectionStrings["PostgresConnectionString"].ToString();
+    static bool changed=false;
+    static string short_name;
+    static string comp_id;
+
+    protected string GetShortName()
+    {
+        if (Page.User.IsInRole("Members"))
+        {
+        }
+        else
+        {
+            if (Session["SelectedSubject"] != null)
+            {
+                TreeListNode SNode = (TreeListNode)Session["SelectedSubject"];
+                short_name = SNode.GetValue("subject_name").ToString();
+            }
+        }
+        return short_name;
+    }
+
+    protected string GetCompId()
+    {
+        if (Page.User.IsInRole("Members"))
+        {
+        }
+        else
+        {
+            if (Session["SelectedSubject"] != null)
+            {
+                TreeListNode SNode = (TreeListNode)Session["SelectedSubject"];
+                comp_id = SNode.GetValue("subject_id").ToString();
+            }
+        }
+        return comp_id;
+    }
+
+    public static Control GetPostBackControl(Page thePage)
+    {
+        Control myControl = null;
+        string ctrlName = thePage.Request.Params.Get("__EVENTTARGET");
+        if (((ctrlName != null) & (ctrlName != string.Empty)))
+        {
+            myControl = thePage.FindControl(ctrlName);
+        }
+        else
+        {
+            foreach (string Item in thePage.Request.Form)
+            {
+                Control c = thePage.FindControl(Item);
+                if (c != null)
+                {
+                    if (((c) is System.Web.UI.WebControls.Button))
+                    {
+                        myControl = c;
+                    }
+                }
+            }
+
+        }
+        return myControl;
+    }
+
+
+    protected void SubjectsBuild()
+     {
+         short_name = GetShortName();
+         NpgsqlConnection myConn1 = new NpgsqlConnection(connString);
+       
+
+         switch (ASPxPageControl1.ActiveTabIndex)
+         {
+             case 0:
+            
+             short_name = GetShortName();
+             NpgsqlCommand cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"Subject\" where subject_id=(SELECT subject_id FROM \"Subject\" WHERE subject_name='{0}')", short_name), myConn1);
+             myConn1.Open();
+
+             NpgsqlDataReader dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
+
+             while (dataReaderGetSubject.Read())
+             {
+                 tb_subject_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_name")).ToString();
+                 tb_subject_id.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_id")).ToString();
+                 tb_subject_code.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_code")).ToString();
+                 tb_subject_add_info.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("add_info")).ToString();
+                 tb_object_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("object_name")).ToString();
+                 tb_subject_loc.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("loc")).ToString();
+                 tb_subject_lat.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("latitude")).ToString();
+                 tb_subject_lon.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("longitude")).ToString();
+                 combox_subject_type.SelectedIndex = combox_subject_type.Items.FindByText(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString()).Index;
+                            
+             }            
+                
+            
+            myConn1.Close();
+
+            break;
+             
+             default:
+                 break;
+         }
+         
+                 
+     }
+
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+        if (!((Page.User.IsInRole("Region_Managers")) || (Page.User.IsInRole("Administrators")) || (Page.User.IsInRole("Members"))))
+        {
+            Response.Redirect("~/Default.aspx");
+        }
+
+        short_name = GetShortName();
+
+
+        if (!IsPostBack)
+        {
+            short_name=GetShortName();
+            
+            if (short_name != null)
+            {
+                string sub_id = GetCompId();
+
+            }
+            else
+            {
+            }
+        }
+        else
+        {
+        }
+        
+
+    }
+
+    protected void Page_LoadComplete(object sender, EventArgs e)
+    {
+        RefreshRootFolders();
+
+        
+    }
+
+    protected void Page_PreRender(object sender, EventArgs e)
+    {
+        short_name = GetShortName();
+        comp_id = GetCompId();
+       if (short_name != null) //было Session["SelectedSubject"] вместо short_name
+        {
+            SubjectsBuild();
+
+        }
+        else
+        {
+        }
+
+      
+    }
+    
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        RefreshRootFolders();
+    }
+
+    protected void RefreshRootFolders()
+    {
+        string sub_id = GetCompId();
+        
+    }
+    
+   // ------------------ tab general
+
+    protected void but_enter_Click(object sender, EventArgs e)
+    {
+        NpgsqlConnection myConn = new NpgsqlConnection(connString);
+        try
+        {      
+               
+                short_name = GetShortName();
+
+                string subject_insert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_name, add_info, loc, latitude, longitude) select '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'";
+                string subject_update = "update \"Subject\" set subject_name='{0}', subject_type='{1}', subject_code='{2}', object_name='{3}', add_info='{4}', loc='{5}', latitude='{6}', longitude='{7}' where subject_id='{8}'";
+
+                var upsert_subject = new NpgsqlCommand(String.Format(String.Format("WITH upsert AS ({0} RETURNING *) {1} WHERE NOT EXISTS (SELECT * FROM upsert)", subject_update, subject_insert), tb_subject_name.Text, combox_subject_type.Text, tb_subject_code.Text, apostrof(Request.Form[tb_object_name.UniqueID]), apostrof(Request.Form[tb_subject_add_info.UniqueID]), apostrof(Request.Form[tb_subject_loc.UniqueID]), Request.Form[tb_subject_lat.UniqueID].Replace(",", "."), Request.Form[tb_subject_lon.UniqueID].Replace(",", "."), tb_subject_id.Text), myConn);
+
+                myConn.Open();
+
+                upsert_subject.ExecuteNonQuery();
+
+
+        }
+        catch (NpgsqlException ex)
+        {
+        }
+        finally
+        {
+            myConn.Close();
+        }
+
+
+    }
+
+    
+
+
+    public static string NewMethod(string a)
+    {
+        return Regex.Replace(a, "\\,", ".");
+    }
+
+    public static string apostrof(string a)
+    {
+        return Regex.Replace(a, "\\'", "\"");
+    }
+
+
+
+    public static bool IsChecked(string a)
+    {
+        if (a == "C")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+    protected void UpdatePanel_Tab1_Unload(object sender, EventArgs e)
+    {
+        RegisterUpdatePanel((UpdatePanel)sender);
+    }
+
+    protected void RegisterUpdatePanel(UpdatePanel panel)
+    {
+        var sType = typeof(ScriptManager);
+        var mInfo = sType.GetMethod("System.Web.UI.IScriptManagerInternal.RegisterUpdatePanel", BindingFlags.NonPublic | BindingFlags.Instance);
+        if (mInfo != null)
+            mInfo.Invoke(ScriptManager.GetCurrent(Page), new object[] { panel });
+    }
+
+    protected void UpdatePageControl_Unload(object sender, EventArgs e)
+    {
+        RegisterUpdatePanel((UpdatePanel)sender);
+    }
+
+    protected void UpdatePanel_Tab2_Unload(object sender, EventArgs e)
+    {
+        RegisterUpdatePanel((UpdatePanel)sender);
+    }
+
+    protected void UpdatePanel2_Unload(object sender, EventArgs e)
+    {
+        RegisterUpdatePanel((UpdatePanel)sender);
+    }
+}
+        
+

@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ASPxGridViewStringId.GroupPanel">
+    <value>Перетащите заголовок колонки, для того чтобы сгруппировать</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyDataRow">
+    <value>Отсутствуют данные для отображения</value>
+  </data>
+  <data name="ASPxGridViewStringId.EmptyHeaders">
+    <value>Перетягніть сюди колонку...</value>
+  </data>
+  <data name="ASPxGridViewStringId.ConfirmDelete">
+    <value>Підтвердити видалення?</value>
+  </data>
+  <data name="ASPxGridViewStringId.ConfirmOnLosingBatchChanges">
+    <value>Ви впевнені, що бажаєте виконати цю дію? Усі незбережені зміни будуть втрачені.</value>
+  </data>
+  <data name="ASPxGridViewStringId.GroupContinuedOnNextPage">
+    <value>(Продовжено на наступній сторінці)</value>
+  </data>
+  <data name="ASPxGridViewStringId.CustomizationWindowCaption">
+    <value>Вибір колонок</value>
+  </data>
+  <data name="ASPxGridViewStringId.PopupEditFormCaption">
+    <value>Форма редагування</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowAllItem">
+    <value>(Усі)</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowBlanksItem">
+    <value>(Пусто)</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterShowNonBlanksItem">
+    <value>(Не пусто)</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterSelectAll">
+    <value>(Обрати усі)</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterOkButton">
+    <value>OK</value>
+  </data>
+  <data name="ASPxGridViewStringId.HeaderFilterCancelButton">
+    <value>Скасувати</value>
+  </data>
+  <data name="ASPxGridViewStringId.SearchPanelEditorNullText">
+    <value>Введіть текст для пошуку...</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandEdit">
+    <value>Змінити</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandNew">
+    <value>Створити</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandDelete">
+    <value>Видалити</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandSelect">
+    <value>Обрати</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandCancel">
+    <value>Скасувати</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandUpdate">
+    <value>Зберегти</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandClearFilter">
+    <value>Очистити</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandApplyFilter">
+    <value>Застосувати</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandBatchEditUpdate">
+    <value>Зберегти зміни</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandBatchEditCancel">
+    <value>Скасувати зміни</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandSelectAllOnPage">
+    <value>Обрати усі записи на поточній сторінці</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandSelectAllOnAllPages">
+    <value>Обрати усі записи на усіх сторінках</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandDeselectAllOnPage">
+    <value>Скасувати выбір усіх записів на поточній сторінці</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandDeselectAllOnAllPages">
+    <value>Скасувати выбір усіх записів на усіх сторінках</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandApplySearchPanelFilter">
+    <value>Пошук</value>
+  </data>
+  <data name="ASPxGridViewStringId.CommandClearSearchPanelFilter">
+    <value>Очистити</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterBeginsWith">
+    <value>Починається з</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterContains">
+    <value>Містить</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterDoesNotContain">
+    <value>Не містить</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEndsWith">
+    <value>Закінчується на</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterEquals">
+    <value>Дорівнює</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreater">
+    <value>Більше ніж</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterGreaterOrEqual">
+    <value>Більше ніж або дорівнює</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLess">
+    <value>Менше ніж</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLessOrEqual">
+    <value>Менше ніж або дорівнює</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterNotEqual">
+    <value>Не дорівнює</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLike">
+    <value>Містить ('%', '_')</value>
+  </data>
+  <data name="ASPxGridViewStringId.AutoFilterLikeToolTip">
+    <value>
+      Підтримуються два управлючих символа:
+      '%' замінює нуль чи більше символів;
+      '_' замінює один символ.
+    </value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButton">
+    <value>[Фільтр]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_HeaderFilterButtonActive">
+    <value>[Застосовані фільтри]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedAscending">
+    <value>За збільшенням</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_SortedDescending">
+    <value>За зменшенням</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_DragAndDropHideColumnIcon">
+    <value>Сховати</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Expand">
+    <value>[Розгорнути]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_Collapse">
+    <value>[Згорнути]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Alt_FilterRowButton">
+    <value>[Умова]</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Older">
+    <value>Старше</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastMonth">
+    <value>Останній місяц</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_EarlierThisMonth">
+    <value>Раніше цього місяця</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAgo">
+    <value>Три тижні тому</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAgo">
+    <value>Два тижні тому</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LastWeek">
+    <value>Останній тиждень</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Yesterday">
+    <value>Учора</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Today">
+    <value>Сьогодні</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_Tomorrow">
+    <value>Завтра</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextWeek">
+    <value>Наступний тиждень</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_TwoWeeksAway">
+    <value>Через два тижні</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_ThreeWeeksAway">
+    <value>Через три тижні</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_LaterThisMonth">
+    <value>Пізніше цього місяця</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_NextMonth">
+    <value>Наступний місяць</value>
+  </data>
+  <data name="ASPxGridViewStringId.Outlook_BeyondNextMonth">
+    <value>Пізніше наступного месяца</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Sum">
+    <value>Сума: {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Sum_OtherColumn">
+    <value>Сума по {1}: {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Min">
+    <value>Мінімум:{0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Min_OtherColumn">
+    <value>Мінімум по {1}: {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Max">
+    <value>Максимум: {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Max_OtherColumn">
+    <value>Максимум по {1}: {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Average">
+    <value>Середнє: {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Average_OtherColumn">
+    <value>Середнє по {1}: {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.Summary_Count">
+    <value>Усього: {0}</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_FullExpand">
+    <value>Розкрити групи</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_FullCollapse">
+    <value>Згорнути групи</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_SortAscending">
+    <value>Сортування за збільшенням</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_SortDescending">
+    <value>Сортування за зменшенням</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ClearSorting">
+    <value>Очистити сортування</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ClearFilter">
+    <value>Очистити фільтр</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ShowFilterEditor">
+    <value>Конструктор фільтра...</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ShowFilterRow">
+    <value>Рядок авто-фільтра</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ShowFilterRowMenu">
+    <value>Меню рядка авто-фільтра</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_GroupByColumn">
+    <value>Згрупувати за цією колонкою</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_UngroupColumn">
+    <value>Розгрупувати</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ClearGrouping">
+    <value>Очистити групування</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ShowGroupPanel">
+    <value>Область групування</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ShowColumn">
+    <value>Показати колонку</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_HideColumn">
+    <value>Сховати колонку</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ShowCustomizationWindow">
+    <value>Вибір колонок</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ShowFooter">
+    <value>Нижній колонтитул</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_NewRow">
+    <value>Створити</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_EditRow">
+    <value>Редагувати</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_DeleteRow">
+    <value>Видалити</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ExpandRow">
+    <value>Розкрити</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_CollapseRow">
+    <value>Згорнути</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_ExpandDetailRow">
+    <value>Розкрити деталі</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_CollapseDetailRow">
+    <value>Згорнути деталі</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_Refresh">
+    <value>Оновити</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_SummarySum">
+    <value>Сума</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_SummaryMin">
+    <value>Мінімум</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_SummaryMax">
+    <value>Максимум</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_SummaryAverage">
+    <value>Середнє</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_SummaryCount">
+    <value>Усього</value>
+  </data>
+  <data name="ASPxGridViewStringId.ContextMenu_SummaryNone">
+    <value>Немає</value>
+  </data>
+</root>
