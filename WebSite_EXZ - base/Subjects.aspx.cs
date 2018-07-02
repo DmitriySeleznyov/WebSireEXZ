@@ -20,12 +20,13 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using Geocoding;
 using System.Reflection;
-
+using System.Runtime.Serialization.Formatters;
+using DevExpress.Utils.MVVM.Services;
 
 public partial class About : System.Web.UI.Page
 {
     static string connString = WebConfigurationManager.ConnectionStrings["PostgresConnectionString"].ToString();
-    static bool changed=false;
+    static bool changed = false;
     static string short_name;
     static string comp_id;
 
@@ -89,46 +90,46 @@ public partial class About : System.Web.UI.Page
 
 
     protected void SubjectsBuild()
-     {
-         short_name = GetShortName();
-         NpgsqlConnection myConn1 = new NpgsqlConnection(connString);
-       
+    {
+        short_name = GetShortName();
+        NpgsqlConnection myConn1 = new NpgsqlConnection(connString);
 
-         switch (ASPxPageControl1.ActiveTabIndex)
-         {
-             case 0:
-            
-             short_name = GetShortName();
-             NpgsqlCommand cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"Subject\" where subject_id=(SELECT subject_id FROM \"Subject\" WHERE subject_name='{0}')", short_name), myConn1);
-             myConn1.Open();
 
-             NpgsqlDataReader dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
+        switch (ASPxPageControl1.ActiveTabIndex)
+        {
+            case 0:
 
-             while (dataReaderGetSubject.Read())
-             {
-                 tb_subject_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_name")).ToString();
-                 tb_subject_id.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_id")).ToString();
-                 tb_subject_code.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_code")).ToString();
-                 tb_subject_add_info.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("add_info")).ToString();
-                 tb_object_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("object_name")).ToString();
-                 tb_subject_loc.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("loc")).ToString();
-                 tb_subject_lat.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("latitude")).ToString();
-                 tb_subject_lon.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("longitude")).ToString();
-                 combox_subject_type.SelectedIndex = combox_subject_type.Items.FindByText(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString()).Index;
-                            
-             }            
-                
-            
-            myConn1.Close();
+                short_name = GetShortName();
+                NpgsqlCommand cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"Subject\" where subject_id=(SELECT subject_id FROM \"Subject\" WHERE subject_name='{0}')", short_name), myConn1);
+                myConn1.Open();
 
-            break;
-             
-             default:
-                 break;
-         }
-         
-                 
-     }
+                NpgsqlDataReader dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
+
+                while (dataReaderGetSubject.Read())
+                {
+                    tb_subject_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_name")).ToString();
+                    tb_subject_id.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_id")).ToString();
+                    tb_subject_code.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_code")).ToString();
+                    tb_subject_add_info.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("add_info")).ToString();
+                    tb_object_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("object_name")).ToString();
+                    tb_subject_loc.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("loc")).ToString();
+                    tb_subject_lat.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("latitude")).ToString();
+                    tb_subject_lon.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("longitude")).ToString();
+                    combox_subject_type.SelectedIndex = combox_subject_type.Items.FindByText(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString()).Index;
+
+                }
+
+
+                myConn1.Close();
+
+                break;
+
+            default:
+                break;
+        }
+
+
+    }
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -144,8 +145,8 @@ public partial class About : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            short_name=GetShortName();
-            
+            short_name = GetShortName();
+
             if (short_name != null)
             {
                 string sub_id = GetCompId();
@@ -158,7 +159,7 @@ public partial class About : System.Web.UI.Page
         else
         {
         }
-        
+
 
     }
 
@@ -166,14 +167,14 @@ public partial class About : System.Web.UI.Page
     {
         RefreshRootFolders();
 
-        
+
     }
 
     protected void Page_PreRender(object sender, EventArgs e)
     {
         short_name = GetShortName();
         comp_id = GetCompId();
-       if (short_name != null) //было Session["SelectedSubject"] вместо short_name
+        if (short_name != null) //было Session["SelectedSubject"] вместо short_name
         {
             SubjectsBuild();
 
@@ -182,9 +183,9 @@ public partial class About : System.Web.UI.Page
         {
         }
 
-      
+
     }
-    
+
     protected void Page_Init(object sender, EventArgs e)
     {
         RefreshRootFolders();
@@ -193,27 +194,27 @@ public partial class About : System.Web.UI.Page
     protected void RefreshRootFolders()
     {
         string sub_id = GetCompId();
-        
+
     }
-    
-   // ------------------ tab general
+
+    // ------------------ tab general
 
     protected void but_enter_Click(object sender, EventArgs e)
     {
         NpgsqlConnection myConn = new NpgsqlConnection(connString);
         try
-        {      
-               
-                short_name = GetShortName();
+        {
 
-                string subject_insert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_name, add_info, loc, latitude, longitude) select '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'";
-                string subject_update = "update \"Subject\" set subject_name='{0}', subject_type='{1}', subject_code='{2}', object_name='{3}', add_info='{4}', loc='{5}', latitude='{6}', longitude='{7}' where subject_id='{8}'";
+            short_name = GetShortName();
 
-                var upsert_subject = new NpgsqlCommand(String.Format(String.Format("WITH upsert AS ({0} RETURNING *) {1} WHERE NOT EXISTS (SELECT * FROM upsert)", subject_update, subject_insert), tb_subject_name.Text, combox_subject_type.Text, tb_subject_code.Text, apostrof(Request.Form[tb_object_name.UniqueID]), apostrof(Request.Form[tb_subject_add_info.UniqueID]), apostrof(Request.Form[tb_subject_loc.UniqueID]), Request.Form[tb_subject_lat.UniqueID].Replace(",", "."), Request.Form[tb_subject_lon.UniqueID].Replace(",", "."), tb_subject_id.Text), myConn);
+            string subject_insert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_name, add_info, loc, latitude, longitude) select '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'";
+            string subject_update = "update \"Subject\" set subject_name='{0}', subject_type='{1}', subject_code='{2}', object_name='{3}', add_info='{4}', loc='{5}', latitude='{6}', longitude='{7}' where subject_id='{8}'";
 
-                myConn.Open();
+            var upsert_subject = new NpgsqlCommand(String.Format(String.Format("WITH upsert AS ({0} RETURNING *) {1} WHERE NOT EXISTS (SELECT * FROM upsert)", subject_update, subject_insert), tb_subject_name.Text, combox_subject_type.Text, tb_subject_code.Text, apostrof(Request.Form[tb_object_name.UniqueID]), apostrof(Request.Form[tb_subject_add_info.UniqueID]), apostrof(Request.Form[tb_subject_loc.UniqueID]), Request.Form[tb_subject_lat.UniqueID].Replace(",", "."), Request.Form[tb_subject_lon.UniqueID].Replace(",", "."), tb_subject_id.Text), myConn);
 
-                upsert_subject.ExecuteNonQuery();
+            myConn.Open();
+
+            upsert_subject.ExecuteNonQuery();
 
 
         }
@@ -228,7 +229,7 @@ public partial class About : System.Web.UI.Page
 
     }
 
-    
+
 
 
     public static string NewMethod(string a)
@@ -284,6 +285,26 @@ public partial class About : System.Web.UI.Page
     {
         RegisterUpdatePanel((UpdatePanel)sender);
     }
-}
-        
 
+
+
+
+
+
+    protected void but_save_Click(object sender, EventArgs e)
+    {
+
+
+
+    }
+
+    protected void ASPxUploadControl1_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
+    {
+
+    }
+
+    protected void ASPxUploadControl1_FileUploadComplete1(object sender, FileUploadCompleteEventArgs e)
+    {
+
+    }
+}

@@ -3,17 +3,17 @@
 
 <%@ MasterType VirtualPath="~/Site.master" %>
 
-<%@ Register Assembly="DevExpress.Web.v17.2" namespace="DevExpress.Web" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v18.1" namespace="DevExpress.Web" TagPrefix="dx" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 
 
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges.Linear" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges.Circular" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges.State" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges.Digital" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges.Linear" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges.Circular" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges.State" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges.Digital" tagprefix="dx" %>
 
 
 

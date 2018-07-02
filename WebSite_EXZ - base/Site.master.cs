@@ -289,6 +289,9 @@ public partial class SiteMaster : System.Web.UI.MasterPage
 
     protected void FilterDisableASPxButton1_Click(object sender, EventArgs e)
     {
+        SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM \"Subject\"");
+        TreeCommand = SqlDataSource22.SelectCommand;
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "AllSet", "AllSet()", true);
     }
 
 

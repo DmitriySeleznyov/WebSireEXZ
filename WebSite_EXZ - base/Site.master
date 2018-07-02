@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
 
-<%@ Register Assembly="DevExpress.Web.v17.2"
+<%@ Register Assembly="DevExpress.Web.v18.1"
     Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 
@@ -10,7 +10,7 @@
 
 
 
-<%@ Register assembly="DevExpress.Web.ASPxTreeList.v17.2" namespace="DevExpress.Web.ASPxTreeList" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxTreeList.v18.1" namespace="DevExpress.Web.ASPxTreeList" tagprefix="dx" %>
 
 
 
@@ -59,7 +59,7 @@
             }
     }
 
-    function getXMLNodeText(node) // Содержимое тэга
+    function getXMLNodeText(node) 
     {
         return node.text || node.textContent;
     }
@@ -227,7 +227,7 @@
                             ID="FilterLabel" ClientInstanceName="FilterLabel"></dx:ASPxLabel>
                     </h5>  
                     
-                      <dx:ASPxPageControl runat="server" ActiveTabIndex="0" TabAlign="Justify" 
+                      <dx:ASPxPageControl runat="server" ActiveTabIndex="1" TabAlign="Justify" 
                             Width="100%" Theme="Youthful" Height="100%" ID="FiltersTabControl" 
                             AutoPostBack="False" ClientInstanceName="FiltersTabControl">
                                       <tabpages>
@@ -292,6 +292,12 @@
                                             <dx:ListBoxColumn Caption="Отрасль" FieldName="branch_descr" 
                                                 Name="branch_descr" />
                                         </Columns>
+                                        <Items>
+                                            <dx:ListEditItem Text="СКЗ" Value="0" />
+                                            <dx:ListEditItem Text="БСЗ" Value="1" />
+                                            <dx:ListEditItem Text="БКМУ" Value="2" />
+                                            <dx:ListEditItem Text="СДЗ" Value="3" />
+                                        </Items>
                                     </dx:ASPxComboBox>
                                     <asp:SqlDataSource ID="BranchSqlDataSource1" runat="server" 
                                         ConnectionString="<%$ ConnectionStrings:PostgresConnectionString %>" 
@@ -451,8 +457,6 @@
 <div id="tree">
                     <h5 class="title">
                         <dx:ASPxLabel runat="server" Text="Объекты" CssClass="title" ID="TreeLabel"></dx:ASPxLabel>
-
-
                     </h5>  
 
 
@@ -463,7 +467,8 @@
                         DataSourceID="SqlDataSource22" BackColor="Transparent" ID="ASPxTreeList1" 
                         OnFocusedNodeChanged="ASPxTreeList1_FocusedNodeChanged" 
                         Height="350px" 
-                        Width="600px"><Columns>
+                        Width="600px">
+                            <Columns>
 <dx:TreeListTextColumn FieldName="subject_name" ShowInCustomizationForm="True" Visible="true" VisibleIndex="0" 
                                     Width="300px"></dx:TreeListTextColumn>
 
@@ -649,6 +654,8 @@
 <dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" 
                         CssClass="style=&quot;text-align:center&quot;" DataSourceID="SqlDataSource3" 
                         EnableTheming="True" Theme="Youthful" Width="100%">
+
+<EditFormLayoutProperties ColCount="1"></EditFormLayoutProperties>
                         <Columns>
                             <dx:GridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0" 
                                 Visible="False">
@@ -661,6 +668,10 @@
                             <dx:GridViewDataTextColumn Caption="Время" FieldName="time" VisibleIndex="2">
                             </dx:GridViewDataTextColumn>
                         </Columns>
+<SettingsAdaptivity>
+<AdaptiveDetailLayoutProperties ColCount="1"></AdaptiveDetailLayoutProperties>
+</SettingsAdaptivity>
+
                         <Settings ShowFilterRow="False" ShowGroupPanel="False" />
                         <settings showfilterrow="False" showgrouppanel="False" />
                         <settings showfilterrow="False" showgrouppanel="False" />

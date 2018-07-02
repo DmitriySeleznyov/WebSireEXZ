@@ -1,27 +1,26 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
 
-<%@ Register Assembly="DevExpress.Web.v13.2"
-    Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dx" %>
-
-<%@ Register Assembly="DevExpress.Web.v13.2"
-    Namespace="DevExpress.Web.ASPxSplitter" TagPrefix="dx" %>
-
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v17.2"
+    Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-
-<%@ Register assembly="DevExpress.Web.ASPxTreeList.v13.2" namespace="DevExpress.Web.ASPxTreeList" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxMenu" tagprefix="dx" %>
 
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxTabControl" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxClasses" tagprefix="dx" %>
 
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxNavBar" tagprefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxTreeList.v17.2" namespace="DevExpress.Web.ASPxTreeList" tagprefix="dx" %>
+
+
+
+
+
+
+
+
+
+
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -461,7 +460,7 @@
 
                         <dx:ASPxTreeList runat="server" EnableCallbacks="False" 
                         KeyFieldName="subject_id" AutoGenerateColumns="False" 
-                        DataSourceID="SqlDataSource2" BackColor="Transparent" ID="ASPxTreeList1" 
+                        DataSourceID="SqlDataSource22" BackColor="Transparent" ID="ASPxTreeList1" 
                         OnFocusedNodeChanged="ASPxTreeList1_FocusedNodeChanged" 
                         Height="350px" 
                         Width="600px"><Columns>
@@ -475,6 +474,15 @@
                                     Visible="False" VisibleIndex="2">
                                 </dx:TreeListTextColumn>
 
+                                <dx:TreeListTextColumn AutoFilterCondition="Default" FieldName="subject_type" Name="subject_type" ShowInCustomizationForm="True" ShowInFilterControl="Default" Visible="False" VisibleIndex="3">
+                                </dx:TreeListTextColumn>
+                                <dx:TreeListTextColumn AutoFilterCondition="Default" FieldName="subject_code" Name="subject_code" ShowInCustomizationForm="True" ShowInFilterControl="Default" Visible="False" VisibleIndex="4">
+                                </dx:TreeListTextColumn>
+                                <dx:TreeListTextColumn AutoFilterCondition="Default" FieldName="object_name" Name="object_name" ShowInCustomizationForm="True" ShowInFilterControl="Default" Visible="False" VisibleIndex="5">
+                                </dx:TreeListTextColumn>
+                                <dx:TreeListTextColumn AutoFilterCondition="Default" FieldName="add_info" Name="add_info" ShowInCustomizationForm="True" ShowInFilterControl="Default" Visible="False" VisibleIndex="6">
+                                </dx:TreeListTextColumn>
+
 </Columns>
 
 <Settings ShowColumnHeaders="False" scrollableheight="340" verticalscrollbarmode="Auto" 
@@ -483,7 +491,15 @@
 <SettingsBehavior AllowFocusedNode="True" ProcessFocusedNodeChangedOnServer="True" FocusNodeOnLoad="False" 
                                 processselectionchangedonserver="True"></SettingsBehavior>
 
+<SettingsCustomizationWindow PopupHorizontalAlign="RightSides" PopupVerticalAlign="BottomSides"></SettingsCustomizationWindow>
+
+<SettingsPopupEditForm VerticalOffset="-1"></SettingsPopupEditForm>
+
 <SettingsDataSecurity AllowDelete="False" AllowInsert="False" AllowEdit="False"></SettingsDataSecurity>
+
+<SettingsPopup>
+<EditForm VerticalOffset="-1"></EditForm>
+</SettingsPopup>
 
 <ClientSideEvents FocusedNodeChanged="function(s, e) { FocusedNodeChanged(s,e); }"></ClientSideEvents>
 
@@ -496,7 +512,7 @@
                         ConnectionString="<%$ ConnectionStrings:PostgresConnectionString %>" 
                         ProviderName="<%$ ConnectionStrings:PostgresConnectionString.ProviderName %>" 
                         SelectCommand="SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM &quot;Subject&quot;order by subject_name" 
-                        ID="SqlDataSource2"></asp:SqlDataSource>
+                        ID="SqlDataSource22"></asp:SqlDataSource>
 
 
 
@@ -624,17 +640,10 @@
             <div id="mesbox">
                     <h5 class="title">Сообщения</h5>
                       
-                    <asp:UpdatePanel ID="UpdateListBox" runat="server" UpdateMode="Conditional">
-                    <ContentTemplate>
                       
                       <dx:ASPxMemo runat="server" Height="100px" Width="100%" ID="MessagesListBox"></dx:ASPxMemo>
 
                       
-
-                    </ContentTemplate>
-                    <Triggers>
- </Triggers> 
-                    </asp:UpdatePanel>
 
 
 <dx:ASPxGridView ID="ASPxGridView3" runat="server" AutoGenerateColumns="False" 

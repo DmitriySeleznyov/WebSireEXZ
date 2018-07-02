@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Система дистанционного мониторинга и управления ЭХЗ - Управление пользователями" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="Users.aspx.cs" Inherits="About" %>
 
-<%@ Register assembly="DevExpress.Web.v17.2" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v18.1" namespace="DevExpress.Web" tagprefix="dx" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

@@ -22,8 +22,8 @@ using System.Text;
 using DevExpress.Web.ASPxTreeList;
 
     
-    public partial class Maps : System.Web.UI.Page
-    {
+public partial class Maps : System.Web.UI.Page
+{
 
     static string connString = WebConfigurationManager.ConnectionStrings["PostgresConnectionString"].ToString();
 
@@ -32,9 +32,8 @@ using DevExpress.Web.ASPxTreeList;
     protected AutoResetEvent m_CloseEvent = new AutoResetEvent(false);
 
     protected string m_CurrentMessage = string.Empty;
+
     static string short_name;
-
-
     
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -57,7 +56,7 @@ using DevExpress.Web.ASPxTreeList;
     }
 
 
-   void Markers_build()
+    void Markers_build()
       {
 
         NpgsqlConnection myConn1 = new NpgsqlConnection(connString);
@@ -651,10 +650,7 @@ using DevExpress.Web.ASPxTreeList;
     myConn1.Close();
         
     }
-
-
     
-
 /// Subjects build
 /// 
     protected string GetShortName()
@@ -864,8 +860,6 @@ using DevExpress.Web.ASPxTreeList;
 
     }
     
-   
-
     protected void Page_PreRender(object sender, EventArgs e)
     {
         short_name = GetShortName();
@@ -878,7 +872,6 @@ using DevExpress.Web.ASPxTreeList;
         else
         {
         }
-
 
     }
 

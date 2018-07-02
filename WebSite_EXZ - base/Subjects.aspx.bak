@@ -1,19 +1,19 @@
 ﻿<%@ Page Title="Система дистанционного мониторинга и управления ЭХЗ - Просмотр и редактирование данных" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="Subjects.aspx.cs" Inherits="About" UICulture="uk"%>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxTabControl" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxClasses" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v17.2" namespace="DevExpress.Web" tagprefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxPanel" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxFormLayout" tagprefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxUploadControl" tagprefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxImageGallery" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxFileManager" tagprefix="dx" %>
+
+
+
+
+
+
+
+
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -52,7 +52,7 @@
                                                                             </div>
                                                                         </ProgressTemplate>
                                                                      </asp:UpdateProgress>
-                    <asp:UpdatePanel ID="UpdatePageControl" runat="server" UpdateMode="Conditional">
+                    <asp:UpdatePanel ID="UpdatePageControl" runat="server" UpdateMode="Conditional" OnUnload="UpdatePageControl_Unload">
                     <ContentTemplate>
                     <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
                         EnableTabScrolling="True" AutoPostBack="True" Width="100%" >
@@ -62,7 +62,7 @@
                                 </TabImage>
                                 <ContentCollection>
                                     <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                                    <asp:UpdatePanel ID="UpdatePanel_Tab1" runat="server" UpdateMode="Conditional">
+                                    <asp:UpdatePanel ID="UpdatePanel_Tab1" runat="server" UpdateMode="Conditional" OnUnload="UpdatePanel_Tab1_Unload">
                                     <ContentTemplate>
                                         <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" Width="100%" ClientInstanceName="FormLayout1">
                                             <Items>
@@ -232,7 +232,7 @@
     <h2>
        ТРУБОПРОВОДЫ
     </h2>
-                    <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" OnUnload="UpdatePanel2_Unload">
                     <ContentTemplate>
                     <dx:ASPxPageControl ID="ASPxPageControl2" runat="server" ActiveTabIndex="0" 
                         EnableTabScrolling="True" AutoPostBack="True" Width="100%" >
@@ -242,7 +242,7 @@
                                 </TabImage>
                                 <ContentCollection>
                                     <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                                    <asp:UpdatePanel ID="UpdatePanel_Tab2" runat="server" UpdateMode="Conditional">
+                                    <asp:UpdatePanel ID="UpdatePanel_Tab2" runat="server" UpdateMode="Conditional" OnUnload="UpdatePanel_Tab2_Unload">
                                     <ContentTemplate>
                                         <dx:ASPxFormLayout ID="ASPxFormLayout2" runat="server" Width="100%" ClientInstanceName="FormLayout2">
                                             <Items>

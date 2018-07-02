@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="Система дистанционного мониторинга и управления ЭХЗ" Language="C#" AutoEventWireup="true"
     CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
-<%@ Register Assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v17.2" namespace="DevExpress.Web" TagPrefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxImageSlider" tagprefix="dx" %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

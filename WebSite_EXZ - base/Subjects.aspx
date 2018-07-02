@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Система дистанционного мониторинга и управления ЭХЗ - Просмотр и редактирование данных" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="Subjects.aspx.cs" Inherits="About" UICulture="uk"%>
 
-<%@ Register assembly="DevExpress.Web.v17.2" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v18.1" namespace="DevExpress.Web" tagprefix="dx" %>
 
 
 
@@ -52,6 +52,7 @@
                                                                             </div>
                                                                         </ProgressTemplate>
                                                                      </asp:UpdateProgress>
+
                     <asp:UpdatePanel ID="UpdatePageControl" runat="server" UpdateMode="Conditional" OnUnload="UpdatePageControl_Unload">
                     <ContentTemplate>
                     <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" 
@@ -99,12 +100,14 @@
                                                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
                                                                     <dx:ASPxComboBox ID="combox_subject_type" runat="server">
                                                                         <Items>
+                                                                            <%-- ПЕРЕПИСАТЬ СПИСОК НА ПОЛУЧЕНИЕ ИЗ БД --%>
                                                                             <dx:ListEditItem Text="СДЗ" Value="СДЗ" />
                                                                             <dx:ListEditItem Text="БКМУ" Value="БКМУ" />
                                                                             <dx:ListEditItem Text="БСЗ" Value="БСЗ" />
                                                                             <dx:ListEditItem Text="БКМУ+БСЗ" Value="БКМУ+БСЗ" />
                                                                             <dx:ListEditItem Text="МТДУ" Value="МТДУ" />
                                                                             <dx:ListEditItem Text="СКЗ" Value="СКЗ" />
+                                                                            <%-- ПЕРЕПИСАТЬ СПИСОК НА ПОЛУЧЕНИЕ ИЗ БД --%>
                                                                         </Items>
                                                                         <ValidationSettings>
 <RequiredField IsRequired="True" ErrorText="Обязательное поле"></RequiredField>
@@ -190,18 +193,31 @@
                                             </Styles>
                                         </dx:ASPxFormLayout>
                                         <br />
+                                        <dx:ASPxUploadControl ID="ASPxUploadControl1" runat="server" AutoStartUpload="True" CssClass="layoutButton" CssFilePath="~/Styles/Site.css" FileUploadMode="OnPageLoad" OnFileUploadComplete="ASPxUploadControl1_FileUploadComplete1" ShowClearFileSelectionButton="False" ShowProgressPanel="True" ShowUploadButton="True" UploadMode="Auto" UploadStorage="FileSystem" Width="280px">
+                                            <validationsettings allowedfileextensions=".jpg, .jpeg, .jpe, .gif, .png">
+                                            </validationsettings>
+                                            <browsebutton text="Загрузить">
+                                            </browsebutton>
+                                            <uploadbutton text="">
+                                            </uploadbutton>
+                                            <filesystemsettings uploadfolder="~\App_Data\Pictures" />
+                                        </dx:ASPxUploadControl>
                                         <br />
                                         <asp:UpdateProgress ID="UpdateProgress_Tab1" runat="server" AssociatedUpdatePanelID="UpdatePanel_Tab1">
                 <ProgressTemplate>
                     <div>
                         Виконання...
                         <img src="Images\ajax-loader.gif" alt=" " style="vertical-align:middle" />
+                        <dx:ASPxImage ID="ASPxImage1" runat="server" ShowLoadingImage="true">
+                        </dx:ASPxImage>
                     </div>
                 </ProgressTemplate>
                 </asp:UpdateProgress>
-                                        <dx:ASPxButton ID="but_enter" runat="server"   
+
+                                        <dx:ASPxButton ID="but_enter3" runat="server"   
                                             OnClick="but_enter_Click" Text="Сохранить" CssClass="layoutButton" 
                                             CssFilePath="~/Styles/Site.css">
+                                            
                                         </dx:ASPxButton>
                 
                 <br />

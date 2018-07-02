@@ -141,4 +141,9 @@ public partial class About : System.Web.UI.Page
     }
 
 
+
+    protected void ASPxNavBar1_ItemClick(object source, NavBarItemEventArgs e)
+    {
+
+    }
 }

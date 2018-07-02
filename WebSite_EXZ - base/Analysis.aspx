@@ -2,15 +2,15 @@
     CodeFile="Analysis.aspx.cs" Inherits="About" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
-<%@ Register assembly="DevExpress.Web.v17.2" namespace="DevExpress.Web" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v18.1" namespace="DevExpress.Web" tagprefix="dx" %>
 
 
 
 
 
 
-<%@ Register assembly="DevExpress.XtraCharts.v17.2.Web" namespace="DevExpress.XtraCharts.Web" tagprefix="dxchartsui" %>
-<%@ Register assembly="DevExpress.XtraCharts.v17.2" namespace="DevExpress.XtraCharts" tagprefix="cc2" %>
+<%@ Register assembly="DevExpress.XtraCharts.v18.1.Web" namespace="DevExpress.XtraCharts.Web" tagprefix="dxchartsui" %>
+<%@ Register assembly="DevExpress.XtraCharts.v18.1" namespace="DevExpress.XtraCharts" tagprefix="cc2" %>
 
 
 

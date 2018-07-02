@@ -1,17 +1,17 @@
 ﻿<%@ Page Title="Система дистанционного мониторинга и управления ЭХЗ" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="Start.aspx.cs" Inherits="About" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxGauges.v17.2"
+<%@ Register Assembly="DevExpress.Web.ASPxGauges.v18.1"
     Namespace="DevExpress.Web.ASPxGauges" TagPrefix="dx" %>
 
-<%@ Register Assembly="DevExpress.Dashboard.v17.2.Web"
+<%@ Register Assembly="DevExpress.Dashboard.v18.1.Web.WebForms"
     Namespace="DevExpress.DashboardWeb" TagPrefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges.Linear" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges.Circular" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges.State" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.ASPxGauges.v17.2" namespace="DevExpress.Web.ASPxGauges.Gauges.Digital" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges.Linear" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges.Circular" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges.State" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v18.1" namespace="DevExpress.Web.ASPxGauges.Gauges.Digital" tagprefix="dx" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

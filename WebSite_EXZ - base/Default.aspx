@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Система дистанционного мониторинга и управления ЭХЗ" Language="C#" AutoEventWireup="true"
     CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
-<%@ Register Assembly="DevExpress.Web.v17.2" namespace="DevExpress.Web" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v18.1" namespace="DevExpress.Web" TagPrefix="dx" %>
 
 
 

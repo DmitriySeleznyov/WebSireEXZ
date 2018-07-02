@@ -1,20 +1,20 @@
 ﻿<%@ Page Title="Система дистанционного мониторинга и управления ЭХЗ - Сообщения" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="Messaging.aspx.cs" Inherits="About" %>   
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxTabControl" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxClasses" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v17.2" namespace="DevExpress.Web" tagprefix="dx" %>
 
-<%@ Register Assembly="DevExpress.Web.v13.2" Namespace="DevExpress.Web.ASPxNavBar" TagPrefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxPanel" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxFormLayout" tagprefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxUploadControl" tagprefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxImageGallery" tagprefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
 
-<%@ Register assembly="DevExpress.Web.v13.2" namespace="DevExpress.Web.ASPxFileManager" tagprefix="dx" %>
+
+
+
+
+
+
+
+
+
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
