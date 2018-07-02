@@ -193,7 +193,7 @@
                                             </Styles>
                                         </dx:ASPxFormLayout>
                                         <br />
-                                        <dx:ASPxUploadControl ID="ASPxUploadControl1" runat="server" AutoStartUpload="True" CssClass="layoutButton" CssFilePath="~/Styles/Site.css" FileUploadMode="OnPageLoad" OnFileUploadComplete="ASPxUploadControl1_FileUploadComplete1" ShowClearFileSelectionButton="False" ShowProgressPanel="True" ShowUploadButton="True" UploadMode="Auto" UploadStorage="FileSystem" Width="280px">
+                                        <dx:ASPxUploadControl ID="ASPxUploadControlPicture" runat="server" AutoStartUpload="True" CssClass="layoutButton" CssFilePath="~/Styles/Site.css" FileUploadMode="OnPageLoad" OnFileUploadComplete="ASPxUploadControl1_FileUploadComplete1" ShowClearFileSelectionButton="False" ShowProgressPanel="True" ShowUploadButton="True" UploadMode="Auto" UploadStorage="FileSystem" Width="280px">
                                             <validationsettings allowedfileextensions=".jpg, .jpeg, .jpe, .gif, .png">
                                             </validationsettings>
                                             <browsebutton text="Загрузить">
