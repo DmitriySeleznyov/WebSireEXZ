@@ -192,16 +192,28 @@
                                                 </LayoutGroupBox>
                                             </Styles>
                                         </dx:ASPxFormLayout>
+                                          <script type="text/javascript">
+                                            function OnFileUploadComplete(s, e) {
+                                                 document.getElementById('image').src = e.callbackData;
+                                            }
+                                            </script>
+
                                         <br />
-                                        <dx:ASPxUploadControl ID="ASPxUploadControlPicture" runat="server" AutoStartUpload="True" CssClass="layoutButton" CssFilePath="~/Styles/Site.css" FileUploadMode="OnPageLoad" OnFileUploadComplete="ASPxUploadControl1_FileUploadComplete1" ShowClearFileSelectionButton="False" ShowProgressPanel="True" ShowUploadButton="True" UploadMode="Auto" UploadStorage="FileSystem" Width="280px">
+                                        <dx:ASPxUploadControl ID="ASPxUploadControlPicture" runat="server" AutoStartUpload="True" CssClass="layoutButton"
+                                            CssFilePath="~/Styles/Site.css" ShowClearFileSelectionButton="False" 
+                                            ShowProgressPanel="True" ShowUploadButton="True" UploadMode="Auto" 
+                                            Width="280px" OnFileUploadComplete="ASPxUploadControlPicture_FileUploadComplete">
+
                                             <validationsettings allowedfileextensions=".jpg, .jpeg, .jpe, .gif, .png">
                                             </validationsettings>
+                                            <clientsideevents fileuploadcomplete="OnFileUploadComplete" />
                                             <browsebutton text="Загрузить">
                                             </browsebutton>
-                                            <uploadbutton text="">
-                                            </uploadbutton>
-                                            <filesystemsettings uploadfolder="~\App_Data\Pictures" />
+                                           <%-- <uploadbutton text="Download">
+                                            </uploadbutton>--%>
+                                            <%--<filesystemsettings uploadfolder="~\Images\PicturesSubject" />--%>
                                         </dx:ASPxUploadControl>
+                                        <img id="image" alt="Пожалуйста, загрузите изображение" src="Images/PicturesSubject/DefaultPicture.jpg" widht ="150px" height =" 150px"/>
                                         <br />
                                         <asp:UpdateProgress ID="UpdateProgress_Tab1" runat="server" AssociatedUpdatePanelID="UpdatePanel_Tab1">
                 <ProgressTemplate>

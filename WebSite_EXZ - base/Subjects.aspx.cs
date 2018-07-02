@@ -297,14 +297,11 @@ public partial class About : System.Web.UI.Page
 
 
     }
-
-    protected void ASPxUploadControl1_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
+ 
+    protected void ASPxUploadControlPicture_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
     {
-
-    }
-
-    protected void ASPxUploadControl1_FileUploadComplete1(object sender, FileUploadCompleteEventArgs e)
-    {
-
+        e.CallbackData = String.Format("Images\\PicturesSubject\\{0}", e.UploadedFile.FileName);
+        string path = Page.MapPath("~/") + e.CallbackData;
+        e.UploadedFile.SaveAs(path);
     }
 }
