@@ -209,11 +209,8 @@
                                             <clientsideevents fileuploadcomplete="OnFileUploadComplete" />
                                             <browsebutton text="Загрузить">
                                             </browsebutton>
-                                           <%-- <uploadbutton text="Download">
-                                            </uploadbutton>--%>
-                                            <%--<filesystemsettings uploadfolder="~\Images\PicturesSubject" />--%>
                                         </dx:ASPxUploadControl>
-                                        <img id="image" alt="Пожалуйста, загрузите изображение" src="Images/PicturesSubject/DefaultPicture.jpg" widht ="150px" height =" 150px"/>
+                                        <img id="image" alt="Пожалуйста, загрузите изображение" src="Images/PicturesSubject/DefaultPicture.jpg" width="200px" height=" 150px"/>
                                         <br />
                                         <asp:UpdateProgress ID="UpdateProgress_Tab1" runat="server" AssociatedUpdatePanelID="UpdatePanel_Tab1">
                 <ProgressTemplate>
