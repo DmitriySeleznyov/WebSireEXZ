@@ -193,11 +193,15 @@
                                             </Styles>
                                         </dx:ASPxFormLayout>
                                           <script type="text/javascript">
+                                            function OnFileUploadCompleteASPx(s, e) {
+                                                 document.getElementById('ASPxBinaryImageSubject').src = e.callbackData;
+                                            }
+                                            </script>
+                                          <script type="text/javascript">
                                             function OnFileUploadComplete(s, e) {
                                                  document.getElementById('image').src = e.callbackData;
                                             }
                                             </script>
-
                                         <br />
                                         <dx:ASPxUploadControl ID="ASPxUploadControlPicture" runat="server" AutoStartUpload="True" CssClass="layoutButton"
                                             CssFilePath="~/Styles/Site.css" ShowClearFileSelectionButton="False" 
@@ -206,11 +210,16 @@
 
                                             <validationsettings allowedfileextensions=".jpg, .jpeg, .jpe, .gif, .png">
                                             </validationsettings>
-                                            <clientsideevents fileuploadcomplete="OnFileUploadComplete" />
+                                            <clientsideevents fileuploadcomplete="OnFileUploadComplete
+" />
                                             <browsebutton text="Загрузить">
                                             </browsebutton>
                                         </dx:ASPxUploadControl>
-                                        <img id="image" alt="Пожалуйста, загрузите изображение" src="Images/PicturesSubject/DefaultPicture.jpg" width="200px" height=" 150px"/>
+                                        <div> 
+                                        <img id="image" alt="Пожалуйста, загрузите изображение" src="Images/PicturesSubject/DefaultPicture.jpg" width="250px" height=" 250px"/>
+                                            <dx:ASPxBinaryImage ID="ASPxBinaryImageSubject" runat="server" Height="250px" Width="250px" ShowLoadingImage="True" alt="Пожалуйста, загрузите изображение">
+                                            </dx:ASPxBinaryImage>
+                                        </div>
                                         <br />
                                         <asp:UpdateProgress ID="UpdateProgress_Tab1" runat="server" AssociatedUpdatePanelID="UpdatePanel_Tab1">
                 <ProgressTemplate>

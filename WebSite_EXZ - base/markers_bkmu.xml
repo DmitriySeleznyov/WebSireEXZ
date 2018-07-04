@@ -70,4 +70,18 @@
         <State />
         <Date />
     </marker>
+    <marker>
+        <Name>БКМУ6666</Name>
+        <Type>БКМУ</Type>
+        <Latitude>66.66</Latitude>
+        <Longitude>66.666</Longitude>
+        <Address />
+        <Sum_pot />
+        <Pol_pot />
+        <Curr />
+        <Volt />
+        <Temper />
+        <State />
+        <Date />
+    </marker>
 </markers>

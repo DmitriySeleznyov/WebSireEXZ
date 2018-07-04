@@ -106,6 +106,7 @@ public partial class About : System.Web.UI.Page
 
                 NpgsqlDataReader dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
 
+
                 while (dataReaderGetSubject.Read())
                 {
                     tb_subject_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_name")).ToString();
@@ -117,7 +118,11 @@ public partial class About : System.Web.UI.Page
                     tb_subject_lat.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("latitude")).ToString();
                     tb_subject_lon.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("longitude")).ToString();
                     combox_subject_type.SelectedIndex = combox_subject_type.Items.FindByText(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString()).Index;
+                    var pic = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("picture"));
 
+
+                    ASPxBinaryImageSubject.ContentBytes = (byte[])pic; 
+                    //byteatojpg((byte[])pic);
                 }
 
 
@@ -191,28 +196,26 @@ public partial class About : System.Web.UI.Page
     }
 
     // ------------------ tab general
-    public byte[] jpgtobytea()
-    {
-
-        string path = Page.MapPath("~/") + String.Format("Images\\PicturesSubject\\temp.jpg"); ;
-        Bitmap image1 = (Bitmap)System.Drawing.Image.FromFile(path);
-        using (var ms = new MemoryStream())
-        {
-            image1.Save(ms, image1.RawFormat);
-            return ms.ToArray();
-        }
-    }
     private string stringrefactor(string str)
     {
         return str.Replace(',', '.');
     }
+
+    public string LastFile()
+    {
+        var directory = new DirectoryInfo("C:\\Users\\User\\source\\repos\\WebSiteEXZ\\WebSite_EXZ - base\\Images\\PicturesSubject\\");
+        var myFile = directory.GetFiles()
+                     .OrderByDescending(f => f.LastWriteTime)
+                     .First();
+        return myFile.FullName;
+    }
+
     protected void but_enter_Click(object sender, EventArgs e)
     {
-        //byte[] byteImage = File.ReadAllBytes("Images\\PicturesSubject\\temp.jpg");
-
         NpgsqlConnection myConn = new NpgsqlConnection(connString);
         try
         {
+
             short_name = GetShortName();
             byte[] pic = jpgtobytea();
             string subject_insert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_name, add_info, loc, latitude, longitude) select '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'";
@@ -220,21 +223,22 @@ public partial class About : System.Web.UI.Page
 
             //var upsert_subject = new NpgsqlCommand(String.Format(String.Format("WITH upsert AS ({0} RETURNING *) {1} WHERE NOT EXISTS (SELECT * FROM upsert)", subject_update, subject_insert), tb_subject_name.Text, combox_subject_type.Text, tb_subject_code.Text, apostrof(Request.Form[tb_object_name.UniqueID]), apostrof(Request.Form[tb_subject_add_info.UniqueID]), apostrof(Request.Form[tb_subject_loc.UniqueID]), Request.Form[tb_subject_lat.UniqueID].Replace(",", "."), Request.Form[tb_subject_lon.UniqueID].Replace(",", "."), tb_subject_id.Text), myConn);
             string queryinsert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_name, add_info, loc, latitude, longitude , picture) " +
-                "select '"+ tb_subject_name.Text+ "', '"+ combox_subject_type.Text+"', '"+tb_subject_code.Text+"', '"+ apostrof(Request.Form[tb_object_name.UniqueID])+"', '"
-                + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', '"+ apostrof(Request.Form[tb_subject_loc.UniqueID])+"', '"
-                + stringrefactor(Request.Form[tb_subject_lat.UniqueID]) + "', '"+ stringrefactor(Request.Form[tb_subject_lon.UniqueID])+"' , '" +pic+ "'";
+                "select '" + tb_subject_name.Text + "', '" + combox_subject_type.Text + "', '" + tb_subject_code.Text + "', '" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', '"
+                + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', '" + apostrof(Request.Form[tb_subject_loc.UniqueID]) + "', '"
+                + stringrefactor(Request.Form[tb_subject_lat.UniqueID]) + "', '" + stringrefactor(Request.Form[tb_subject_lon.UniqueID]) + "' , '" + pic + "'";
             string queryupdate = "update \"Subject\" set " +
                 "subject_name='" + tb_subject_name.Text + "', subject_type='" + combox_subject_type.Text + "', subject_code='" + tb_subject_code.Text +
-                "', object_name='" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', add_info='" + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', loc='" 
-                + apostrof(Request.Form[tb_subject_loc.UniqueID]) + "', latitude='"  + stringrefactor(Request.Form[tb_subject_lat.UniqueID]) 
-                + "', longitude='" + stringrefactor(Request.Form[tb_subject_lon.UniqueID]) +"' , picture='"+ pic+ "' where subject_id='666'";
+                "', object_name='" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', add_info='" + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', loc='"
+                + apostrof(Request.Form[tb_subject_loc.UniqueID]) + "', latitude='" + stringrefactor(Request.Form[tb_subject_lat.UniqueID])
+                + "', longitude='" + stringrefactor(Request.Form[tb_subject_lon.UniqueID]) + "' , picture=:pic where subject_id='666'";
 
             myConn.Open();
             NpgsqlCommand np = new NpgsqlCommand(queryupdate, myConn);
+            np.Parameters.Add(new NpgsqlParameter("pic", pic));
             np.ExecuteNonQuery();
             //upsert_subject.ExecuteNonQuery();
 
-            CLearDirectoriPictureSubject();
+
         }
         catch (NpgsqlException ex)
         {
@@ -247,9 +251,6 @@ public partial class About : System.Web.UI.Page
 
     }
 
-
-
-
     public static string NewMethod(string a)
     {
         return Regex.Replace(a, "\\,", ".");
@@ -259,8 +260,6 @@ public partial class About : System.Web.UI.Page
     {
         return Regex.Replace(a, "\\'", "\"");
     }
-
-
 
     public static bool IsChecked(string a)
     {
@@ -273,8 +272,6 @@ public partial class About : System.Web.UI.Page
             return false;
         }
     }
-
-
 
     protected void UpdatePanel_Tab1_Unload(object sender, EventArgs e)
     {
@@ -304,11 +301,6 @@ public partial class About : System.Web.UI.Page
         RegisterUpdatePanel((UpdatePanel)sender);
     }
 
-
-
-
-
-
     protected void but_save_Click(object sender, EventArgs e)
     {
 
@@ -318,30 +310,38 @@ public partial class About : System.Web.UI.Page
  
     protected void ASPxUploadControlPicture_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
     {
-        
-
-
         e.CallbackData = String.Format("Images\\PicturesSubject\\Picture_{0}", e.UploadedFile.FileName);
         string path = Page.MapPath("~/") + e.CallbackData;
         e.UploadedFile.SaveAs(path);
     }
     #region
-    public void CLearDirectoriPictureSubject()
+    /// <summary>
+    /// 
+    /// </summary>
+    public void ClearDirectoriPictureSubject()
     {
         string directoria = String.Format("C:\\Users\\User\\source\\repos\\WebSiteEXZ\\WebSite_EXZ - base\\Images\\PicturesSubject\\");
         Directory.Delete(directoria, true); //true - если директория не пуста удаляем все ее содержимое
         Directory.CreateDirectory(directoria);
     }
-    public byte[] jpgtobytea(string pathPicture)
+    public byte[] jpgtobytea()
     {
-        string path = Page.MapPath("~/") + String.Format(pathPicture); 
-        Bitmap image1 = (Bitmap)System.Drawing.Image.FromFile(path);
+        Bitmap image1 = (Bitmap)System.Drawing.Image.FromFile(LastFile());
         using (var ms = new MemoryStream())
         {
             image1.Save(ms, image1.RawFormat);
             return ms.ToArray();
         }
     }
+    public System.Drawing.Image byteatojpg(byte[] byteArrayIn)
+    {
+        using (var mStream = new MemoryStream(byteArrayIn))
+        {
+            return System.Drawing.Image.FromStream(mStream);
+        }
+
+    }
+
     #endregion
 
 }
