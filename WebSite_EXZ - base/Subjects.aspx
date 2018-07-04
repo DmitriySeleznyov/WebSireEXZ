@@ -215,7 +215,9 @@
                                             <browsebutton text="Загрузить">
                                             </browsebutton>
                                         </dx:ASPxUploadControl>
-                                        <br  /><dx:ASPxLabel runat="server" Text="Текущее изображение устройства"></dx:ASPxLabel><dx:ASPxLabel runat="server" Text="Новое изображение устройства"></dx:ASPxLabel> <br />
+                                     <div class="block1">
+                                        <br  /><dx:ASPxLabel runat="server" Text="Текущее изображение устройства"></dx:ASPxLabel>
+                                        <dx:ASPxLabel runat="server"  padding-left="75px" Text="Новое изображение устройства" CssClass="somestyle" CssFilePath="~/Styles/Site.css"></dx:ASPxLabel> <br />
                                        
                                             <dx:ASPxBinaryImage ID="ASPxBinaryImageSubject" runat="server" Height="250px" Width="300px" ShowLoadingImage="True" alt="Текущая картинка">
                                             </dx:ASPxBinaryImage>
@@ -224,6 +226,7 @@
                                         <br />
                                         <asp:UpdateProgress ID="UpdateProgress_Tab1" runat="server" AssociatedUpdatePanelID="UpdatePanel_Tab1">
                 <ProgressTemplate>
+                    <div />
                     <div>
                         Виконання...
                         <img src="Images\ajax-loader.gif" alt=" " style="vertical-align:middle" />
