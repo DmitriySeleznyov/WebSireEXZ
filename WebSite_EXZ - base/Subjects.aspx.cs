@@ -119,10 +119,8 @@ public partial class About : System.Web.UI.Page
                     tb_subject_lon.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("longitude")).ToString();
                     combox_subject_type.SelectedIndex = combox_subject_type.Items.FindByText(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString()).Index;
                     var pic = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("picture"));
-
-
-                    ASPxBinaryImageSubject.ContentBytes = (byte[])pic; 
-                    //byteatojpg((byte[])pic);
+                    if (pic.ToString() != "")
+                    { ASPxBinaryImageSubject.ContentBytes = (byte[])pic; }
                 }
 
 
@@ -237,8 +235,6 @@ public partial class About : System.Web.UI.Page
             np.Parameters.Add(new NpgsqlParameter("pic", pic));
             np.ExecuteNonQuery();
             //upsert_subject.ExecuteNonQuery();
-
-
         }
         catch (NpgsqlException ex)
         {
@@ -246,6 +242,8 @@ public partial class About : System.Web.UI.Page
         finally
         {
             myConn.Close();
+            ClearDirectoriPictureSubject();
+
         }
 
 
@@ -321,8 +319,10 @@ public partial class About : System.Web.UI.Page
     public void ClearDirectoriPictureSubject()
     {
         string directoria = String.Format("C:\\Users\\User\\source\\repos\\WebSiteEXZ\\WebSite_EXZ - base\\Images\\PicturesSubject\\");
-        Directory.Delete(directoria, true); //true - если директория не пуста удаляем все ее содержимое
-        Directory.CreateDirectory(directoria);
+        string[] files = Directory.GetFiles(directoria);
+
+        foreach (string file in Directory.GetFiles(directoria))
+        { File.Delete(file); }
     }
     public byte[] jpgtobytea()
     {
@@ -333,15 +333,6 @@ public partial class About : System.Web.UI.Page
             return ms.ToArray();
         }
     }
-    public System.Drawing.Image byteatojpg(byte[] byteArrayIn)
-    {
-        using (var mStream = new MemoryStream(byteArrayIn))
-        {
-            return System.Drawing.Image.FromStream(mStream);
-        }
-
-    }
-
     #endregion
 
 }

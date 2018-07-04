@@ -215,11 +215,12 @@
                                             <browsebutton text="Загрузить">
                                             </browsebutton>
                                         </dx:ASPxUploadControl>
-                                        <div> 
-                                        <img id="image" alt="Пожалуйста, загрузите изображение" src="Images/PicturesSubject/DefaultPicture.jpg" width="250px" height=" 250px"/>
-                                            <dx:ASPxBinaryImage ID="ASPxBinaryImageSubject" runat="server" Height="250px" Width="250px" ShowLoadingImage="True" alt="Пожалуйста, загрузите изображение">
+                                        <br  /><dx:ASPxLabel runat="server" Text="Текущее изображение устройства"></dx:ASPxLabel><dx:ASPxLabel runat="server" Text="Новое изображение устройства"></dx:ASPxLabel> <br />
+                                       
+                                            <dx:ASPxBinaryImage ID="ASPxBinaryImageSubject" runat="server" Height="250px" Width="300px" ShowLoadingImage="True" alt="Текущая картинка">
                                             </dx:ASPxBinaryImage>
-                                        </div>
+                                        <img id="image" alt="Новая картинка" src="Images/PicturesSubject/DefaultPicture.jpg" width="300px" height=" 250px"/>
+                                        
                                         <br />
                                         <asp:UpdateProgress ID="UpdateProgress_Tab1" runat="server" AssociatedUpdatePanelID="UpdatePanel_Tab1">
                 <ProgressTemplate>
