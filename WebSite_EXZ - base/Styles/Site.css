@@ -10,6 +10,13 @@ body
     padding: 0;
 }
 
+.block1 {
+    border: solid 2px black;
+}
+
+.somestyle {
+    padding-left: 123px
+}
 
 a:link, a:visited
 {
