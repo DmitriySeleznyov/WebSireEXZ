@@ -11,11 +11,8 @@
 .blockpicture {
     border: solid 2px black;
     float: left;
-    width: 35%
-       
 }
 .blocktable {
-    border: solid 2px black;
+    width:65%;
     float: right;
-    width: 65%
 }

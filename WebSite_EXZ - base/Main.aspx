@@ -18,33 +18,30 @@
    
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-       Формирование и просмотр отчетов
-    </h2>
-    <br /><br /><br /><br />
-    <dx:ASPxBinaryImage ID="ASPxBinaryImage1" runat="server" CssClass="blockpicture" CssFilePath="~/Styles/MainpageCss.css" Height="150px" Width="30%">
+    <br />
+    <dx:ASPxBinaryImage ID="ASPxBinaryImage1" runat="server" CssClass="blockpicture" CssFilePath="~/Styles/MainpageCss.css" Height="500px" Width="34%">
     </dx:ASPxBinaryImage>
-    <dx:ASPxPageControl ID="ASPxPageControl2" runat="server" ActiveTabIndex="0" CssClass="blocktable" CssFilePath="~/Styles/MainpageCss.css" Theme="Youthful">
+    <dx:ASPxPageControl ID="ASPxPageControl2" runat="server" ActiveTabIndex="0" CssClass="blocktable" CssFilePath="~/Styles/MainpageCss.css" Theme="Youthful" Height="500px">
         <tabpages>
-            <dx:TabPage>
+            <dx:TabPage Text="Мониторинг">
                 <contentcollection>
                     <dx:ContentControl runat="server">
                     </dx:ContentControl>
                 </contentcollection>
             </dx:TabPage>
-            <dx:TabPage>
+            <dx:TabPage Text="Управление">
                 <contentcollection>
                     <dx:ContentControl runat="server">
                     </dx:ContentControl>
                 </contentcollection>
             </dx:TabPage>
-            <dx:TabPage>
+            <dx:TabPage Text="Режим прерывания">
                 <contentcollection>
                     <dx:ContentControl runat="server">
                     </dx:ContentControl>
                 </contentcollection>
             </dx:TabPage>
-            <dx:TabPage>
+            <dx:TabPage Text="Архив за сутки">
                 <contentcollection>
                     <dx:ContentControl runat="server">
                     </dx:ContentControl>
