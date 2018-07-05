@@ -215,15 +215,12 @@
                                             <browsebutton text="Загрузить">
                                             </browsebutton>
                                         </dx:ASPxUploadControl>
-                                        <br/>
-<%--                                     <div class="block1">--%>
-                                        <dx:ASPxLabel runat="server" Text="Текущее изображение устройства"></dx:ASPxLabel>
-                                        <dx:ASPxLabel runat="server"  padding-left="75px" Text="Новое изображение устройства" CssClass="somestyle" CssFilePath="~/Styles/Site.css"></dx:ASPxLabel> <br />
-                                         <div />
-                                            <dx:ASPxBinaryImage ID="ASPxBinaryImageSubject" runat="server" Height="250px" Width="300px" ShowLoadingImage="True" alt="Текущая картинка" CssClass="block1" CssFilePath="~/Styles/Site.css">
+                                        <br  /><dx:ASPxLabel runat="server" Text="Текущее изображение устройства"></dx:ASPxLabel><dx:ASPxLabel runat="server" Text="Новое изображение устройства"></dx:ASPxLabel> <br />
+                                       
+                                            <dx:ASPxBinaryImage ID="ASPxBinaryImageSubject" runat="server" Height="250px" Width="300px" ShowLoadingImage="True" alt="Текущая картинка">
                                             </dx:ASPxBinaryImage>
-                                        <img id="image" src="Images/PicturesSubject/DefaultPicture.jpg" width="300px" height=" 250px" class="block1"/>
-                                    <%-- </div>--%>
+                                        <img id="image" alt="Новая картинка" src="Images/PicturesSubject/DefaultPicture.jpg" width="300px" height=" 250px"/>
+                                        
                                         <br />
                                         <asp:UpdateProgress ID="UpdateProgress_Tab1" runat="server" AssociatedUpdatePanelID="UpdatePanel_Tab1">
                 <ProgressTemplate>
@@ -235,11 +232,13 @@
                     </div>
                 </ProgressTemplate>
                 </asp:UpdateProgress>
+
                                         <dx:ASPxButton ID="but_enter3" runat="server"   
                                             OnClick="but_enter_Click" Text="Сохранить" CssClass="layoutButton" 
                                             CssFilePath="~/Styles/Site.css">
                                             
                                         </dx:ASPxButton>
+                
                 <br />
                  <br />
                 </ContentTemplate>
