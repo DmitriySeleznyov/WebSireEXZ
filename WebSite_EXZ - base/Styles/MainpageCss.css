@@ -1,0 +1,21 @@
+﻿body {
+    background: #EBEBEB;
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.blockpicture {
+    border: solid 2px black;
+    float: left;
+    width: 35%
+       
+}
+.blocktable {
+    border: solid 2px black;
+    float: right;
+    width: 65%
+}
