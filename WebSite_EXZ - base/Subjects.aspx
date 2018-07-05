@@ -215,18 +215,18 @@
                                             <browsebutton text="Загрузить">
                                             </browsebutton>
                                         </dx:ASPxUploadControl>
-                                     <div class="block1">
-                                        <br  /><dx:ASPxLabel runat="server" Text="Текущее изображение устройства"></dx:ASPxLabel>
+                                        <br/>
+<%--                                     <div class="block1">--%>
+                                        <dx:ASPxLabel runat="server" Text="Текущее изображение устройства"></dx:ASPxLabel>
                                         <dx:ASPxLabel runat="server"  padding-left="75px" Text="Новое изображение устройства" CssClass="somestyle" CssFilePath="~/Styles/Site.css"></dx:ASPxLabel> <br />
-                                       
-                                            <dx:ASPxBinaryImage ID="ASPxBinaryImageSubject" runat="server" Height="250px" Width="300px" ShowLoadingImage="True" alt="Текущая картинка">
+                                         <div />
+                                            <dx:ASPxBinaryImage ID="ASPxBinaryImageSubject" runat="server" Height="250px" Width="300px" ShowLoadingImage="True" alt="Текущая картинка" CssClass="block1" CssFilePath="~/Styles/Site.css">
                                             </dx:ASPxBinaryImage>
-                                        <img id="image" alt="Новая картинка" src="Images/PicturesSubject/DefaultPicture.jpg" width="300px" height=" 250px"/>
-                                        
+                                        <img id="image" src="Images/PicturesSubject/DefaultPicture.jpg" width="300px" height=" 250px" class="block1"/>
+                                    <%-- </div>--%>
                                         <br />
                                         <asp:UpdateProgress ID="UpdateProgress_Tab1" runat="server" AssociatedUpdatePanelID="UpdatePanel_Tab1">
                 <ProgressTemplate>
-                    <div />
                     <div>
                         Виконання...
                         <img src="Images\ajax-loader.gif" alt=" " style="vertical-align:middle" />
@@ -235,13 +235,11 @@
                     </div>
                 </ProgressTemplate>
                 </asp:UpdateProgress>
-
                                         <dx:ASPxButton ID="but_enter3" runat="server"   
                                             OnClick="but_enter_Click" Text="Сохранить" CssClass="layoutButton" 
                                             CssFilePath="~/Styles/Site.css">
                                             
                                         </dx:ASPxButton>
-                
                 <br />
                  <br />
                 </ContentTemplate>
