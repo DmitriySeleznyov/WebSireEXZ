@@ -319,7 +319,6 @@ public partial class About : System.Web.UI.Page
     public void ClearDirectoriPictureSubject()
     {
         string directoria = String.Format("C:\\Users\\User\\source\\repos\\WebSiteEXZ\\WebSite_EXZ - base\\Images\\PicturesSubject\\");
-        string[] files = Directory.GetFiles(directoria);
 
         foreach (string file in Directory.GetFiles(directoria))
         { File.Delete(file); }
