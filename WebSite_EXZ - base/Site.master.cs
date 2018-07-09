@@ -124,7 +124,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                 if ((TreeCommand != "") && (TreeCommand != null))
                     SqlDataSource22.SelectCommand = TreeCommand;
                 else
-                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM \"Subject\" order by subject_name");
+                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_id, add_info, latitude, longitude FROM \"Subject\" order by subject_name");
                 }
         }
 
@@ -141,7 +141,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                 TreeLabel.Text = "СКЗ";
                 if (!Page.User.IsInRole("Members"))
                 {
-                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM \"Subject\" where subject_type='СКЗ' order by subject_name");
+                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_id, add_info, latitude, longitude FROM \"Subject\" where subject_type='СКЗ' order by subject_name");
                     TreeCommand = SqlDataSource22.SelectCommand;
                 }
                 ASPxTreeList1.DataBind();
@@ -150,7 +150,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                 TreeLabel.Text = "БСЗ";
                 if (!Page.User.IsInRole("Members"))
                 {
-                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM \"Subject\" where subject_type='БСЗ' or subject_type='БКМУ+БСЗ' order by subject_name");
+                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_id, add_info, latitude, longitude FROM \"Subject\" where subject_type='БСЗ' or subject_type='БКМУ+БСЗ' order by subject_name");
                     TreeCommand = SqlDataSource22.SelectCommand;
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "BSZSet", "BSZSet()", true);
                 }
@@ -160,7 +160,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                 TreeLabel.Text = "БКМУ";
                 if (!Page.User.IsInRole("Members"))
                 {
-                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM \"Subject\" where subject_type='БКМУ' order by subject_name");
+                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_id, add_info, latitude, longitude FROM \"Subject\" where subject_type='БКМУ' order by subject_name");
                     TreeCommand = SqlDataSource22.SelectCommand;
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "BKMUSet","BKMUSet()", true);
                 }
@@ -170,7 +170,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                 TreeLabel.Text = "Все объекты";
                 if (!Page.User.IsInRole("Members"))
                 {
-                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM \"Subject\"");
+                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_id, add_info, latitude, longitude FROM \"Subject\"");
                     TreeCommand = SqlDataSource22.SelectCommand;
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "AllSet", "AllSet()", true);
                 }
@@ -180,7 +180,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                 TreeLabel.Text = "СДЗ";
                 if (!Page.User.IsInRole("Members"))
                 {
-                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM \"Subject\" where subject_type='СДЗ' order by subject_name");
+                    SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_id, add_info, latitude, longitude FROM \"Subject\" where subject_type='СДЗ' order by subject_name");
                     TreeCommand = SqlDataSource22.SelectCommand;
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "SDZSet", "SDZSet()", true);
                 }
@@ -268,8 +268,8 @@ public partial class SiteMaster : System.Web.UI.MasterPage
             Label_type.Text = ASPxTreeList1.FocusedNode.GetValue("subject_type").ToString();
             output.WriteElementString("Код", ASPxTreeList1.FocusedNode.GetValue("subject_code").ToString());
             Label_code.Text = ASPxTreeList1.FocusedNode.GetValue("subject_code").ToString();
-            output.WriteElementString("Объект", ASPxTreeList1.FocusedNode.GetValue("object_name").ToString());
-            Label_object.Text = ASPxTreeList1.FocusedNode.GetValue("object_name").ToString();
+            output.WriteElementString("Объект", ASPxTreeList1.FocusedNode.GetValue("object_id").ToString());
+            Label_object.Text = ASPxTreeList1.FocusedNode.GetValue("object_id").ToString();
             output.WriteElementString("Описание", ASPxTreeList1.FocusedNode.GetValue("add_info").ToString());
             Label_info.Text = ASPxTreeList1.FocusedNode.GetValue("add_info").ToString();
 
@@ -289,7 +289,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
 
     protected void FilterDisableASPxButton1_Click(object sender, EventArgs e)
     {
-        SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM \"Subject\"");
+        SqlDataSource22.SelectCommand = String.Format("SELECT subject_id, subject_name, subject_type, subject_code, object_id, add_info, latitude, longitude FROM \"Subject\"");
         TreeCommand = SqlDataSource22.SelectCommand;
         Page.ClientScript.RegisterStartupScript(this.GetType(), "AllSet", "AllSet()", true);
     }

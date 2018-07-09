@@ -19,7 +19,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <br />
-    <dx:ASPxBinaryImage ID="ASPxBinaryImage1" runat="server" CssClass="blockpicture" CssFilePath="~/Styles/MainpageCss.css" Height="500px" Width="34%">
+    <dx:ASPxBinaryImage ID="ASPxBinaryImage1" runat="server" CssClass="blockpicture" CssFilePath="~/Styles/MainpageCss.css" Height="500px" Width="34%" AlternateText="Для данного устройства нет изображения!" >
     </dx:ASPxBinaryImage>
     <dx:ASPxPageControl ID="ASPxPageControl2" runat="server" ActiveTabIndex="0" CssClass="blocktable" CssFilePath="~/Styles/MainpageCss.css" Theme="Youthful" Height="500px">
         <tabpages>

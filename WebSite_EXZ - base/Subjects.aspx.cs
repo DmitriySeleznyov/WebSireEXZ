@@ -113,11 +113,12 @@ public partial class About : System.Web.UI.Page
                     tb_subject_id.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_id")).ToString();
                     tb_subject_code.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_code")).ToString();
                     tb_subject_add_info.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("add_info")).ToString();
-                    tb_object_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("object_name")).ToString();
+                    tb_object_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("object_id")).ToString();
                     tb_subject_loc.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("loc")).ToString();
                     tb_subject_lat.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("latitude")).ToString();
                     tb_subject_lon.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("longitude")).ToString();
-                    combox_subject_type.SelectedIndex = combox_subject_type.Items.FindByText(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString()).Index;
+                    combox_subject_type.Text= dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString();
+                    //combox_subject_type.SelectedIndex = combox_subject_type.Items.FindByText(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString()).Index;
                     var pic = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("picture"));
                     if (pic.ToString() != "")
                     { ASPxBinaryImageSubject.ContentBytes = (byte[])pic; }
@@ -201,7 +202,7 @@ public partial class About : System.Web.UI.Page
 
     public string LastFile()
     {
-        var directory = new DirectoryInfo("C:\\Users\\User\\source\\repos\\WebSiteEXZ\\WebSite_EXZ - base\\Images\\PicturesSubject\\");
+        var directory = new DirectoryInfo("O:\\repos\\WebSiteEXZ\\WebSite_EXZ - base\\Images\\PicturesSubject\\");
         var myFile = directory.GetFiles()
                      .OrderByDescending(f => f.LastWriteTime)
                      .First();
@@ -216,17 +217,17 @@ public partial class About : System.Web.UI.Page
 
             short_name = GetShortName();
             byte[] pic = jpgtobytea();
-            string subject_insert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_name, add_info, loc, latitude, longitude) select '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'";
-            string subject_update = "update \"Subject\" set subject_name='{0}', subject_type='{1}', subject_code='{2}', object_name='{3}', add_info='{4}', loc='{5}', latitude='{6}', longitude='{7}' where subject_id='{8}'";
+            string subject_insert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_id, add_info, loc, latitude, longitude) select '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'";
+            string subject_update = "update \"Subject\" set subject_name='{0}', subject_type='{1}', subject_code='{2}', object_id='{3}', add_info='{4}', loc='{5}', latitude='{6}', longitude='{7}' where subject_id='{8}'";
 
             //var upsert_subject = new NpgsqlCommand(String.Format(String.Format("WITH upsert AS ({0} RETURNING *) {1} WHERE NOT EXISTS (SELECT * FROM upsert)", subject_update, subject_insert), tb_subject_name.Text, combox_subject_type.Text, tb_subject_code.Text, apostrof(Request.Form[tb_object_name.UniqueID]), apostrof(Request.Form[tb_subject_add_info.UniqueID]), apostrof(Request.Form[tb_subject_loc.UniqueID]), Request.Form[tb_subject_lat.UniqueID].Replace(",", "."), Request.Form[tb_subject_lon.UniqueID].Replace(",", "."), tb_subject_id.Text), myConn);
-            string queryinsert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_name, add_info, loc, latitude, longitude , picture) " +
+            string queryinsert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_id, add_info, loc, latitude, longitude , picture) " +
                 "select '" + tb_subject_name.Text + "', '" + combox_subject_type.Text + "', '" + tb_subject_code.Text + "', '" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', '"
                 + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', '" + apostrof(Request.Form[tb_subject_loc.UniqueID]) + "', '"
                 + stringrefactor(Request.Form[tb_subject_lat.UniqueID]) + "', '" + stringrefactor(Request.Form[tb_subject_lon.UniqueID]) + "' , '" + pic + "'";
             string queryupdate = "update \"Subject\" set " +
                 "subject_name='" + tb_subject_name.Text + "', subject_type='" + combox_subject_type.Text + "', subject_code='" + tb_subject_code.Text +
-                "', object_name='" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', add_info='" + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', loc='"
+                "', object_id='" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', add_info='" + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', loc='"
                 + apostrof(Request.Form[tb_subject_loc.UniqueID]) + "', latitude='" + stringrefactor(Request.Form[tb_subject_lat.UniqueID])
                 + "', longitude='" + stringrefactor(Request.Form[tb_subject_lon.UniqueID]) + "' , picture=:pic where subject_id='666'";
 
@@ -318,7 +319,7 @@ public partial class About : System.Web.UI.Page
     /// </summary>
     public void ClearDirectoriPictureSubject()
     {
-        string directoria = String.Format("C:\\Users\\User\\source\\repos\\WebSiteEXZ\\WebSite_EXZ - base\\Images\\PicturesSubject\\");
+        string directoria = String.Format("O:\\repos\\WebSiteEXZ\\WebSite_EXZ - base\\Images\\PicturesSubject\\");
 
         foreach (string file in Directory.GetFiles(directoria))
         { File.Delete(file); }

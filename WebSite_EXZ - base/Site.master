@@ -483,7 +483,7 @@
                                 </dx:TreeListTextColumn>
                                 <dx:TreeListTextColumn AutoFilterCondition="Default" FieldName="subject_code" Name="subject_code" ShowInCustomizationForm="True" ShowInFilterControl="Default" Visible="False" VisibleIndex="4">
                                 </dx:TreeListTextColumn>
-                                <dx:TreeListTextColumn AutoFilterCondition="Default" FieldName="object_name" Name="object_name" ShowInCustomizationForm="True" ShowInFilterControl="Default" Visible="False" VisibleIndex="5">
+                                <dx:TreeListTextColumn AutoFilterCondition="Default" FieldName="object_id" Name="object_id" ShowInCustomizationForm="True" ShowInFilterControl="Default" Visible="False" VisibleIndex="5">
                                 </dx:TreeListTextColumn>
                                 <dx:TreeListTextColumn AutoFilterCondition="Default" FieldName="add_info" Name="add_info" ShowInCustomizationForm="True" ShowInFilterControl="Default" Visible="False" VisibleIndex="6">
                                 </dx:TreeListTextColumn>
@@ -516,7 +516,7 @@
                         <asp:SqlDataSource runat="server" 
                         ConnectionString="<%$ ConnectionStrings:PostgresConnectionString %>" 
                         ProviderName="<%$ ConnectionStrings:PostgresConnectionString.ProviderName %>" 
-                        SelectCommand="SELECT subject_id, subject_name, subject_type, subject_code, object_name, add_info, latitude, longitude FROM &quot;Subject&quot;order by subject_name" 
+                        SelectCommand="SELECT subject_id, subject_name, subject_type, subject_code, object_id, add_info, latitude, longitude FROM &quot;Subject&quot;order by subject_name" 
                         ID="SqlDataSource22"></asp:SqlDataSource>
 
 

@@ -95,7 +95,7 @@ public partial class Maps : System.Web.UI.Page
 
             List<string> DeviceName = new List<string>();
             List<string> DeviceID = new List<string>();
-            List<string> Type = new List<string>();
+            List<int> Type = new List<int>();
             List<string> Latd = new List<string>();
             List<string> Longt = new List<string>();
 
@@ -105,7 +105,12 @@ public partial class Maps : System.Web.UI.Page
                 {
                     DeviceName.Add(dataReaderGetSubject.GetString(dataReaderGetSubject.GetOrdinal("subject_name")));
                     DeviceID.Add(Convert.ToString(dataReaderGetSubject.GetInt32(dataReaderGetSubject.GetOrdinal("subject_id"))));
-                    Type.Add(dataReaderGetSubject.GetString(dataReaderGetSubject.GetOrdinal("subject_type")));
+                    try {
+                        Type.Add(dataReaderGetSubject.GetInt32(dataReaderGetSubject.GetOrdinal("subject_type")));
+                    }
+                    catch (Exception ex)
+                    { Type.Add(0); }
+                    //Type.Add(dataReaderGetSubject.GetString(dataReaderGetSubject.GetOrdinal("subject_type")));
                     try
                     {
                         Latd.Add(Convert.ToString(dataReaderGetSubject.GetDouble(dataReaderGetSubject.GetOrdinal("latitude")).ToString(CultureInfo.InvariantCulture.NumberFormat)));

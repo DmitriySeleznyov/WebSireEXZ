@@ -81,7 +81,7 @@ public partial class Main : System.Web.UI.Page
                     tb_subject_id.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_id")).ToString();
                     tb_subject_code.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_code")).ToString();
                     tb_subject_add_info.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("add_info")).ToString();
-                    tb_object_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("object_name")).ToString();
+                    tb_object_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("object_id")).ToString();
                     tb_subject_loc.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("loc")).ToString();
                     tb_subject_lat.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("latitude")).ToString();
                     tb_subject_lon.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("longitude")).ToString();

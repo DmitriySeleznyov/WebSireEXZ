@@ -10,7 +10,7 @@
 
 .blockpicture {
     border: solid 2px black;
-    float: left;
+    float: left; 
 }
 .blocktable {
     width:65%;

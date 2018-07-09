@@ -1,17 +1,2 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<markers>
-    <marker>
-        <Name>СКЗ №1</Name>
-        <Type>СКЗ</Type>
-        <Latitude>44.532358</Latitude>
-        <Longitude>38.931825</Longitude>
-        <Address />
-        <Sum_pot>-1.71</Sum_pot>
-        <Pol_pot>-0.96</Pol_pot>
-        <Curr>16.2</Curr>
-        <Volt>45.6</Volt>
-        <Temper>41</Temper>
-        <State>0</State>
-        <Date>13.04.2017 6:10:05</Date>
-    </marker>
-</markers>
+<markers />
