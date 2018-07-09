@@ -135,10 +135,11 @@
                </a>
                 <div id="menu" class="menu">
                 <asp:Menu ID="NavigationMenu" runat="server" 
-                        IncludeStyleBlock="False" Orientation="Horizontal" CssClass="menu">
+                        IncludeStyleBlock="False" Orientation="Horizontal" CssClass="menu" OnMenuItemClick="NavigationMenu_MenuItemClick">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Maps.aspx" Text="Карта"/>
                         <asp:MenuItem NavigateUrl="~/Subjects.aspx" Text="Объекты"/>
+                        <asp:MenuItem NavigateUrl="~/WorkWithSubject.aspx" Text="Работа с объектами" Value="Работа с объектами"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Analysis.aspx" Text="Анализ"/>
                         <asp:MenuItem NavigateUrl="~/Reports.aspx" Text="Отчеты"/>
                         <asp:MenuItem NavigateUrl="~/Classificators.aspx" Text="Справочники"/>
@@ -217,7 +218,7 @@
 
          <Panes>
 
-            <dx:SplitterPane AutoHeight="True" MinSize="310px" MaxSize="310px" Size="310px">
+            <dx:SplitterPane AutoHeight="True" MinSize="310px" MaxSize="310px" Size="310px" Name="Somepane1">
                 <ContentCollection>
                     <dx:SplitterContentControl ID="SplitterContentControl3" runat="server">
             <div id="leftbox">
@@ -607,7 +608,7 @@
   </dx:SplitterContentControl>
 </ContentCollection>
 </dx:SplitterPane>
-<dx:SplitterPane AutoWidth="True" AutoHeight="True" MinSize="400px">
+<dx:SplitterPane AutoWidth="True" AutoHeight="True" MinSize="400px" Name="Somepane2">
 <ContentCollection>
 <dx:SplitterContentControl runat="server" SupportsDisabledAttribute="True">
         <div class="main">

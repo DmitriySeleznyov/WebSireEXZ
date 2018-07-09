@@ -41,7 +41,11 @@ public partial class SiteMaster : System.Web.UI.MasterPage
    
     protected void Page_PreRender(object sender, EventArgs e)
     {
-
+        if (Page.Title == "Система дистанционного мониторинга и управления ЭХЗ -Работа с объектом")
+        {
+            ASPxSplitter1.Panes[1].Collapsed = true;
+            ASPxSplitter2.Panes[0].Collapsed = true;
+        }
         foreach (System.Web.UI.Control control in NavigationMenu.Controls)
         {
             HtmlAnchor link = control as HtmlAnchor;
@@ -57,7 +61,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
 
     protected void Page_Init(object sender, EventArgs e)
     {
-
+        ASPxSplitter1.Panes[1].Collapsed = false;
         if (Page.User.IsInRole("Region_Managers"))
         {
 
@@ -66,7 +70,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
         if (!((Page.User.IsInRole("Region_Managers")) || (Page.User.IsInRole("Administrators")) || (Page.User.IsInRole("Members")) || (Page.User.IsInRole("Area_Managers"))))
         {
             Response.Redirect("~/Default.aspx");
@@ -86,7 +90,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
             ASPxSplitter1.GetPaneByName("RightBox").Collapsed = false;
             if (NavigationMenu.Items.Count > 4)
             {
-                NavigationMenu.Items.RemoveAt(5);
+                //    NavigationMenu.Items.RemoveAt(5);
                 NavigationMenu.Items.RemoveAt(4);
             }
         }
@@ -311,4 +315,9 @@ public partial class SiteMaster : System.Web.UI.MasterPage
     }
 
 
+
+    protected void NavigationMenu_MenuItemClick(object sender, MenuEventArgs e)
+    {
+        var a = e.Item.Target.ToString();
+    }
 }
