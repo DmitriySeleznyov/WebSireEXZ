@@ -137,12 +137,11 @@
                 <asp:Menu ID="NavigationMenu" runat="server" 
                         IncludeStyleBlock="False" Orientation="Horizontal" CssClass="menu" OnMenuItemClick="NavigationMenu_MenuItemClick">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Maps.aspx" Text="Карта"/>
+                        <asp:MenuItem NavigateUrl="~/Main.aspx" Text="Главная страница" Value="Главная страница"/>
                         <asp:MenuItem NavigateUrl="~/Subjects.aspx" Text="Объекты"/>
                         <asp:MenuItem NavigateUrl="~/WorkWithSubject.aspx" Text="Работа с объектами" Value="Работа с объектами"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Analysis.aspx" Text="Анализ"/>
                         <asp:MenuItem NavigateUrl="~/Reports.aspx" Text="Отчеты"/>
-                        <asp:MenuItem NavigateUrl="~/Classificators.aspx" Text="Справочники"/>
                         <asp:MenuItem NavigateUrl="~/Users.aspx" Text="Пользователи"/>
                     </Items>
 

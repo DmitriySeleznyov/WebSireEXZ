@@ -1,7 +1,13 @@
-﻿using DevExpress.Web.ASPxTreeList;
+﻿using DevExpress.Web.ASPxGauges.Gauges;
+using DevExpress.Web.ASPxGauges.Gauges.Circular;
+using DevExpress.Web.ASPxTreeList;
+using DevExpress.XtraGauges.Base;
+using DevExpress.XtraGauges.Core.Drawing;
+using DevExpress.XtraGauges.Core.Model;
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
@@ -17,7 +23,7 @@ public partial class Main : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        ASPxGaugeControl7.Value = "85";
     }
 
     protected void Page_PreRender(object sender, EventArgs e)

@@ -11,6 +11,8 @@ body
 }
 .blockpicture {
     border: solid 2px black;
+    padding-right : 10px;
+    padding-left: 0px;
 }
 .block1 {
     border: solid 2px black;
@@ -199,12 +201,7 @@ first child of the left and right table columns */
 .main
 {
  
-/*    position:relative;*/
     padding: 0px 12px;
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-top: 0px;
 	min-height: 420px;
   	background-color: #fff;
 
@@ -232,9 +229,6 @@ div#logo
     display: table-cell;
     width: 320px;
     height: 53px;
-    float: left;
-    margin-left: 20px;
-    margin-top: 5px;
 }
 
 div#gerb
@@ -245,8 +239,6 @@ div#gerb
     display: table-cell;
     width: 150px;
     height: 82px;
-    float: left;
-    margin-left: 65px;
 }
 
 div#map_canvas
@@ -450,12 +442,8 @@ div#actionbox .active
     border-right: black thin solid;
     text-align: left;
     text-indent: 0%;
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-bottom: 3px;
     list-style-type: none;
     margin: 3px;
-    padding-top: 3px;
     background-color: white;
     height: 25%;
     overflow: auto;

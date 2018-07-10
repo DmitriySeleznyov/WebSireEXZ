@@ -23,7 +23,7 @@ public partial class About : System.Web.UI.Page
         {
 //              Response.Redirect("~/Analysis.aspx");
 //            Response.Redirect("~/Monitor.aspx");
-            Response.Redirect("~/Maps.aspx");
+            Response.Redirect("~/Main.aspx");
             Response.End();
 
         }

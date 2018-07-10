@@ -37,7 +37,7 @@
     var markers = [
     <asp:Repeater ID="rptMarkers" runat="server">
     <ItemTemplate>
-             {
+            {
                 "title": '<%# Eval("Name") %>',
                 "lat": '<%# Eval("Latitude") %>',
                 "lng": '<%# Eval("Longitude") %>',
@@ -661,7 +661,6 @@ function initialize() {
                     case "Date": var Dat_skz = getXMLNodeText(param_skz);
                         break;
                 }
-
             }
         // содержимое инфоокна
             var contentString_skz = '<div><div style="text-align:center"><b>' + Name_skz + '</b></br>' + '<b>' + Dat_skz + '</b></div><b>Сум. пот. = </b>' +
