@@ -261,9 +261,6 @@ __pycache__/
 *.pyc
 
 
-
-
-
 DXTempFolder/
 .vs/
 *.vs/
@@ -274,10 +271,6 @@ DXTempFolder/
 *.suo
 .suo
 storage.ide
-*.ide
-*.ide-shm
-*.ide-wal
-
 storage.ide-shm
 storage.ide-wal
 
