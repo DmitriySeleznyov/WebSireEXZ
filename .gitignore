@@ -7,6 +7,10 @@
 *.userosscache
 *.sln.docstates
 
+storage.ide-shm
+storage.ide-wal
+/DXTempFolder/BinaryData/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -254,7 +258,6 @@ paket-files/
 *.sln.iml
 
 # CodeRush
-.cr/
 
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
