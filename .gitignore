@@ -274,6 +274,10 @@ DXTempFolder/
 *.suo
 .suo
 storage.ide
+*.ide
+*.ide-shm
+*.ide-wal
+
 storage.ide-shm
 storage.ide-wal
 
