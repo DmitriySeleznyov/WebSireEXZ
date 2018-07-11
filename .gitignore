@@ -263,8 +263,18 @@ __pycache__/
 
 DXTempFolder/
 .vs/
+*.vs/
+.v15/
 
 
+
+*.suo
+.suo
+storage.ide
+storage.ide-shm
+storage.ide-wal
 
 /DXTempFolder
 /.vs
+/*.vs
+/.v15
