@@ -261,7 +261,8 @@ __pycache__/
 *.pyc
 
 
-
+DXTempFolder/
+.vs/
 
 
 
