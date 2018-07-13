@@ -16,3 +16,7 @@
     width:65%;
     float: right;
 }
+.pictureForobject {
+    border: solid 2px black;
+    float: right;
+}

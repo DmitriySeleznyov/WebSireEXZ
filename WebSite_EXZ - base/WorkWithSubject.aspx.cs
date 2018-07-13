@@ -26,6 +26,7 @@ public partial class WorkWithSubject : System.Web.UI.Page
             {
                 ASPxTreeView1.Nodes.Remove(ASPxTreeView1.Nodes[0]);
             }
+            
 
             while (dataReaderGetObject_type.Read())
             {

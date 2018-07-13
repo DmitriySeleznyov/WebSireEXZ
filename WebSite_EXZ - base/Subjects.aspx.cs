@@ -217,24 +217,24 @@ public partial class About : System.Web.UI.Page
 
             short_name = GetShortName();
             byte[] pic = jpgtobytea();
-            string subject_insert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_id, add_info, loc, latitude, longitude) select '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'";
-            string subject_update = "update \"Subject\" set subject_name='{0}', subject_type='{1}', subject_code='{2}', object_id='{3}', add_info='{4}', loc='{5}', latitude='{6}', longitude='{7}' where subject_id='{8}'";
-            //var upsert_subject = new NpgsqlCommand(String.Format(String.Format("WITH upsert AS ({0} RETURNING *) {1} WHERE NOT EXISTS (SELECT * FROM upsert)", subject_update, subject_insert), tb_subject_name.Text, combox_subject_type.Text, tb_subject_code.Text, apostrof(Request.Form[tb_object_name.UniqueID]), apostrof(Request.Form[tb_subject_add_info.UniqueID]), apostrof(Request.Form[tb_subject_loc.UniqueID]), Request.Form[tb_subject_lat.UniqueID].Replace(",", "."), Request.Form[tb_subject_lon.UniqueID].Replace(",", "."), tb_subject_id.Text), myConn);
+            //string subject_insert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_id, add_info, loc, latitude, longitude) select '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}'";
+            //string subject_update = "update \"Subject\" set subject_name='{0}', subject_type='{1}', subject_code='{2}', object_id='{3}', add_info='{4}', loc='{5}', latitude='{6}', longitude='{7}' where subject_id='{8}'";
             string queryinsert = "insert into \"Subject\" (subject_name, subject_type, subject_code, object_id, add_info, loc, latitude, longitude , picture) " +
-                "select '" + tb_subject_name.Text + "', '" + combox_subject_type.Text + "', '" + tb_subject_code.Text + "', '" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', '"
-                + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', '" + apostrof(Request.Form[tb_subject_loc.UniqueID]) + "', '"
-                + stringrefactor(Request.Form[tb_subject_lat.UniqueID]) + "', '" + stringrefactor(Request.Form[tb_subject_lon.UniqueID]) + "' , '" + pic + "'";
-            string queryupdate = "update \"Subject\" set " +
-                "subject_name='" + tb_subject_name.Text + "', subject_type='" + combox_subject_type.Text + "', subject_code='" + tb_subject_code.Text +
-                "', object_id='" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', add_info='" + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', loc='"
-                + apostrof(Request.Form[tb_subject_loc.UniqueID]) + "', latitude='" + stringrefactor(Request.Form[tb_subject_lat.UniqueID])
-                + "', longitude='" + stringrefactor(Request.Form[tb_subject_lon.UniqueID]) + "' , picture=:pic where subject_id='666'";
-
+                "select '" + tb_subject_name.Text + "', '" + combox_subject_type.Value + "', '" +
+                tb_subject_code.Text + "', '" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', '"
+                + apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', '" + 
+                apostrof(Request.Form[tb_subject_loc.UniqueID]) + "', '"
+                + stringrefactor(Request.Form[tb_subject_lat.UniqueID]) + "', '" + 
+                stringrefactor(Request.Form[tb_subject_lon.UniqueID]) + "' , '" + pic + "'";
+            string queryupdate = "update \"Subject\" set subject_name='" + tb_subject_name.Text + "', subject_type='" + combox_subject_type.Text +
+                "', subject_code='" + tb_subject_code.Text + "', object_id='" + apostrof(Request.Form[tb_object_name.UniqueID]) + "', add_info='" + 
+                apostrof(Request.Form[tb_subject_add_info.UniqueID]) + "', loc='" + apostrof(Request.Form[tb_subject_loc.UniqueID]) + "', latitude='" + 
+                stringrefactor(Request.Form[tb_subject_lat.UniqueID]) + "', longitude='" + stringrefactor(Request.Form[tb_subject_lon.UniqueID]) + 
+                "' , picture=:pic where subject_id='"+ tb_subject_id.Text+"'";
             myConn.Open();
             NpgsqlCommand np = new NpgsqlCommand(queryupdate, myConn);
             np.Parameters.Add(new NpgsqlParameter("pic", pic));
             np.ExecuteNonQuery();
-            //upsert_subject.ExecuteNonQuery();
         }
         catch (NpgsqlException ex)
         {
@@ -245,8 +245,6 @@ public partial class About : System.Web.UI.Page
             ClearDirectoriPictureSubject();
 
         }
-
-
     }
 
     public static string NewMethod(string a)

@@ -23,7 +23,8 @@ public partial class Main : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        ASPxGaugeControl7.Value = "85";
+
+        //        ASPxGaugeControl7.Value = "85";
     }
 
     protected void Page_PreRender(object sender, EventArgs e)
@@ -72,32 +73,77 @@ public partial class Main : System.Web.UI.Page
 
     protected void SubjectsBuild()
     {
+        string subject_id="" ,skz ="" , epcode="" , subject_type="";
         short_name = GetShortName();
         NpgsqlConnection myConn1 = new NpgsqlConnection(connString);
-
-
-       
-                short_name = GetShortName();
-                NpgsqlCommand cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"Subject\" where subject_id=(SELECT subject_id FROM \"Subject\" WHERE subject_name='{0}')", short_name), myConn1);
-                myConn1.Open();
-                NpgsqlDataReader dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
-                while (dataReaderGetSubject.Read())
-                {
-                    /*tb_subject_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_name")).ToString();
-                    tb_subject_id.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_id")).ToString();
-                    tb_subject_code.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_code")).ToString();
-                    tb_subject_add_info.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("add_info")).ToString();
-                    tb_object_name.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("object_id")).ToString();
-                    tb_subject_loc.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("loc")).ToString();
-                    tb_subject_lat.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("latitude")).ToString();
-                    tb_subject_lon.Text = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("longitude")).ToString();
-                    combox_subject_type.SelectedIndex = combox_subject_type.Items.FindByText(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString()).Index;*/
-                    var pic = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("picture"));
-                    if (pic.ToString() != "")
-                    { ASPxBinaryImage1.ContentBytes = (byte[])pic; }
+        short_name = GetShortName();
+        NpgsqlCommand cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"Subject\" where subject_id=(SELECT subject_id FROM \"Subject\" WHERE subject_name='{0}')", short_name), myConn1);
+        myConn1.Open();
+        NpgsqlDataReader dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
+        while (dataReaderGetSubject.Read())
+        {
+            var pic = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("picture"));
+            subject_id = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_id")).ToString();
+            subject_type = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("subject_type")).ToString();
+            
+            if (pic.ToString() != "")
+            {
+                ASPxBinaryImage1.ContentBytes = (byte[])pic;
+            }
                     
+        }
+        switch (subject_type)
+        {
+            case "0"://СКЗ
+                {
+                    cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"SKZ\" where subject_id='{0}'", subject_id), myConn1);
+                    dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
+                    while (dataReaderGetSubject.Read())
+                    {
+                        skz = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("SKZ_id")).ToString();
+                    }
+
+                    cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"Monitoring_EXZ_SKZ\" where \"SKZ_id\"='{0}'", skz), myConn1);
+                    dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
+                    while (dataReaderGetSubject.Read())
+                    {
+                        ASPxGaugeControl35.Value = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("Check_date_time")).ToString();
+                        ASPxGaugeControl13.Value = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("SKZ_voltage")).ToString();
+                        ASPxGaugeControl11.Value = Math.Round(double.Parse(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("SKZ_voltage")).ToString())).ToString();
+                        ASPxGaugeControl12.Value = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("SKZ_current")).ToString();
+                        ASPxGaugeControl10.Value = Math.Round(double.Parse(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("SKZ_current")).ToString())).ToString();
+                        ASPxGaugeControl33.Value = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("Temper")).ToString();
+                    }
+
+                    cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"Electrodes_SKZ\" where \"SKZ_id\"='{0}'", skz), myConn1);
+                    dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
+                    while (dataReaderGetSubject.Read())
+                    {
+                        epcode = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("EP_code")).ToString();
+                    }
+
+                    cmd_get_subjectdata = new NpgsqlCommand(String.Format("select *  from \"Monitoring_EP_SKZ\" where \"EP_SKZ_id\"='{0}'", epcode), myConn1);
+                    dataReaderGetSubject = cmd_get_subjectdata.ExecuteReader();
+                    while (dataReaderGetSubject.Read())
+                    {
+
+                        ASPxGaugeControl8.Value = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("Om_pot")).ToString();
+                        ASPxGaugeControl9.Value = dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("Pol_pot")).ToString();
+                        ASPxGaugeControl6.Value = Math.Round(double.Parse(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("Om_pot")).ToString())).ToString();
+                        ASPxGaugeControl7.Value = Math.Round(double.Parse(dataReaderGetSubject.GetValue(dataReaderGetSubject.GetOrdinal("Pol_pot")).ToString())).ToString();
+                    }
+                    break;
                 }
-                myConn1.Close();
+            case "6"://БКМУ
+                {
+                    break;
+                }
+            default:
+                break;
+        }
+        
+        
+        myConn1.Close();
     }
 
 }

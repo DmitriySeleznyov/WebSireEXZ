@@ -112,7 +112,7 @@
                         </tr>
                         </table>
                         <dx:ASPxPageControl ID="ASPxPageControl3" runat="server" ActiveTabIndex="0" 
-                                Theme="Youthful">
+                                Theme="Youthful" Height="345px">
                             <TabPages>
                                 <dx:TabPage Text="Канал 1">
                                     <TabImage IconID="gauges_gaugestylehalfcircular_16x16">
@@ -150,6 +150,15 @@
                                             </tr>
                                             <tr>
                                             <td width="100%">
+                                                <dx:ASPxLabel ID="ASPxLabel20" runat="server" Font-Size="Small" Text="Суммарный потенциал Поляризационный пот.       ">
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel21" runat="server" Text="Ток" Theme="Youthful">
+                                                    <borderleft bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="19px" />
+                                                    <borderright bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="35px" />
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel22" runat="server" Text="Вольтаж">
+                                                </dx:ASPxLabel>
+                                                <br />
                                             <dx:ASPxGaugeControl ID="ASPxGaugeControl6" runat="server" BackColor="White" 
                                                 Height="140px" LayoutInterval="6" Value="0.5" Width="140px">
                                                 <Gauges>
@@ -351,6 +360,374 @@
                                             </dx:ASPxGaugeControl>
                                                 <br />
                                             <dx:ASPxGaugeControl ID="ASPxGaugeControl8" runat="server" BackColor="White" 
+                                                Height="30px" Value="00.000" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="00.000">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl9" runat="server" BackColor="White" 
+                                                Height="30px" Value="00.000" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="00.000">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl12" runat="server" BackColor="White" 
+                                                Height="30px" Value="00.000" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="00.000">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl13" runat="server" BackColor="White" 
+                                                Height="30px" Value="00.000" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 70, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="00.000">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                                Температура, С<br /> <dx:ASPxGaugeControl ID="ASPxGaugeControl33" runat="server" 
+                                                    BackColor="White" Height="30px" Value="00.000" Width="140px">
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                    <Gauges>
+                                                        <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                            AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                            Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                            Text="00.000">
+                                                            <backgroundlayers>
+                                                                <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                    BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                    ZOrder="1000" />
+                                                            </backgroundlayers>
+                                                            <labels>
+                                                                <dx:LabelComponent AcceptOrder="1001" 
+                                                                    AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                    Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                            </labels>
+                                                        </dx:DigitalGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+                                                </dx:ASPxGaugeControl>
+                                            </td>
+                                            </tr>
+                                            </table>
+                                        </dx:ContentControl>
+                        </ContentCollection>
+                                </dx:TabPage>
+                                <dx:TabPage Text="Канал 2">
+                                    <TabImage IconID="gauges_gaugestylehalfcircular_16x16">
+                                    </TabImage>
+                                    <ContentCollection>
+                                        <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                                            <table>
+                                            <tr>
+                                            <td>
+                                                <dx:ASPxGaugeControl ID="ASPxGaugeControl1" runat="server" BackColor="White" 
+                                                    Height="20px" Value="3" Width="20px">
+                                                    <Gauges>
+                                                        <dx:StateIndicatorGauge Bounds="0, 0, 20, 20" Name="Gauge0">
+                                                            <indicators>
+                                                                <dx:StateIndicatorComponent AcceptOrder="0" Center="124, 124" 
+                                                                    Name="stateIndicatorComponent1" Size="200, 200" StateIndex="3">
+                                                                    <states>
+                                                                        <dx:IndicatorStateWeb Name="State1" ShapeType="ElectricLight1" />
+                                                                        <dx:IndicatorStateWeb Name="State2" ShapeType="ElectricLight2" />
+                                                                        <dx:IndicatorStateWeb Name="State3" ShapeType="ElectricLight3" />
+                                                                        <dx:IndicatorStateWeb Name="State4" ShapeType="ElectricLight4" />
+                                                                    </states>
+                                                                </dx:StateIndicatorComponent>
+                                                            </indicators>
+                                                        </dx:StateIndicatorGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                </dx:ASPxGaugeControl>
+                                                Включен<br />Активный режим<dx:ASPxTextBox ID="ASPxTextBox2" runat="server" 
+                                                Width="300px" Text="стабилизация по суммарному потенциалу">
+                                            </dx:ASPxTextBox>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td width="100%">
+                                                <dx:ASPxLabel ID="ASPxLabel1" runat="server" Font-Size="Small" Text="Суммарный потенциал Поляризационный пот.       ">
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Ток" Theme="Youthful">
+                                                    <borderleft bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="19px" />
+                                                    <borderright bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="35px" />
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Вольтаж">
+                                                </dx:ASPxLabel>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl2" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0.5" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Напряжение, В" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl5" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="15" Value="50" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Ток, А" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl20" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 248, 248" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                Name="scale1" StartPoint="62.5, 212" MinValue="-3000">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1000" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-2500" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-2500" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1000" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" Text="Суммарный потенциал, мВ" 
+                                                                TextOrientation="BottomToTop" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl36" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 58, 128" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                MinValue="-3000" Name="scale1" StartPoint="62.5, 212">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-850" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1150" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1150" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-850" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" 
+                                                                Text="Поляризационный потенциал, мВ" TextOrientation="BottomToTop" 
+                                                                ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+                                                
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl37" runat="server" BackColor="White" 
                                                 Height="30px" Value="95" Width="140px">
                                                 <Gauges>
                                                     <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
@@ -373,7 +750,7 @@
 
 <LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
                                             </dx:ASPxGaugeControl>
-                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl9" runat="server" BackColor="White" 
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl38" runat="server" BackColor="White" 
                                                 Height="30px" Value="48,800" Width="140px">
                                                 <Gauges>
                                                     <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
@@ -396,7 +773,7 @@
 
 <LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
                                             </dx:ASPxGaugeControl>
-                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl12" runat="server" BackColor="White" 
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl39" runat="server" BackColor="White" 
                                                 Height="30px" Value="-1200" Width="70px">
                                                 <Gauges>
                                                     <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
@@ -419,7 +796,7 @@
 
 <LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
                                             </dx:ASPxGaugeControl>
-                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl13" runat="server" BackColor="White" 
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl40" runat="server" BackColor="White" 
                                                 Height="30px" Value="-900" Width="70px">
                                                 <Gauges>
                                                     <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
@@ -443,7 +820,7 @@
 <LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
                                             </dx:ASPxGaugeControl>
                                                 <br />
-                                                Температура, С<br /> <dx:ASPxGaugeControl ID="ASPxGaugeControl33" runat="server" 
+                                                Температура, С<br /> <dx:ASPxGaugeControl ID="ASPxGaugeControl41" runat="server" 
                                                     BackColor="White" Height="30px" Value="+33,5" Width="140px">
 
 <LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
@@ -471,14 +848,6 @@
                                             </tr>
                                             </table>
                                         </dx:ContentControl>
-                        </ContentCollection>
-                                </dx:TabPage>
-                                <dx:TabPage Text="Канал 2">
-                                    <TabImage IconID="gauges_gaugestylehalfcircular_16x16">
-                                    </TabImage>
-                                    <ContentCollection>
-                                        <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                                        </dx:ContentControl>
                                     </ContentCollection>
                                 </dx:TabPage>
                                 <dx:TabPage Text="Канал 3">
@@ -486,6 +855,366 @@
                                     </TabImage>
                                     <ContentCollection>
                                         <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                                            <table>
+                                            <tr>
+                                            <td>
+                                                <dx:ASPxGaugeControl ID="ASPxGaugeControl42" runat="server" BackColor="White" 
+                                                    Height="20px" Value="3" Width="20px">
+                                                    <Gauges>
+                                                        <dx:StateIndicatorGauge Bounds="0, 0, 20, 20" Name="Gauge0">
+                                                            <indicators>
+                                                                <dx:StateIndicatorComponent AcceptOrder="0" Center="124, 124" 
+                                                                    Name="stateIndicatorComponent1" Size="200, 200" StateIndex="3">
+                                                                    <states>
+                                                                        <dx:IndicatorStateWeb Name="State1" ShapeType="ElectricLight1" />
+                                                                        <dx:IndicatorStateWeb Name="State2" ShapeType="ElectricLight2" />
+                                                                        <dx:IndicatorStateWeb Name="State3" ShapeType="ElectricLight3" />
+                                                                        <dx:IndicatorStateWeb Name="State4" ShapeType="ElectricLight4" />
+                                                                    </states>
+                                                                </dx:StateIndicatorComponent>
+                                                            </indicators>
+                                                        </dx:StateIndicatorGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                </dx:ASPxGaugeControl>
+                                                Включен<br />Активный режим<dx:ASPxTextBox ID="ASPxTextBox3" runat="server" 
+                                                Width="300px" Text="стабилизация по суммарному потенциалу">
+                                            </dx:ASPxTextBox>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td width="100%">
+                                                <dx:ASPxLabel ID="ASPxLabel4" runat="server" Font-Size="Small" Text="Суммарный потенциал Поляризационный пот.       ">
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Ток" Theme="Youthful">
+                                                    <borderleft bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="19px" />
+                                                    <borderright bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="35px" />
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Вольтаж">
+                                                </dx:ASPxLabel>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl43" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0.5" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Напряжение, В" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl44" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="15" Value="50" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Ток, А" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl45" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 248, 248" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                Name="scale1" StartPoint="62.5, 212" MinValue="-3000">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1000" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-2500" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-2500" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1000" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" Text="Суммарный потенциал, мВ" 
+                                                                TextOrientation="BottomToTop" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl46" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 58, 128" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                MinValue="-3000" Name="scale1" StartPoint="62.5, 212">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-850" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1150" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1150" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-850" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" 
+                                                                Text="Поляризационный потенциал, мВ" TextOrientation="BottomToTop" 
+                                                                ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+                                                
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl47" runat="server" BackColor="White" 
+                                                Height="30px" Value="95" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="95">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl48" runat="server" BackColor="White" 
+                                                Height="30px" Value="48,800" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="48,800">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl49" runat="server" BackColor="White" 
+                                                Height="30px" Value="-1200" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="-1200">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl50" runat="server" BackColor="White" 
+                                                Height="30px" Value="-900" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 70, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="-900">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                                Температура, С<br /> <dx:ASPxGaugeControl ID="ASPxGaugeControl51" runat="server" 
+                                                    BackColor="White" Height="30px" Value="+33,5" Width="140px">
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                    <Gauges>
+                                                        <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                            AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                            Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                            Text="+33,5">
+                                                            <backgroundlayers>
+                                                                <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                    BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                    ZOrder="1000" />
+                                                            </backgroundlayers>
+                                                            <labels>
+                                                                <dx:LabelComponent AcceptOrder="1001" 
+                                                                    AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                    Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                            </labels>
+                                                        </dx:DigitalGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+                                                </dx:ASPxGaugeControl>
+                                            </td>
+                                            </tr>
+                                            </table>
                                         </dx:ContentControl>
                                     </ContentCollection>
                                 </dx:TabPage>
@@ -494,6 +1223,366 @@
                                     </TabImage>
                                     <ContentCollection>
                                         <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                                            <table>
+                                            <tr>
+                                            <td>
+                                                <dx:ASPxGaugeControl ID="ASPxGaugeControl72" runat="server" BackColor="White" 
+                                                    Height="20px" Value="3" Width="20px">
+                                                    <Gauges>
+                                                        <dx:StateIndicatorGauge Bounds="0, 0, 20, 20" Name="Gauge0">
+                                                            <indicators>
+                                                                <dx:StateIndicatorComponent AcceptOrder="0" Center="124, 124" 
+                                                                    Name="stateIndicatorComponent1" Size="200, 200" StateIndex="3">
+                                                                    <states>
+                                                                        <dx:IndicatorStateWeb Name="State1" ShapeType="ElectricLight1" />
+                                                                        <dx:IndicatorStateWeb Name="State2" ShapeType="ElectricLight2" />
+                                                                        <dx:IndicatorStateWeb Name="State3" ShapeType="ElectricLight3" />
+                                                                        <dx:IndicatorStateWeb Name="State4" ShapeType="ElectricLight4" />
+                                                                    </states>
+                                                                </dx:StateIndicatorComponent>
+                                                            </indicators>
+                                                        </dx:StateIndicatorGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                </dx:ASPxGaugeControl>
+                                                Включен<br />Активный режим<dx:ASPxTextBox ID="ASPxTextBox6" runat="server" 
+                                                Width="300px" Text="стабилизация по суммарному потенциалу">
+                                            </dx:ASPxTextBox>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td width="100%">
+                                                <dx:ASPxLabel ID="ASPxLabel13" runat="server" Font-Size="Small" Text="Суммарный потенциал Поляризационный пот.       ">
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel14" runat="server" Text="Ток" Theme="Youthful">
+                                                    <borderleft bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="19px" />
+                                                    <borderright bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="35px" />
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel15" runat="server" Text="Вольтаж">
+                                                </dx:ASPxLabel>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl73" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0.5" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Напряжение, В" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl74" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="15" Value="50" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Ток, А" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl75" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 248, 248" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                Name="scale1" StartPoint="62.5, 212" MinValue="-3000">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1000" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-2500" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-2500" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1000" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" Text="Суммарный потенциал, мВ" 
+                                                                TextOrientation="BottomToTop" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl76" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 58, 128" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                MinValue="-3000" Name="scale1" StartPoint="62.5, 212">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-850" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1150" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1150" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-850" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" 
+                                                                Text="Поляризационный потенциал, мВ" TextOrientation="BottomToTop" 
+                                                                ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+                                                
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl77" runat="server" BackColor="White" 
+                                                Height="30px" Value="95" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="95">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl78" runat="server" BackColor="White" 
+                                                Height="30px" Value="48,800" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="48,800">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl79" runat="server" BackColor="White" 
+                                                Height="30px" Value="-1200" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="-1200">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl80" runat="server" BackColor="White" 
+                                                Height="30px" Value="-900" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 70, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="-900">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                                Температура, С<br /> <dx:ASPxGaugeControl ID="ASPxGaugeControl81" runat="server" 
+                                                    BackColor="White" Height="30px" Value="+33,5" Width="140px">
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                    <Gauges>
+                                                        <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                            AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                            Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                            Text="+33,5">
+                                                            <backgroundlayers>
+                                                                <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                    BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                    ZOrder="1000" />
+                                                            </backgroundlayers>
+                                                            <labels>
+                                                                <dx:LabelComponent AcceptOrder="1001" 
+                                                                    AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                    Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                            </labels>
+                                                        </dx:DigitalGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+                                                </dx:ASPxGaugeControl>
+                                            </td>
+                                            </tr>
+                                            </table>
                                         </dx:ContentControl>
                                     </ContentCollection>
                                 </dx:TabPage>
@@ -502,6 +1591,366 @@
                                     </TabImage>
                                     <ContentCollection>
                                         <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                                            <table>
+                                            <tr>
+                                            <td>
+                                                <dx:ASPxGaugeControl ID="ASPxGaugeControl52" runat="server" BackColor="White" 
+                                                    Height="20px" Value="3" Width="20px">
+                                                    <Gauges>
+                                                        <dx:StateIndicatorGauge Bounds="0, 0, 20, 20" Name="Gauge0">
+                                                            <indicators>
+                                                                <dx:StateIndicatorComponent AcceptOrder="0" Center="124, 124" 
+                                                                    Name="stateIndicatorComponent1" Size="200, 200" StateIndex="3">
+                                                                    <states>
+                                                                        <dx:IndicatorStateWeb Name="State1" ShapeType="ElectricLight1" />
+                                                                        <dx:IndicatorStateWeb Name="State2" ShapeType="ElectricLight2" />
+                                                                        <dx:IndicatorStateWeb Name="State3" ShapeType="ElectricLight3" />
+                                                                        <dx:IndicatorStateWeb Name="State4" ShapeType="ElectricLight4" />
+                                                                    </states>
+                                                                </dx:StateIndicatorComponent>
+                                                            </indicators>
+                                                        </dx:StateIndicatorGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                </dx:ASPxGaugeControl>
+                                                Включен<br />Активный режим<dx:ASPxTextBox ID="ASPxTextBox4" runat="server" 
+                                                Width="300px" Text="стабилизация по суммарному потенциалу">
+                                            </dx:ASPxTextBox>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td width="100%">
+                                                <dx:ASPxLabel ID="ASPxLabel7" runat="server" Font-Size="Small" Text="Суммарный потенциал Поляризационный пот.       ">
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel8" runat="server" Text="Ток" Theme="Youthful">
+                                                    <borderleft bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="19px" />
+                                                    <borderright bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="35px" />
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Вольтаж">
+                                                </dx:ASPxLabel>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl53" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0.5" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Напряжение, В" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl54" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="15" Value="50" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Ток, А" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl55" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 248, 248" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                Name="scale1" StartPoint="62.5, 212" MinValue="-3000">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1000" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-2500" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-2500" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1000" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" Text="Суммарный потенциал, мВ" 
+                                                                TextOrientation="BottomToTop" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl56" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 58, 128" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                MinValue="-3000" Name="scale1" StartPoint="62.5, 212">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-850" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1150" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1150" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-850" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" 
+                                                                Text="Поляризационный потенциал, мВ" TextOrientation="BottomToTop" 
+                                                                ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+                                                
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl57" runat="server" BackColor="White" 
+                                                Height="30px" Value="95" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="95">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl58" runat="server" BackColor="White" 
+                                                Height="30px" Value="48,800" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="48,800">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl59" runat="server" BackColor="White" 
+                                                Height="30px" Value="-1200" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="-1200">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl60" runat="server" BackColor="White" 
+                                                Height="30px" Value="-900" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 70, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="-900">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                                Температура, С<br /> <dx:ASPxGaugeControl ID="ASPxGaugeControl61" runat="server" 
+                                                    BackColor="White" Height="30px" Value="+33,5" Width="140px">
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                    <Gauges>
+                                                        <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                            AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                            Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                            Text="+33,5">
+                                                            <backgroundlayers>
+                                                                <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                    BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                    ZOrder="1000" />
+                                                            </backgroundlayers>
+                                                            <labels>
+                                                                <dx:LabelComponent AcceptOrder="1001" 
+                                                                    AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                    Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                            </labels>
+                                                        </dx:DigitalGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+                                                </dx:ASPxGaugeControl>
+                                            </td>
+                                            </tr>
+                                            </table>
                                         </dx:ContentControl>
                                     </ContentCollection>
                                 </dx:TabPage>
@@ -510,6 +1959,366 @@
                                     </TabImage>
                                     <ContentCollection>
                                         <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
+                                            <table>
+                                            <tr>
+                                            <td>
+                                                <dx:ASPxGaugeControl ID="ASPxGaugeControl62" runat="server" BackColor="White" 
+                                                    Height="20px" Value="3" Width="20px">
+                                                    <Gauges>
+                                                        <dx:StateIndicatorGauge Bounds="0, 0, 20, 20" Name="Gauge0">
+                                                            <indicators>
+                                                                <dx:StateIndicatorComponent AcceptOrder="0" Center="124, 124" 
+                                                                    Name="stateIndicatorComponent1" Size="200, 200" StateIndex="3">
+                                                                    <states>
+                                                                        <dx:IndicatorStateWeb Name="State1" ShapeType="ElectricLight1" />
+                                                                        <dx:IndicatorStateWeb Name="State2" ShapeType="ElectricLight2" />
+                                                                        <dx:IndicatorStateWeb Name="State3" ShapeType="ElectricLight3" />
+                                                                        <dx:IndicatorStateWeb Name="State4" ShapeType="ElectricLight4" />
+                                                                    </states>
+                                                                </dx:StateIndicatorComponent>
+                                                            </indicators>
+                                                        </dx:StateIndicatorGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                </dx:ASPxGaugeControl>
+                                                Включен<br />Активный режим<dx:ASPxTextBox ID="ASPxTextBox5" runat="server" 
+                                                Width="300px" Text="стабилизация по суммарному потенциалу">
+                                            </dx:ASPxTextBox>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td width="100%">
+                                                <dx:ASPxLabel ID="ASPxLabel10" runat="server" Font-Size="Small" Text="Суммарный потенциал Поляризационный пот.       ">
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Ток" Theme="Youthful">
+                                                    <borderleft bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="19px" />
+                                                    <borderright bordercolor="#D6F5A0" borderstyle="Dotted" borderwidth="35px" />
+                                                </dx:ASPxLabel>
+                                                <dx:ASPxLabel ID="ASPxLabel12" runat="server" Text="Вольтаж">
+                                                </dx:ASPxLabel>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl63" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0.5" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Напряжение, В" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl64" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="15" Value="50" Width="140px">
+                                                <Gauges>
+                                                    <dx:CircularGauge Bounds="6, 6, 148, 148" Name="circularGauge10">
+                                                        <scales>
+                                                            <dx:ArcScaleComponent AcceptOrder="0" AppearanceTickmarkText-Font="Tahoma, 9pt" 
+                                                                Center="125, 170" EndAngle="0" MajorTickCount="6" 
+                                                                MajorTickmark-FormatString="{0:F0}" MajorTickmark-ShapeOffset="-6" 
+                                                                MajorTickmark-ShapeType="Circular_Style25_1" MajorTickmark-TextOffset="-20" 
+                                                                MajorTickmark-TextOrientation="LeftToRight" MaxValue="100" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-2" MinorTickmark-ShapeType="Circular_Style25_2" 
+                                                                Name="scale1" RadiusX="95" RadiusY="95" StartAngle="-180" Value="1">
+                                                                <ranges>
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#9EC968&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="33" Name="Range0" ShapeOffset="11.5" 
+                                                                        StartThickness="2" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#FFDA80&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="66" Name="Range1" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="33" />
+                                                                    <dx:ArcScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#E99D9D&quot;/&gt;" 
+                                                                        EndThickness="2" EndValue="100" Name="Range2" ShapeOffset="11.5" 
+                                                                        StartThickness="2" StartValue="66" />
+                                                                </ranges>
+                                                            </dx:ArcScaleComponent>
+                                                        </scales>
+                                                        <backgroundlayers>
+                                                            <dx:ArcScaleBackgroundLayerComponent AcceptOrder="-1000" ArcScale="" Name="bg" 
+                                                                ScaleCenterPos="0.5, 0.695" ScaleID="scale1" ShapeType="CircularHalf_Style25" 
+                                                                Size="200, 145" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <needles>
+                                                            <dx:ArcScaleNeedleComponent AcceptOrder="50" ArcScale="" EndOffset="13" 
+                                                                Name="needle" ScaleID="scale1" ShapeType="CircularFull_Style25" 
+                                                                StartOffset="-16.5" ZOrder="-50" />
+                                                        </needles>
+                                                        <markers>
+                                                            <dx:ArcScaleMarkerComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_Marker1" ScaleID="scale1" ZOrder="-100" />
+                                                        </markers>
+                                                        <spindlecaps>
+                                                            <dx:ArcScaleSpindleCapComponent AcceptOrder="100" ArcScale="" 
+                                                                Name="circularGauge10_SpindleCap1" ScaleID="scale1" 
+                                                                ShapeType="CircularFull_Style25" Size="15, 15" ZOrder="-100" />
+                                                        </spindlecaps>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" Name="circularGauge10_Label1" 
+                                                                Text="Ток, А" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:CircularGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl65" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 248, 248" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                Name="scale1" StartPoint="62.5, 212" MinValue="-3000">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1000" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-2500" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-2500" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1000" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" Text="Суммарный потенциал, мВ" 
+                                                                TextOrientation="BottomToTop" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl66" runat="server" BackColor="White" 
+                                                Height="140px" LayoutInterval="6" Value="0" Width="70px">
+                                                <Gauges>
+                                                    <dx:LinearGauge Bounds="6, 6, 58, 128" Name="linearGauge9">
+                                                        <scales>
+                                                            <dx:LinearScaleComponent AcceptOrder="0" 
+                                                                AppearanceTickmarkText-Font="Tahoma, 8pt" CustomLogarithmicBase="2" 
+                                                                EndPoint="62.5, 38" MajorTickCount="6" MajorTickmark-FormatString="{0:F0}" 
+                                                                MajorTickmark-ShapeOffset="-25" MajorTickmark-ShapeType="Linear_Style25_1" 
+                                                                MajorTickmark-TextOffset="-35" MaxValue="0" MinorTickCount="4" 
+                                                                MinorTickmark-ShapeOffset="-22" MinorTickmark-ShapeType="Linear_Style25_2" 
+                                                                MinValue="-3000" Name="scale1" StartPoint="62.5, 212">
+                                                                <ranges>
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1D183&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-850" Name="Range0" ShapeOffset="-12" 
+                                                                        StartThickness="3" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#F1877E&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-3000" Name="Range1" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-1150" />
+                                                                    <dx:LinearScaleRangeWeb AppearanceRange-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#7AC463&quot;/&gt;" 
+                                                                        EndThickness="3" EndValue="-1150" Name="Range2" ShapeOffset="-12" 
+                                                                        StartThickness="3" StartValue="-850" />
+                                                                </ranges>
+                                                            </dx:LinearScaleComponent>
+                                                        </scales>
+                                                        <levels>
+                                                            <dx:LinearScaleLevelComponent AcceptOrder="50" LinearScale="" Name="level1" 
+                                                                ScaleID="scale1" ShapeType="Style25" ZOrder="-50" />
+                                                        </levels>
+                                                        <backgroundlayers>
+                                                            <dx:LinearScaleBackgroundLayerComponent AcceptOrder="-1000" LinearScale="" 
+                                                                Name="bg1" ScaleID="scale1" ScaleStartPos="0.5, 0.85" 
+                                                                ShapeType="Linear_Style25" ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" AppearanceText-Font="Tahoma, 12pt" 
+                                                                Name="linearGauge9_Label1" Position="93.1, 116.7" 
+                                                                Text="Поляризационный потенциал, мВ" TextOrientation="BottomToTop" 
+                                                                ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:LinearGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="6" Bottom="6" Left="6" Right="6" Top="6" />
+                                                
+<LayoutPadding All="6" Left="6" Top="6" Right="6" Bottom="6"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl67" runat="server" BackColor="White" 
+                                                Height="30px" Value="95" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="95">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl68" runat="server" BackColor="White" 
+                                                Height="30px" Value="48,800" Width="140px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 160, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="48,800">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl69" runat="server" BackColor="White" 
+                                                Height="30px" Value="-1200" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="-1200">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                            <dx:ASPxGaugeControl ID="ASPxGaugeControl70" runat="server" BackColor="White" 
+                                                Height="30px" Value="-900" Width="70px">
+                                                <Gauges>
+                                                    <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                        AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                        Bounds="0, 0, 70, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                        Text="-900">
+                                                        <backgroundlayers>
+                                                            <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                ZOrder="1000" />
+                                                        </backgroundlayers>
+                                                        <labels>
+                                                            <dx:LabelComponent AcceptOrder="1001" 
+                                                                AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                        </labels>
+                                                    </dx:DigitalGauge>
+                                                </Gauges>
+                                                <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                            </dx:ASPxGaugeControl>
+                                                <br />
+                                                Температура, С<br /> <dx:ASPxGaugeControl ID="ASPxGaugeControl71" runat="server" 
+                                                    BackColor="White" Height="30px" Value="+33,5" Width="140px">
+
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+                                                    <Gauges>
+                                                        <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#0FD4F2FF&quot;/&gt;" 
+                                                            AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#D4F2FF&quot;/&gt;" 
+                                                            Bounds="0, 0, 140, 30" DigitCount="5" Name="dGauge1" Padding="20, 20, 20, 20" 
+                                                            Text="+33,5">
+                                                            <backgroundlayers>
+                                                                <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" 
+                                                                    BottomRight="259.8125, 99.9625" Name="b1" ShapeType="Style2" TopLeft="20, 0" 
+                                                                    ZOrder="1000" />
+                                                            </backgroundlayers>
+                                                            <labels>
+                                                                <dx:LabelComponent AcceptOrder="1001" 
+                                                                    AppearanceText-TextBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" 
+                                                                    Name="dGauge1_Label1" Position="139.9, -34" Text="Ток" ZOrder="-1001" />
+                                                            </labels>
+                                                        </dx:DigitalGauge>
+                                                    </Gauges>
+                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+
+                                                </dx:ASPxGaugeControl>
+                                            </td>
+                                            </tr>
+                                            </table>
                                         </dx:ContentControl>
                                     </ContentCollection>
                                 </dx:TabPage>
